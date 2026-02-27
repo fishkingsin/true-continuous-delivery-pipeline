@@ -1,0 +1,42 @@
+build:
+  defaultTool: maven
+  
+  tools:
+    maven:
+      executable: mvn
+      options: "-DskipTests"
+      goals: "clean package"
+      
+    gradle:
+      executable: ./gradlew
+      options: "--no-daemon"
+      tasks: "assemble"
+      
+    npm:
+      executable: npm
+      installFlags: "--production"
+      buildCommand: "run build"
+      
+    dotnet:
+      executable: dotnet
+      configuration: Release
+      
+  projects:
+    - name: myapp
+      tool: maven
+      pom: myapp/pom.xml
+      skipTests: false
+      parallel: true
+      goals: clean package
+      jvmOpts: "-Xmx2g"
+      
+    - name: common-lib
+      tool: gradle
+      buildFile: common-lib/build.gradle
+      tasks: assemble
+      parallel: false
+
+  defaults:
+    skipTests: false
+    parallel: false
+    timeout: 600
