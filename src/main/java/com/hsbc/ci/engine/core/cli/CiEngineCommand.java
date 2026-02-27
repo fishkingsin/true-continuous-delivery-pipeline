@@ -37,12 +37,12 @@ public class CiEngineCommand implements CommandLineRunner, ExitCodeGenerator {
         CommandLine commandLine = new CommandLine(root)
             .addSubcommand("pipeline", new PipelineCommand())
             .addSubcommand("stage", new StageCommand())
-            .addSubcommand("deploy", new DeployCommand())
+            .addSubcommand("deploy", context.getBean(DeployCommand.class))
             .addSubcommand("promote", new PromoteCommand())
             .addSubcommand("config", new ConfigCommand())
             .addSubcommand("version", new VersionCommand())
-            .addSubcommand("checkout", new CheckoutCommand())
-            .addSubcommand("build", new BuildCommand())
+            .addSubcommand("checkout", context.getBean(CheckoutCommand.class))
+            .addSubcommand("build", context.getBean(BuildCommand.class))
             .addSubcommand("plugin", context.getBean(PluginCommand.class));
         
         exitCode = commandLine.execute(args);

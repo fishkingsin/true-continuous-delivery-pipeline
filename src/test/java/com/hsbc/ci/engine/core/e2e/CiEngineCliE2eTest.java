@@ -117,6 +117,31 @@ class CiEngineCliE2eTest {
             "Build should complete successfully");
     }
 
+    @Test
+    void deployCommand_showsHelp() throws Exception {
+        ProcessResult result = runCli("deploy", "--help");
+        
+        assertEquals(0, result.exitCode, result.stderr);
+        assertTrue(result.stdout.contains("Usage:") || result.stdout.contains("type"),
+            "Should show deploy usage");
+    }
+
+    @Test
+    void deployCommand_kubernetes() throws Exception {
+        ProcessResult result = runCli("deploy", "--type", "kubernetes", "--namespace", "test-ns", "--image", "myapp:v1");
+        
+        assertTrue(result.stdout.contains("Deploying") || result.stdout.contains("Kubernetes"),
+            "Should show deployment info, got: " + result.stdout);
+    }
+
+    @Test
+    void deployCommand_ecs() throws Exception {
+        ProcessResult result = runCli("deploy", "--type", "ecs", "--cluster", "prod-cluster");
+        
+        assertTrue(result.stdout.contains("Deploying") || result.stdout.contains("ECS"),
+            "Should show ECS deployment info, got: " + result.stdout);
+    }
+
     private void copyConfigToTemp(Path tempDir) throws Exception {
         Path configDir = Path.of("config");
         if (java.nio.file.Files.exists(configDir)) {
