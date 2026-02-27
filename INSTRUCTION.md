@@ -26,6 +26,8 @@ Commands:
   deploy     - Deploy to targets
   promote    - Promote between environments
   checkout   - Git checkout operations
+  build      - Build artifacts (Maven/Gradle)
+  plugin     - Plugin management
   config     - Configuration management
   version    - Show version
 ```
@@ -66,12 +68,6 @@ ci-engine pipeline run microservice-cd \
   --var GIT_COMMIT=abc123,GIT_BRANCH=main
 ```
 
-### Validate Pipeline
-
-```bash
-ci-engine pipeline validate <file>
-```
-
 ---
 
 ## Checkout Command
@@ -103,74 +99,94 @@ ci-engine checkout clone --url https://github.com/org/repo.git --token $GIT_TOKE
 ci-engine checkout clone --config config/checkout.yml
 ```
 
-**Config file format (`config/checkout.yml`):**
+---
+
+## Build Command
+
+Build artifacts with Maven or Gradle.
+
+### Maven Build
+
+```bash
+# Build with default goals (clean package)
+ci-engine build maven
+
+# Custom goals
+ci-engine build maven --goals "clean compile"
+
+# Skip tests
+ci-engine build maven --goals "package" --skip-tests
+
+# Parallel builds
+ci-engine build maven --goals "package" --parallel
+
+# Custom pom path
+ci-engine build maven --pom myapp/pom.xml
+```
+
+### Build from Config
+
+```bash
+ci-engine build maven --config config/build.yml
+```
+
+---
+
+## Plugin Command
+
+Manage plugins for extensibility.
+
+### List Available Plugins
+
+```bash
+ci-engine plugin list
+```
+
+### Plugin Types
+
+**Stage Plugins:**
+- `security-scan` - SAST, DAST, FOSS scanning
+- `performance-test` - K6/JMeter load testing
+- `chaos-engineering` - Litmus chaos experiments
+
+**Gate Plugins:**
+- `sonarqube` - Code quality gates
+- `security-gate` - Security scan gates
+
+**Notifier Plugins:**
+- `slack-notify` - Slack notifications
+- `email-notify` - Email notifications
+
+### Enable Plugins
+
+Edit `config/plugins.yml`:
 ```yaml
-checkout:
-  repositories:
-    - name: myapp
-      url: https://github.com/org/myapp.git
-      branch: main
-      target: ./repos/myapp
-      depth: 10
-      
-  defaults:
-    depth: 5
+plugins:
+  security-scan:
+    enabled: true
+    config:
+      scanners:
+        - sast
+        - dast
 ```
 
 ---
 
 ## Deploy Command
 
-Deploy applications to Kubernetes or ECS.
-
-### Deploy to Kubernetes
-
-```bash
-ci-engine deploy kubernetes \
-  --namespace dev \
-  --image myapp:1.0.0 \
-  --replicas 3
-```
-
-### Deploy to ECS
-
-```bash
-ci-engine deploy ecs \
-  --cluster prod-cluster \
-  --service myapp \
-  --image myapp:1.0.0
-```
+Deploy applications to Kubernetes or ECS. (Stub)
 
 ---
 
 ## Promote Command
 
-Promote releases between environments.
-
-```bash
-# Promote from one environment to another
-ci-engine promote --from uat --to production
-
-# With specific policy
-ci-engine promote --from uat --to production --policy standard
-
-# Approve manual promotion
-ci-engine promote --from uat --to production --approve
-```
+Promote releases between environments. (Stub)
 
 ---
 
 ## Stage Command
 
-Run individual pipeline stages.
-
-```bash
-# Run a single stage
-ci-engine stage run build
-
-# With config
-ci-engine stage run build --config stages/build.yml
-```
+Run individual pipeline stages. (Stub)
 
 ---
 
@@ -190,9 +206,11 @@ ci-engine --config /path/to/config pipeline run my-pipeline
 |------|---------|
 | `ci-engine.yml` | Global settings |
 | `checkout.yml` | Repository configurations |
+| `build.yml` | Build tool configurations |
 | `deploy.yml` | Deployment settings |
 | `environments.yml` | Environment definitions |
 | `promote.yml` | Promotion policies |
+| `plugins.yml` | Plugin configurations |
 | `pipelines/*.yml` | Pipeline definitions |
 
 ---
@@ -205,7 +223,10 @@ ci-engine --config /path/to/config pipeline run my-pipeline
 # 1. Checkout code
 ci-engine checkout clone --config config/checkout.yml
 
-# 2. Run pipeline
+# 2. Build
+ci-engine build maven --config config/build.yml
+
+# 3. Run pipeline
 ci-engine pipeline run microservice-cd --env production
 ```
 
@@ -213,9 +234,7 @@ ci-engine pipeline run microservice-cd --env production
 
 ```bash
 # Deploy to dev
-ci-engine deploy kubernetes \
-  --namespace dev \
-  --image myapp:1.0.0
+ci-engine deploy kubernetes --namespace dev --image myapp:1.0.0
 
 # Promote to staging
 ci-engine promote --from dev --to staging
@@ -231,7 +250,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                sh 'ci-engine checkout clone --config config/checkout.yml'
+                sh 'ci-engine checkout clone --config config/checkout        }
+        
+        stage('Build').yml'
+            }
+ {
+            steps {
+                sh 'ci-engine build maven --config config/build.yml'
             }
         }
         
@@ -256,6 +281,8 @@ pipeline {
 | `DOCKER_PASSWORD` | Docker registry password |
 | `AWS_ACCESS_KEY_ID` | AWS access key |
 | `AWS_SECRET_ACCESS_KEY` | AWS secret key |
+| `SONAR_TOKEN` | SonarQube token |
+| `SLACK_WEBHOOK` | Slack webhook URL |
 
 ---
 
@@ -282,11 +309,26 @@ The CLI supports these built-in stages:
 - **containerize** - Build Docker images
 - **deploy** - Deploy to Kubernetes/ECS
 
-Plugin stages (future):
+Plugin stages (when enabled):
 - security-scan (SAST, DAST, FOSS)
 - sonarqube (code quality)
 - performance-test (K6, JMeter)
 - chaos-engineering (Litmus)
+
+---
+
+## Running Tests
+
+```bash
+# Run all tests
+mvn test
+
+# Run specific test class
+mvn test -Dtest=PluginResultTest
+
+# Run with coverage
+mvn test -Djacoco
+```
 
 ---
 

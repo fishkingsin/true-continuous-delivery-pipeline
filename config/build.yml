@@ -29,6 +29,10 @@ build:
       parallel: true
       goals: clean package
       jvmOpts: "-Xmx2g"
+      modules:
+        - core
+        - api
+        - web
       
     - name: common-lib
       tool: gradle
@@ -40,3 +44,4 @@ build:
     skipTests: false
     parallel: false
     timeout: 600
+    jvmOpts: "-Xmx1g"
