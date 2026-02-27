@@ -1,0 +1,20 @@
+name: sample-pipeline
+version: "1.0"
+description: Sample CD pipeline for microservices
+
+stages:
+  - name: build
+    type: build
+    config:
+      build-tool: maven
+
+  - name: test
+    type: test
+    config:
+      test-type: unit
+
+  - name: containerize
+    type: containerize
+    config:
+      dockerfile: Dockerfile
+      registry: docker.io/myorg
