@@ -51,4 +51,18 @@ public class ConfigurationLoader {
     public Collection<String> listPipelines() {
         return pipelineConfigs.keySet();
     }
+
+    @SuppressWarnings("unchecked")
+    public Map<String, Object> loadYamlFile(String filePath) {
+        try {
+            Path path = Paths.get(filePath);
+            if (!Files.exists(path)) {
+                throw new FileNotFoundException("Config file not found: " + filePath);
+            }
+            Yaml yaml = new Yaml();
+            return yaml.load(Files.readString(path));
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to load YAML file: " + e.getMessage(), e);
+        }
+    }
 }

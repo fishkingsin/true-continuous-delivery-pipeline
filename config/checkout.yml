@@ -1,0 +1,17 @@
+checkout:
+  repositories:
+    - name: myapp
+      url: https://github.com/spring-projects/spring-boot.git
+      branch: main
+      target: ./repos/spring-boot
+      depth: 10
+      
+    - name: common-lib
+      url: https://github.com/spring-projects/spring-framework.git
+      branch: main
+      target: ./repos/spring-framework
+      depth: 5
+      
+  defaults:
+    depth: 5
+    timeout: 300
