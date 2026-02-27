@@ -356,3 +356,15 @@
 2026-02-27 19:45:22.116 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
 2026-02-27 19:45:22.417 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.102 seconds (process running for 3.834)
 2026-02-27 19:45:22.554 DEBUG [main] com.hsbc.ci.engine.core.cli.VersionCommand - Version command executed
+2026-02-27 20:14:09.386 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 87328 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 20:14:09.391 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 20:14:09.392 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 20:14:10.572 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 20:14:10.781 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 20:14:10.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 20:14:10.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 20:14:10.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 20:14:10.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 20:14:10.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 20:14:10.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 20:14:11.107 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.279 seconds (process running for 4.05)

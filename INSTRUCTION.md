@@ -174,7 +174,46 @@ plugins:
 
 ## Deploy Command
 
-Deploy applications to Kubernetes or ECS. (Stub)
+Deploy applications to Kubernetes or ECS.
+
+### Kubernetes Deployment
+
+```bash
+# Deploy to Kubernetes
+ci-engine deploy --type kubernetes --namespace dev --image myapp:1.0.0
+
+# Deploy to production namespace
+ci-engine deploy --type kubernetes --namespace production --image myapp:latest
+```
+
+### ECS Deployment
+
+```bash
+# Deploy to ECS cluster
+ci-engine deploy --type ecs --cluster prod-cluster --image myapp:1.0.0
+```
+
+**Options:**
+| Option | Description |
+|--------|-------------|
+| `-t, --type <type>` | Deployment type: `kubernetes` or `ecs` (required) |
+| `-n, --namespace <ns>` | Kubernetes namespace (default: `default`) |
+| `-i, --image <image>` | Container image (default: `myapp:latest`) |
+| `-c, --cluster <cluster>` | ECS cluster name (default: `default`) |
+| `--dry-run` | Validate without executing |
+
+### Examples
+
+```bash
+# Deploy to dev environment
+ci-engine deploy --type kubernetes --namespace dev --image myapp:1.0.0
+
+# Deploy to production
+ci-engine deploy --type kubernetes --namespace production --image myapp:v2.1.3
+
+# Deploy to ECS
+ci-engine deploy --type ecs --cluster production --image myapp:latest
+```
 
 ---
 
@@ -233,8 +272,11 @@ ci-engine pipeline run microservice-cd --env production
 ### Manual Deployment
 
 ```bash
-# Deploy to dev
-ci-engine deploy kubernetes --namespace dev --image myapp:1.0.0
+# Deploy to dev (Kubernetes)
+ci-engine deploy --type kubernetes --namespace dev --image myapp:1.0.0
+
+# Deploy to ECS
+ci-engine deploy --type ecs --cluster prod-cluster --image myapp:1.0.0
 
 # Promote to staging
 ci-engine promote --from dev --to staging
