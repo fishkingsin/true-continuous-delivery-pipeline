@@ -85,6 +85,20 @@ class CiEngineCliE2eTest {
         assertTrue(result.exitCode == 0 || result.stdout.contains("Usage") || result.stdout.contains("maven"));
     }
 
+    @Test
+    void checkoutClone_clonesRepository(@TempDir Path tempDir) throws Exception {
+        Path cloneDir = tempDir.resolve("MyLedger");
+        
+        ProcessResult result = runCli("checkout", "clone", 
+            "--url", "https://github.com/fishkingsin/MyLedger",
+            "--target", cloneDir.toString());
+        
+        assertEquals(0, result.exitCode, "Clone should succeed: " + result.stdout);
+        assertTrue(result.stdout.contains("[SUCCESS]"), "Should show success message");
+        assertTrue(java.nio.file.Files.exists(cloneDir), "Cloned directory should exist: " + cloneDir);
+        assertTrue(java.nio.file.Files.exists(cloneDir.resolve(".git")), "Should contain .git directory");
+    }
+
     private void copyConfigToTemp(Path tempDir) throws Exception {
         Path configDir = Path.of("config");
         if (java.nio.file.Files.exists(configDir)) {
