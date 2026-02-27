@@ -3,6 +3,9 @@
 Auto-generated from all feature plans. Last updated: 2026-02-27
 
 ## Active Technologies
+- Java 21 + Spring Boot 3.2.0, Picocli 4.7.5, JUnit Jupiter 5.10.0, SnakeYAML (001-cd-engine)
+- File-based (YAML pipeline definitions, JSON configuration) (001-cd-engine)
+- File-based (YAML pipeline definitions, config files) - no persistent storage (001-cd-engine)
 
 - Java 21 + Spring Boot 3.2.0, Picocli 4.7.5, JUnit Jupiter 5.10.0 (001-cd-engine)
 
@@ -22,6 +25,8 @@ tests/
 Java 21: Follow standard conventions
 
 ## Recent Changes
+- 001-cd-engine: Added Java 21 + Spring Boot 3.2.0, Picocli 4.7.5, JUnit Jupiter 5.10.0, SnakeYAML
+- 001-cd-engine: Added Java 21 + Spring Boot 3.2.0, Picocli 4.7.5, JUnit Jupiter 5.10.0, SnakeYAML
 
 - 001-cd-engine: Added Java 21 + Spring Boot 3.2.0, Picocli 4.7.5, JUnit Jupiter 5.10.0
 

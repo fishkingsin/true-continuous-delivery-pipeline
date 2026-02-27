@@ -1,6 +1,6 @@
-# Quickstart: CD Engine CLI
+# Quickstart: CI Engine Core CLI
 
-**Date**: 2026-02-27
+**Date**: 2026-02-28
 
 ## Installation
 
@@ -22,23 +22,24 @@ alias ci-engine-core='java -jar target/ci-engine-core-1.0.0-SNAPSHOT.jar'
 ```yaml
 name: my-pipeline
 description: My first CD pipeline
-environment: dev
+version: "1.0"
 
 stages:
   - name: build
     type: build
     config:
-      command: mvn package -DskipTests
+      build-tool: maven
+      goals: clean package -DskipTests
 
   - name: test
     type: test
     config:
-      command: mvn test
+      test-type: unit
 
   - name: deploy
     type: deploy
-    config:
-      target: local
+    target: kubernetes
+    environment: dev
 ```
 
 2. Run the pipeline:
@@ -53,31 +54,57 @@ ci-engine-core pipeline run my-pipeline --env dev
 ci-engine-core pipeline list
 ```
 
-## Environment Configuration
+## Parallel Execution
 
-Create environment configs in `config/environments/`:
+Run independent stages in parallel using `dependsOn`:
 
 ```yaml
-# config/environments/dev.yml
-name: dev
-url: http://localhost:8080
-variables:
-  REGION: us-east-1
-  REPLICA_COUNT: "1"
+stages:
+  - name: unit-tests
+    type: test
+    test-type: unit
+  
+  - name: security-scan
+    type: plugin:security-scan
+    config:
+      scanners: [sast, foss]
+  
+  - name: code-quality
+    type: plugin:sonarqube
+    config:
+      quality-gate: CD_PIPELINE
+  
+  # These run after the parallel stages complete
+  - name: containerize
+    type: containerize
+    dependsOn: [unit-tests, security-scan, code-quality]
 ```
 
 ## Commands Overview
 
-| Command                    | Description                  |
-| -------------------------- | ---------------------------- |
-| `pipeline run <name>`      | Execute a pipeline           |
-| `pipeline list`            | List all pipelines           |
-| `pipeline validate <file>` | Validate pipeline YAML       |
-| `stage run <type>`         | Run a single stage           |
-| `deploy <target>`          | Deploy to target             |
-| `promote <from> <to>`      | Promote between environments |
-| `config show`              | Show current configuration   |
-| `version`                  | Show version info            |
+| Command | Description |
+|---------|-------------|
+| `pipeline run <name>` | Execute a pipeline |
+| `pipeline list` | List all pipelines |
+| `pipeline validate <file>` | Validate pipeline YAML |
+| `stage run <type>` | Run a single stage |
+| `deploy <target>` | Deploy to target |
+| `promote <from> <to>` | Promote between environments |
+| `config show` | Show current configuration |
+| `version` | Show version info |
+
+## Configuration Files
+
+| File | Purpose |
+|------|---------|
+| `config/pipelines/*.yml` | Pipeline definitions |
+| `config/build.yml` | Build tools (Maven, Gradle, npm, dotnet) |
+| `config/checkout.yml` | Git repository checkout |
+| `config/ci-engine.yml` | Global settings, credentials |
+| `config/deploy.yml` | Kubernetes/ECS deployment configs |
+| `config/environments.yml` | Environment definitions |
+| `config/plugins.yml` | Plugin configurations |
+| `config/promote.yml` | Promotion policies |
 
 ## Help
 

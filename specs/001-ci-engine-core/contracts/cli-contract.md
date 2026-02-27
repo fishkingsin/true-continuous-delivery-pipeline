@@ -1,4 +1,4 @@
-# CLI Contract: CD Engine
+# CLI Contract: CI Engine Core
 
 **Date**: 2026-02-27
 
