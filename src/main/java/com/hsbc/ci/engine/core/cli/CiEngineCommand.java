@@ -1,5 +1,6 @@
-package com.cdengine.cli;
+package com.hsbc.ci.engine.core.cli;
 
+import com.hsbc.ci.engine.core.CiEngineApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
@@ -10,14 +11,14 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.cdengine"})
-public class CdEngineCommand implements CommandLineRunner, ExitCodeGenerator {
+@ComponentScan(basePackages = {"com.hsbc.ci.engine.core"})
+public class CiEngineCommand implements CommandLineRunner, ExitCodeGenerator {
 
     private int exitCode = 0;
 
     public static void main(String[] args) {
         System.exit(SpringApplication.exit(
-            SpringApplication.run(CdEngineCommand.class, args)
+            SpringApplication.run(CiEngineApplication.class, args)
         ));
     }
 

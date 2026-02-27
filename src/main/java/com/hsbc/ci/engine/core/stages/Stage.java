@@ -1,6 +1,6 @@
-package com.cdengine.stages;
+package com.hsbc.ci.engine.core.stages;
 
-import com.cdengine.model.PipelineContext;
+import com.hsbc.ci.engine.core.model.PipelineContext;
 import java.util.Map;
 
 public interface Stage {

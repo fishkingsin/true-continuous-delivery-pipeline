@@ -1,4 +1,4 @@
-package com.cdengine.model;
+package com.hsbc.ci.engine.core.model;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.cdengine.model;
+package com.hsbc.ci.engine.core.model;
 
 public class PipelineResult {
     private final boolean success;

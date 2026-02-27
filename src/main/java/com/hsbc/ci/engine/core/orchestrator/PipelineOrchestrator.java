@@ -1,13 +1,13 @@
-package com.cdengine.orchestrator;
+package com.hsbc.ci.engine.core.orchestrator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.cdengine.config.ConfigurationLoader;
-import com.cdengine.model.PipelineContext;
-import com.cdengine.model.PipelineResult;
-import com.cdengine.model.StageResult;
-import com.cdengine.stages.StageExecutor;
+import com.hsbc.ci.engine.core.config.ConfigurationLoader;
+import com.hsbc.ci.engine.core.model.PipelineContext;
+import com.hsbc.ci.engine.core.model.PipelineResult;
+import com.hsbc.ci.engine.core.model.StageResult;
+import com.hsbc.ci.engine.core.stages.StageExecutor;
 
 import java.util.List;
 import java.util.Map;

@@ -1,10 +1,10 @@
-package com.cdengine.stages;
+package com.hsbc.ci.engine.core.stages;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.cdengine.model.PipelineContext;
-import com.cdengine.model.StageResult;
+import com.hsbc.ci.engine.core.model.PipelineContext;
+import com.hsbc.ci.engine.core.model.StageResult;
 
 import java.util.HashMap;
 import java.util.Map;

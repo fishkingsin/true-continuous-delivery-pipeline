@@ -1,12 +1,12 @@
-package com.cdengine;
+package com.hsbc.ci.engine.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CdEngineApplication {
+public class CiEngineApplication {
     
     public static void main(String[] args) {
-        SpringApplication.run(CdEngineApplication.class, args);
+        SpringApplication.run(CiEngineApplication.class, args);
     }
 }

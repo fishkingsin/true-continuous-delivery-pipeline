@@ -1,4 +1,4 @@
-package com.cdengine.cli;
+package com.hsbc.ci.engine.core.cli;
 
 import picocli.CommandLine.Command;
 

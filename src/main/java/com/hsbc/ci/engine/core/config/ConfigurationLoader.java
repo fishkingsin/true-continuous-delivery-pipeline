@@ -1,4 +1,4 @@
-package com.cdengine.config;
+package com.hsbc.ci.engine.core.config;
 
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.Yaml;
