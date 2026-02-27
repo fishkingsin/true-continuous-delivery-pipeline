@@ -1,5 +1,6 @@
 package com.hsbc.ci.engine.core.cli.plugin;
 
+import com.hsbc.ci.engine.core.plugin.PluginManager;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import picocli.CommandLine;
@@ -15,27 +16,54 @@ public class PluginCommand implements CommandLineRunner {
     }
 }
 
-@CommandLine.Command(name = "list", description = "List available plugins")
 @Component
+@CommandLine.Command(name = "list", description = "List available plugins")
 class PluginListCommand implements Runnable {
+
+    private final PluginManager pluginManager;
+
+    public PluginListCommand(PluginManager pluginManager) {
+        this.pluginManager = pluginManager;
+    }
 
     @Override
     public void run() {
+        var plugins = pluginManager.listAllPlugins();
+        
         System.out.println("Available Plugins:");
         System.out.println("");
-        System.out.println("(Edit config/plugins.yml to enable plugins)");
-        System.out.println("");
-        System.out.println("Stage Plugins:");
-        System.out.println("  security-scan      - SAST, DAST, FOSS scanning");
-        System.out.println("  performance-test  - K6/JMeter load testing");
-        System.out.println("  chaos-engineering - Litmus chaos experiments");
-        System.out.println("");
-        System.out.println("Gate Plugins:");
-        System.out.println("  sonarqube         - Code quality gates");
-        System.out.println("  security-gate     - Security scan gates");
-        System.out.println("");
-        System.out.println("Notifier Plugins:");
-        System.out.println("  slack-notify      - Slack notifications");
-        System.out.println("  email-notify      - Email notifications");
+        
+        var stages = plugins.get("stages");
+        var gates = plugins.get("gates");
+        var notifiers = plugins.get("notifiers");
+        
+        if (stages != null && !stages.isEmpty()) {
+            System.out.println("Stage Plugins:");
+            for (String plugin : stages) {
+                System.out.println("  " + plugin);
+            }
+            System.out.println("");
+        }
+        
+        if (gates != null && !gates.isEmpty()) {
+            System.out.println("Gate Plugins:");
+            for (String plugin : gates) {
+                System.out.println("  " + plugin);
+            }
+            System.out.println("");
+        }
+        
+        if (notifiers != null && !notifiers.isEmpty()) {
+            System.out.println("Notifier Plugins:");
+            for (String plugin : notifiers) {
+                System.out.println("  " + plugin);
+            }
+        }
+        
+        if ((stages == null || stages.isEmpty()) 
+            && (gates == null || gates.isEmpty()) 
+            && (notifiers == null || notifiers.isEmpty())) {
+            System.out.println("(No plugins loaded. Edit config/plugins.yml to enable plugins)");
+        }
     }
 }
