@@ -4,6 +4,8 @@ import com.hsbc.ci.engine.core.CiEngineApplication;
 import com.hsbc.ci.engine.core.cli.checkout.CheckoutCommand;
 import com.hsbc.ci.engine.core.cli.build.BuildCommand;
 import com.hsbc.ci.engine.core.cli.plugin.PluginCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
@@ -13,10 +15,13 @@ import org.springframework.context.annotation.ComponentScan;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.ParameterException;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.hsbc.ci.engine.core"})
 public class CiEngineCommand implements CommandLineRunner, ExitCodeGenerator {
+
+    private static final Logger log = LoggerFactory.getLogger(CiEngineCommand.class);
 
     private final ApplicationContext context;
     private int exitCode = 0;
@@ -26,9 +31,25 @@ public class CiEngineCommand implements CommandLineRunner, ExitCodeGenerator {
     }
 
     public static void main(String[] args) {
-        System.exit(SpringApplication.exit(
-            SpringApplication.run(CiEngineApplication.class, args)
-        ));
+        try {
+            System.exit(SpringApplication.exit(
+                SpringApplication.run(CiEngineApplication.class, args)
+            ));
+        } catch (ParameterException e) {
+            System.err.println("\n[ERROR] Invalid command or option: " + e.getMessage());
+            System.err.println("\nUsage: java -jar ci-engine-core-1.0.0-SNAPSHOT.jar <command> [options]");
+            System.err.println("\nExamples:");
+            System.err.println("  java -jar ci-engine-core-1.0.0-SNAPSHOT.jar --help");
+            System.err.println("  java -jar ci-engine-core-1.0.0-SNAPSHOT.jar version");
+            System.err.println("  java -jar ci-engine-core-1.0.0-SNAPSHOT.jar deploy --type kubernetes --namespace dev --image myapp:1.0.0");
+            System.err.println("\nRun 'java -jar ci-engine-core-1.0.0-SNAPSHOT.jar --help' for more information.");
+            System.exit(1);
+        } catch (Exception e) {
+            log.error("CI Engine error", e);
+            System.err.println("\n[ERROR] " + e.getMessage());
+            System.err.println("\nRun 'java -jar ci-engine-core-1.0.0-SNAPSHOT.jar --help' for usage information.");
+            System.exit(1);
+        }
     }
 
     @Override

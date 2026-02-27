@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import com.hsbc.ci.engine.core.model.PipelineContext;
+
+import java.io.IOException;
 import java.util.Map;
 
 @Component
@@ -36,15 +38,21 @@ public class DeployStage implements Stage {
             throws Exception {
         System.out.println("  [Kubernetes] Checking kubectl...");
         
-        ProcessBuilder pb = new ProcessBuilder("kubectl", "version", "--client");
-        pb.redirectErrorStream(true);
-        Process p = pb.start();
-        int exitCode = p.waitFor();
-        
-        if (exitCode != 0) {
-            log.warn("kubectl not found - skipping deployment");
+        try {
+            ProcessBuilder pb = new ProcessBuilder("kubectl", "version", "--client");
+            pb.redirectErrorStream(true);
+            Process p = pb.start();
+            int exitCode = p.waitFor();
+            
+            if (exitCode != 0) {
+                log.warn("kubectl not found - skipping deployment");
+                System.out.println("  [Kubernetes] kubectl not found - skipping deployment");
+                return "Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.";
+            }
+        } catch (IOException e) {
+            log.warn("kubectl not found: {}", e.getMessage());
             System.out.println("  [Kubernetes] kubectl not found - skipping deployment");
-            return "Kubernetes deployment skipped (kubectl not available)";
+            return "Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.";
         }
         
         log.info("Would deploy to namespace: {} image: {}", namespace, image);
@@ -58,15 +66,21 @@ public class DeployStage implements Stage {
         
         System.out.println("  [ECS] Checking AWS CLI...");
         
-        ProcessBuilder pb = new ProcessBuilder("aws", "--version");
-        pb.redirectErrorStream(true);
-        Process p = pb.start();
-        int exitCode = p.waitFor();
-        
-        if (exitCode != 0) {
-            log.warn("AWS CLI not found - skipping deployment");
+        try {
+            ProcessBuilder pb = new ProcessBuilder("aws", "--version");
+            pb.redirectErrorStream(true);
+            Process p = pb.start();
+            int exitCode = p.waitFor();
+            
+            if (exitCode != 0) {
+                log.warn("AWS CLI not found - skipping deployment");
+                System.out.println("  [ECS] AWS CLI not found - skipping deployment");
+                return "ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.";
+            }
+        } catch (IOException e) {
+            log.warn("AWS CLI not found: {}", e.getMessage());
             System.out.println("  [ECS] AWS CLI not found - skipping deployment");
-            return "ECS deployment skipped (AWS CLI not available)";
+            return "ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.";
         }
         
         log.info("Would deploy to cluster: {}", cluster);
