@@ -15,6 +15,7 @@
 ### Task 1: Create Maven pom.xml
 
 **Files:**
+
 - Create: `pom.xml`
 
 ```xml
@@ -25,7 +26,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cdengine</groupId>
-    <artifactId>cd-engine</artifactId>
+    <artifactId>ci-engine-core</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -57,7 +58,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-yaml</artifactId>
         </dependency>
-        
+
         <!-- Picocli -->
         <dependency>
             <groupId>info.picocli</groupId>
@@ -135,6 +136,7 @@ Expected: pom.xml exists
 ### Task 2: Create Spring Boot Application Entry Point
 
 **Files:**
+
 - Create: `src/main/java/com/cdengine/CdEngineApplication.java`
 
 ```java
@@ -145,7 +147,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CdEngineApplication {
-    
+
     public static void main(String[] args) {
         SpringApplication.run(CdEngineApplication.class, args);
     }
@@ -171,6 +173,7 @@ Run: `git add pom.xml src/ && git commit -m "chore: add Maven pom.xml and Spring
 ### Task 3: Create Root CLI Command
 
 **Files:**
+
 - Create: `src/main/java/com/cdengine/cli/CdEngineCommand.java`
 
 ```java
@@ -217,9 +220,9 @@ public class CdEngineCommand implements CommandLineRunner, ExitCodeGenerator {
         this.exitCode = exitCode;
     }
 
-    @Command(name = "cd-engine",
+    @Command(name = "ci-engine-core",
              description = "Enterprise CD Pipeline Engine",
-             footer = "Documentation: https://docs.company.com/cd-engine",
+             footer = "Documentation: https://docs.company.com/ci-engine-core",
              subcommands = {
                  PipelineCommand.class,
                  StageCommand.class,
@@ -233,13 +236,13 @@ public class CdEngineCommand implements CommandLineRunner, ExitCodeGenerator {
         @CommandLine.Option(names = {"-v", "--verbose"}, description = "Verbose output")
         private boolean verbose;
 
-        @CommandLine.Option(names = {"-c", "--config"}, 
+        @CommandLine.Option(names = {"-c", "--config"},
                           description = "Config directory path",
                           defaultValue = "config")
         private String configPath;
 
-        @CommandLine.Option(names = {"-h", "--help"}, 
-                          usageHelp = true, 
+        @CommandLine.Option(names = {"-h", "--help"},
+                          usageHelp = true,
                           description = "Show help")
         private boolean help;
 
@@ -267,10 +270,12 @@ Expected: BUILD SUCCESS
 ### Task 4: Create Pipeline Commands
 
 **Files:**
+
 - Create: `src/main/java/com/cdengine/cli/PipelineCommand.java`
 - Create: `src/main/java/com/cdengine/cli/PipelineRunCommand.java`
 
 **PipelineCommand.java:**
+
 ```java
 package com.cdengine.cli;
 
@@ -290,6 +295,7 @@ public class PipelineCommand implements Runnable {
 ```
 
 **PipelineRunCommand.java:**
+
 ```java
 package com.cdengine.cli;
 
@@ -302,25 +308,25 @@ import com.cdengine.config.ConfigurationLoader;
 import com.cdengine.model.PipelineContext;
 import com.cdengine.model.PipelineResult;
 
-@CommandLine.Command(name = "run", 
+@CommandLine.Command(name = "run",
                      description = "Execute a pipeline")
 @Component
 public class PipelineRunCommand implements Runnable {
 
-    @CommandLine.Parameters(index = "0", 
+    @CommandLine.Parameters(index = "0",
                            description = "Pipeline name")
     private String pipelineName;
 
-    @CommandLine.Option(names = {"-e", "--env"}, 
+    @CommandLine.Option(names = {"-e", "--env"},
                        description = "Target environment")
     private String environment;
 
-    @CommandLine.Option(names = {"-v", "--var"}, 
+    @CommandLine.Option(names = {"-v", "--var"},
                        description = "Variables (key=value)",
                        split = ",")
     private String[] variables;
 
-    @CommandLine.Option(names = {"--dry-run"}, 
+    @CommandLine.Option(names = {"--dry-run"},
                        description = "Validate without executing")
     private boolean dryRun;
 
@@ -333,7 +339,7 @@ public class PipelineRunCommand implements Runnable {
     @Override
     public void run() {
         logger.info("[INFO] Loading pipeline: " + pipelineName);
-        
+
         PipelineContext context = PipelineContext.builder()
             .pipelineName(pipelineName)
             .environment(environment != null ? environment : "default")
@@ -377,6 +383,7 @@ Expected: BUILD SUCCESS (will fail initially - missing classes)
 ### Task 5: Create Stage & Deploy Commands
 
 **Files:**
+
 - Create: `src/main/java/com/cdengine/cli/StageCommand.java`
 - Create: `src/main/java/com/cdengine/cli/DeployCommand.java`
 - Create: `src/main/java/com/cdengine/cli/PromoteCommand.java`
@@ -384,6 +391,7 @@ Expected: BUILD SUCCESS (will fail initially - missing classes)
 - Create: `src/main/java/com/cdengine/cli/VersionCommand.java`
 
 **StageCommand.java:**
+
 ```java
 package com.cdengine.cli;
 
@@ -397,6 +405,7 @@ public class StageCommand implements Runnable {
 ```
 
 **DeployCommand.java:**
+
 ```java
 package com.cdengine.cli;
 
@@ -410,6 +419,7 @@ public class DeployCommand implements Runnable {
 ```
 
 **PromoteCommand.java:**
+
 ```java
 package com.cdengine.cli;
 
@@ -423,6 +433,7 @@ public class PromoteCommand implements Runnable {
 ```
 
 **ConfigCommand.java:**
+
 ```java
 package com.cdengine.cli;
 
@@ -436,6 +447,7 @@ public class ConfigCommand implements Runnable {
 ```
 
 **VersionCommand.java:**
+
 ```java
 package com.cdengine.cli;
 
@@ -445,7 +457,7 @@ import picocli.CommandLine;
 public class VersionCommand implements Runnable {
     @Override
     public void run() {
-        logger.info("cd-engine version 1.0.0");
+        logger.info("ci-engine-core version 1.0.0");
     }
 }
 ```
@@ -466,12 +478,14 @@ Run: `git add src/main/java/com/cdengine/cli/ && git commit -m "feat: add CLI co
 ### Task 6: Create Domain Models
 
 **Files:**
+
 - Create: `src/main/java/com/cdengine/model/PipelineContext.java`
 - Create: `src/main/java/com/cdengine/model/PipelineResult.java`
 - Create: `src/main/java/com/cdengine/model/StageResult.java`
 - Create: `src/main/java/com/cdengine/model/EnvironmentConfig.java`
 
 **PipelineContext.java:**
+
 ```java
 package com.cdengine.model;
 
@@ -497,15 +511,15 @@ public class PipelineContext {
     public boolean isDryRun() { return dryRun; }
     public Map<String, String> getVariables() { return variables; }
     public Map<String, StageResult> getStageResults() { return stageResults; }
-    
+
     public void addVariable(String key, String value) {
         variables.put(key, value);
     }
-    
+
     public void addStageResult(String stageName, StageResult result) {
         stageResults.put(stageName, result);
     }
-    
+
     public String getVariable(String key) {
         return variables.get(key);
     }
@@ -548,6 +562,7 @@ public class PipelineContext {
 ```
 
 **PipelineResult.java:**
+
 ```java
 package com.cdengine.model;
 
@@ -577,6 +592,7 @@ public class PipelineResult {
 ```
 
 **StageResult.java:**
+
 ```java
 package com.cdengine.model;
 
@@ -628,6 +644,7 @@ public class StageResult {
 ```
 
 **EnvironmentConfig.java:**
+
 ```java
 package com.cdengine.model;
 
@@ -695,10 +712,12 @@ Run: `git add src/main/java/com/cdengine/model/ && git commit -m "feat: add doma
 ### Task 7: Create Configuration Loader
 
 **Files:**
+
 - Create: `src/main/java/com/cdengine/config/ConfigurationLoader.java`
 - Create: `src/main/java/com/cdengine/config/PipelineDefinition.java`
 
 **ConfigurationLoader.java:**
+
 ```java
 package com.cdengine.config;
 
@@ -785,6 +804,7 @@ public class ConfigurationLoader {
 ```
 
 **PipelineDefinition.java:**
+
 ```java
 package com.cdengine.config;
 
@@ -815,6 +835,7 @@ Expected: BUILD SUCCESS
 ### Task 8: Create Pipeline Orchestrator
 
 **Files:**
+
 - Create: `src/main/java/com/cdengine/orchestrator/PipelineOrchestrator.java`
 
 ```java
@@ -892,12 +913,14 @@ Expected: BUILD SUCCESS
 ### Task 9: Create Stage Executor
 
 **Files:**
+
 - Create: `src/main/java/com/cdengine/stages/StageExecutor.java`
 - Create: `src/main/java/com/cdengine/stages/BuildStage.java`
 - Create: `src/main/java/com/cdengine/stages/TestStage.java`
 - Create: `src/main/java/com/cdengine/stages/ContainerizeStage.java`
 
 **StageExecutor.java:**
+
 ```java
 package com.cdengine.stages;
 
@@ -928,11 +951,11 @@ public class StageExecutor {
         // Register built-in stages
     }
 
-    public StageResult execute(String stageType, 
-                              Map<String, Object> config, 
+    public StageResult execute(String stageType,
+                              Map<String, Object> config,
                               PipelineContext context) {
         long startTime = System.currentTimeMillis();
-        
+
         try {
             Stage stage = getStage(stageType);
             if (stage == null) {
@@ -977,6 +1000,7 @@ public class StageExecutor {
 ```
 
 **Stage.java (interface):**
+
 ```java
 package com.cdengine.stages;
 
@@ -989,6 +1013,7 @@ public interface Stage {
 ```
 
 **BuildStage.java:**
+
 ```java
 package com.cdengine.stages;
 
@@ -1002,9 +1027,9 @@ public class BuildStage implements Stage {
     @Override
     public String execute(Map<String, Object> config, PipelineContext context) {
         String buildTool = (String) config.getOrDefault("build-tool", "maven");
-        
+
         logger.info("  Building with: " + buildTool);
-        
+
         // Execute build command
         try {
             ProcessBuilder pb = new ProcessBuilder();
@@ -1016,7 +1041,7 @@ public class BuildStage implements Stage {
             pb.inheritIO();
             Process process = pb.start();
             int exitCode = process.waitFor();
-            
+
             if (exitCode != 0) {
                 throw new RuntimeException("Build failed with exit code: " + exitCode);
             }
@@ -1029,6 +1054,7 @@ public class BuildStage implements Stage {
 ```
 
 **TestStage.java:**
+
 ```java
 package com.cdengine.stages;
 
@@ -1042,16 +1068,16 @@ public class TestStage implements Stage {
     @Override
     public String execute(Map<String, Object> config, PipelineContext context) {
         String testType = (String) config.getOrDefault("test-type", "unit");
-        
+
         logger.info("  Running tests: " + testType);
-        
+
         try {
             ProcessBuilder pb = new ProcessBuilder();
             pb.command("mvn", "test");
             pb.inheritIO();
             Process process = pb.start();
             int exitCode = process.waitFor();
-            
+
             if (exitCode != 0) {
                 throw new RuntimeException("Tests failed with exit code: " + exitCode);
             }
@@ -1064,6 +1090,7 @@ public class TestStage implements Stage {
 ```
 
 **ContainerizeStage.java:**
+
 ```java
 package com.cdengine.stages;
 
@@ -1078,24 +1105,24 @@ public class ContainerizeStage implements Stage {
     public String execute(Map<String, Object> config, PipelineContext context) {
         String dockerfile = (String) config.getOrDefault("dockerfile", "Dockerfile");
         String registry = (String) config.getOrDefault("registry", "");
-        
+
         String image = "myapp";
         String tag = context.getVariable("GIT_COMMIT");
         if (tag == null) tag = "latest";
-        
+
         logger.info("  Building Docker image: " + image + ":" + tag);
-        
+
         try {
             ProcessBuilder pb = new ProcessBuilder();
             pb.command("docker", "build", "-t", image + ":" + tag, "-f", dockerfile, ".");
             pb.inheritIO();
             Process process = pb.start();
             int exitCode = process.waitFor();
-            
+
             if (exitCode != 0) {
                 throw new RuntimeException("Docker build failed with exit code: " + exitCode);
             }
-            
+
             if (registry != null && !registry.isEmpty()) {
                 pb = new ProcessBuilder();
                 pb.command("docker", "push", registry + "/" + image + ":" + tag);
@@ -1103,7 +1130,7 @@ public class ContainerizeStage implements Stage {
                 process = pb.start();
                 exitCode = process.waitFor();
             }
-            
+
             return "Containerized successfully";
         } catch (Exception e) {
             throw new RuntimeException("Containerization failed: " + e.getMessage());
@@ -1131,10 +1158,12 @@ Run: `git add src/main/java/com/cdengine/orchestrator/ src/main/java/com/cdengin
 ### Task 10: Create Sample Pipeline Config
 
 **Files:**
+
 - Create: `config/pipelines/sample-pipeline.yml`
 - Create: `config/environments.yml`
 
 **sample-pipeline.yml:**
+
 ```yaml
 name: sample-pipeline
 version: "1.0"
@@ -1166,6 +1195,7 @@ stages:
 ```
 
 **environments.yml:**
+
 ```yaml
 environments:
   dev:
@@ -1203,22 +1233,22 @@ Run: `mkdir -p config/pipelines`
 
 **Step 3: Verify JAR builds**
 Run: `mvn package -DskipTests -q`
-Expected: BUILD SUCCESS, target/cd-engine-1.0.0-SNAPSHOT.jar exists
+Expected: BUILD SUCCESS, target/ci-engine-core-1.0.0-SNAPSHOT.jar exists
 
 ---
 
 ### Task 11: Verify CLI Works
 
 **Step 1: Test help command**
-Run: `java -jar target/cd-engine-1.0.0-SNAPSHOT.jar --help`
+Run: `java -jar target/ci-engine-core-1.0.0-SNAPSHOT.jar --help`
 Expected: Shows CLI help with all commands
 
 **Step 2: Test version command**
-Run: `java -jar target/cd-engine-1.0.0-SNAPSHOT.jar version`
+Run: `java -jar target/ci-engine-core-1.0.0-SNAPSHOT.jar version`
 Expected: Shows version
 
 **Step 3: Test pipeline list**
-Run: `java -jar target/cd-engine-1.0.0-SNAPSHOT.jar pipeline list`
+Run: `java -jar target/ci-engine-core-1.0.0-SNAPSHOT.jar pipeline list`
 Expected: Lists available pipelines
 
 **Step 4: Commit**
@@ -1231,6 +1261,7 @@ Run: `git add config/ && git commit -m "feat: add sample pipeline configuration"
 ### Task 12: Create Deploy Stage
 
 **Files:**
+
 - Create: `src/main/java/com/cdengine/stages/DeployStage.java`
 
 ```java
@@ -1248,9 +1279,9 @@ public class DeployStage implements Stage {
         String targetType = (String) config.get("type");
         String namespace = (String) config.getOrDefault("namespace", "default");
         String image = (String) config.getOrDefault("image", "myapp:latest");
-        
+
         logger.info("  Deploying to: " + targetType + " namespace: " + namespace);
-        
+
         try {
             if ("kubernetes".equals(targetType)) {
                 return deployToKubernetes(namespace, image, config);
@@ -1263,18 +1294,18 @@ public class DeployStage implements Stage {
         }
     }
 
-    private String deployToKubernetes(String namespace, String image, Map<String, Object> config) 
+    private String deployToKubernetes(String namespace, String image, Map<String, Object> config)
             throws Exception {
         // Check if kubectl is available
         ProcessBuilder pb = new ProcessBuilder("kubectl", "version", "--client");
         pb.redirectErrorStream(true);
         Process p = pb.start();
         int exitCode = p.waitFor();
-        
+
         if (exitCode != 0) {
             throw new RuntimeException("kubectl not found");
         }
-        
+
         logger.info("  [Kubernetes] Applying deployment to namespace: " + namespace);
         // In real implementation, would apply K8s manifests
         return "Deployed to Kubernetes namespace: " + namespace;
@@ -1315,6 +1346,7 @@ Run: `git add src/main/java/com/cdengine/stages/ && git commit -m "feat: add dep
 **Phase 6:** Deployment Stage (Task 12)
 
 **After Implementation:**
+
 - JAR executable with CLI
 - Built-in stages: build, test, containerize, deploy
 - YAML-based pipeline configuration
@@ -1322,7 +1354,7 @@ Run: `git add src/main/java/com/cdengine/stages/ && git commit -m "feat: add dep
 
 ---
 
-**Plan complete and saved to `docs/plans/cd-engine-architecture.md`**
+**Plan complete and saved to `docs/plans/ci-engine-core-architecture.md`**
 
 **Two execution options:**
 

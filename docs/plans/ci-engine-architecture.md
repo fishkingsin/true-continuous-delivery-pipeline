@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('CD Pipeline') {
             steps {
-                sh 'cd-engine pipeline run microservice-cd --env production'
+                sh 'ci-engine-core pipeline run microservice-cd --env production'
             }
         }
     }
@@ -30,7 +30,7 @@ pipeline {
 ┌─────────────────────────────────────────────────────────────────┐
 │                        Jenkins CI                               │
 │  ┌─────────────────────────────────────────────────────────┐   │
-│  │  Jenkinsfile - Single line call to cd-engine            │   │
+│  │  Jenkinsfile - Single line call to ci-engine-core            │   │
 │  └─────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────┘
                               │
@@ -56,21 +56,21 @@ pipeline {
 
 ## 4. Pipeline Stages (Built-in)
 
-| Stage | Description |
-|-------|-------------|
-| `build` | Compile and package application |
-| `test` | Run unit, integration tests |
+| Stage           | Description                             |
+| --------------- | --------------------------------------- |
+| `build`         | Compile and package application         |
+| `test`          | Run unit, integration tests             |
 | `security-scan` | SAST, DAST, FOSS scanning (placeholder) |
-| `code-quality` | SonarQube integration (placeholder) |
-| `containerize` | Docker build and push |
-| `deploy` | Deploy to Kubernetes or ECS |
+| `code-quality`  | SonarQube integration (placeholder)     |
+| `containerize`  | Docker build and push                   |
+| `deploy`        | Deploy to Kubernetes or ECS             |
 
 ### Extended Stages (Plugin Placeholders)
 
-| Stage | Description |
-|-------|-------------|
-| `performance-test` | K6/Locust load testing |
-| `chaos-engineering` | Litmus chaos experiments |
+| Stage                | Description                     |
+| -------------------- | ------------------------------- |
+| `performance-test`   | K6/Locust load testing          |
+| `chaos-engineering`  | Litmus chaos experiments        |
 | `inter-service-test` | Multi-service integration tests |
 
 ## 5. Environment Promotion Chain
@@ -80,6 +80,7 @@ sandbox → integration → dev → UAT → performance → production
 ```
 
 Each environment supports:
+
 - **Auto-promote:** Automatic promotion after gates pass
 - **Manual approval:** Require explicit approval
 - **Gates:** Quality gates that must pass before promotion
@@ -119,17 +120,18 @@ environments:
 
 ## 7. CLI Commands
 
-| Command | Description |
-|---------|-------------|
-| `pipeline run <name>` | Execute a pipeline |
-| `pipeline list` | List available pipelines |
-| `stage run <name>` | Run a single stage |
-| `deploy <target>` | Deploy to target |
+| Command                   | Description                  |
+| ------------------------- | ---------------------------- |
+| `pipeline run <name>`     | Execute a pipeline           |
+| `pipeline list`           | List available pipelines     |
+| `stage run <name>`        | Run a single stage           |
+| `deploy <target>`         | Deploy to target             |
 | `promote --from X --to Y` | Promote between environments |
 
 ## 8. Extension Points (Future)
 
 Plugin system with interfaces for:
+
 - `StagePlugin` - Custom pipeline stages
 - `DeployerPlugin` - Target-specific deployment
 - `GatingPolicy` - Custom promotion policies
@@ -142,18 +144,18 @@ Plugin system with interfaces for:
 
 ## 10. Integration with External Tools
 
-| Tool | Integration |
-|------|-------------|
-| Jenkins | CLI call from Jenkinsfile |
+| Tool    | Integration                 |
+| ------- | --------------------------- |
+| Jenkins | CLI call from Jenkinsfile   |
 | Ansible | Called for IaC provisioning |
-| Docker | Docker build/push commands |
-| kubectl | Kubernetes deployment |
-| AWS CLI | ECS deployment |
+| Docker  | Docker build/push commands  |
+| kubectl | Kubernetes deployment       |
+| AWS CLI | ECS deployment              |
 
 ## 11. File Structure
 
 ```
-cd-engine/
+ci-engine-core/
 ├── pom.xml
 ├── src/main/java/com/cdengine/
 │   ├── cli/               # Picocli commands
@@ -175,7 +177,7 @@ cd-engine/
 ### 12.1 Command Hierarchy
 
 ```
-cd-engine (root command)
+ci-engine-core (root command)
 ├── pipeline
 │   ├── run <pipeline-name>
 │   ├── list
@@ -199,9 +201,9 @@ cd-engine (root command)
 ### 12.2 Root Command
 
 ```java
-@Command(name = "cd-engine",
+@Command(name = "ci-engine-core",
          description = "Enterprise CD Pipeline Engine",
-         footer = "Documentation: https://docs.company.com/cd-engine",
+         footer = "Documentation: https://docs.company.com/ci-engine-core",
          subcommands = {
              PipelineCommand.class,
              StageCommand.class,
@@ -213,13 +215,13 @@ cd-engine (root command)
          })
 @SpringBootApplication
 public class CdEngineCommand implements Runnable, ExitCodeGenerator {
-    
+
     @Option(names = {"-v", "--verbose"}, description = "Verbose output")
     private boolean verbose;
-    
+
     @Option(names = {"-c", "--config"}, description = "Config directory path")
     private String configPath = "config";
-    
+
     public static void main(String[] args) {
         int exitCode = SpringApplication.exit(
             SpringApplication.run(CdEngineCommand.class, args),
@@ -227,7 +229,7 @@ public class CdEngineCommand implements Runnable, ExitCodeGenerator {
         );
         System.exit(exitCode);
     }
-    
+
     @Override
     public void run() {
         // Show help if no subcommand provided
@@ -253,21 +255,21 @@ public class PipelineCommand implements Runnable {
 @Command(name = "run",
          description = "Execute a pipeline")
 public class PipelineRunCommand implements Runnable {
-    
+
     @Parameters(index = "0", description = "Pipeline name")
     private String pipelineName;
-    
+
     @Option(names = {"-e", "--env"}, description = "Target environment")
     private String environment;
-    
+
     @Option(names = {"-v", "--var"}, description = "Variables (key=value)")
     private Map<String, String> variables = new HashMap<>();
-    
+
     @Option(names = {"--dry-run"}, description = "Validate without executing")
     private boolean dryRun;
-    
+
     @Autowired private PipelineOrchestrator orchestrator;
-    
+
     @Override
     public void run() {
         PipelineContext context = PipelineContext.builder()
@@ -275,9 +277,9 @@ public class PipelineRunCommand implements Runnable {
             .environment(environment)
             .variables(variables)
             .build();
-        
+
         PipelineResult result = orchestrator.execute(context);
-        
+
         if (result.isSuccess()) {
             logger.info("Pipeline completed successfully");
         } else {
@@ -299,15 +301,15 @@ public class StageCommand implements Runnable {
 
 @Command(name = "run", description = "Execute a single stage")
 public class StageRunCommand implements Runnable {
-    
+
     @Parameters(index = "0", description = "Stage name")
     private String stageName;
-    
+
     @Option(names = {"-c", "--config"}, description = "Stage config YAML file")
     private String configFile;
-    
+
     @Autowired private StageExecutor stageExecutor;
-    
+
     @Override
     public void run() {
         StageResult result = stageExecutor.execute(stageName, configFile);
@@ -328,21 +330,21 @@ public class DeployCommand implements Runnable {
 @Command(name = "kubernetes",
          description = "Deploy to Kubernetes")
 public class K8sDeployCommand implements Runnable {
-    
+
     @Option(names = {"-n", "--namespace"}, required = true)
     private String namespace;
-    
+
     @Option(names = {"-i", "--image"}, required = true)
     private String image;
-    
+
     @Option(names = {"--deployment"}, description = "Deployment name")
     private String deployment;
-    
+
     @Option(names = {"-r", "--replicas"}, defaultValue = "1")
     private int replicas;
-    
+
     @Autowired private KubernetesDeployer deployer;
-    
+
     @Override
     public void run() {
         DeploymentResult result = deployer.deploy(DeployRequest.builder()
@@ -350,7 +352,7 @@ public class K8sDeployCommand implements Runnable {
             .image(image)
             .replicas(replicas)
             .build());
-        
+
         logger.info("Deployed to " + namespace);
     }
 }
@@ -362,21 +364,21 @@ public class K8sDeployCommand implements Runnable {
 @Command(name = "promote",
          description = "Promote between environments")
 public class PromoteCommand implements Runnable {
-    
+
     @Option(names = {"--from"}, required = true)
     private String fromEnvironment;
-    
+
     @Option(names = {"--to"}, required = true)
     private String toEnvironment;
-    
+
     @Option(names = {"--policy"}, description = "Promotion policy name")
     private String policyName;
-    
+
     @Option(names = {"--approve"}, description = "Approve manual promotion")
     private boolean approved;
-    
+
     @Autowired private EnvironmentManager envManager;
-    
+
     @Override
     public void run() {
         PromotionResult result = envManager.promote(
@@ -386,10 +388,10 @@ public class PromoteCommand implements Runnable {
                 .policy(policyName)
                 .approved(approved)
                 .build());
-        
+
         if (result.requiresApproval()) {
             logger.info("Manual approval required for " + toEnvironment);
-            logger.info("Run: cd-engine promote --from " + fromEnvironment + 
+            logger.info("Run: ci-engine-core promote --from " + fromEnvironment +
                              " --to " + toEnvironment + " --approve");
         }
     }
@@ -400,10 +402,10 @@ public class PromoteCommand implements Runnable {
 
 ```bash
 # Run pipeline
-$ cd-engine pipeline run microservice-cd --env production
+$ ci-engine-core pipeline run microservice-cd --env production
 [INFO] Loading pipeline: microservice-cd
 [INFO] Environment: production
-[INFO] 
+[INFO]
 [INFO] ╔═══════════════════════════════════════════════════════╗
 [INFO] ║  CD Pipeline: microservice-cd                       ║
 [INFO] ╠═══════════════════════════════════════════════════════╣
@@ -418,14 +420,14 @@ $ cd-engine pipeline run microservice-cd --env production
 [INFO] ╚═══════════════════════════════════════════════════════╝
 
 # List pipelines
-$ cd-engine pipeline list
+$ ci-engine-core pipeline list
 Available pipelines:
   microservice-cd        - Standard microservice pipeline
   java-app-cd           - Java application pipeline
   frontend-cd           - Frontend SPA pipeline
 
 # Validate config
-$ cd-engine config validate --file pipelines/my-pipeline.yml
+$ ci-engine-core config validate --file pipelines/my-pipeline.yml
 [INFO] Validating: pipelines/my-pipeline.yml
 [INFO] ✓ Pipeline syntax valid
 [INFO] ✓ All referenced stages exist
@@ -435,12 +437,12 @@ $ cd-engine config validate --file pipelines/my-pipeline.yml
 
 ### 12.8 Exit Codes
 
-| Code | Meaning |
-|------|---------|
-| 0 | Success |
-| 1 | General error |
-| 2 | Configuration validation error |
-| 3 | Stage execution failed |
-| 4 | Gate evaluation failed |
-| 5 | Deployment failed |
-| 6 | Promotion rejected (gates/approval) |
+| Code | Meaning                             |
+| ---- | ----------------------------------- |
+| 0    | Success                             |
+| 1    | General error                       |
+| 2    | Configuration validation error      |
+| 3    | Stage execution failed              |
+| 4    | Gate evaluation failed              |
+| 5    | Deployment failed                   |
+| 6    | Promotion rejected (gates/approval) |
