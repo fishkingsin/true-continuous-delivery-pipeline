@@ -23,6 +23,9 @@ public class StageExecutor {
     @Autowired
     private ContainerizeStage containerizeStage;
 
+    @Autowired
+    private DeployStage deployStage;
+
     public StageExecutor() {
     }
 
@@ -68,6 +71,7 @@ public class StageExecutor {
             case "build" -> buildStage;
             case "test" -> testStage;
             case "containerize" -> containerizeStage;
+            case "deploy" -> deployStage;
             default -> null;
         };
     }
