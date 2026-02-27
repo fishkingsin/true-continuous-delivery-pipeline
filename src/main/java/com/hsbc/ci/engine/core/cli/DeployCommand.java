@@ -54,7 +54,7 @@ public class DeployCommand implements Runnable {
                 .build());
 
             System.out.println(result);
-            log.info("Deployment completed successfully");
+            log.info("Deployment completed successfully result: {}", result);
 
         } catch (Exception e) {
             log.error("Deployment failed: {}", e.getMessage());

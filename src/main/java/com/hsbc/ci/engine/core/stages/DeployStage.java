@@ -18,8 +18,8 @@ public class DeployStage implements Stage {
         String targetType = (String) config.get("type");
         String namespace = (String) config.getOrDefault("namespace", "default");
         String image = (String) config.getOrDefault("image", "myapp:latest");
-        
-        System.out.println("  Deploying to: " + targetType + " namespace: " + namespace);
+
+        log.info("  Deploying to: {} namespace: {}", targetType, namespace);
         
         try {
             if ("kubernetes".equals(targetType)) {
