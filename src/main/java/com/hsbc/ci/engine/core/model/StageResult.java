@@ -2,21 +2,13 @@ package com.hsbc.ci.engine.core.model;
 
 import java.util.Map;
 
-public class StageResult {
-    private final String stageName;
-    private final boolean success;
-    private final String output;
-    private final long durationMs;
-    private final Map<String, String> metadata;
-
-    private StageResult(Builder builder) {
-        this.stageName = builder.stageName;
-        this.success = builder.success;
-        this.output = builder.output;
-        this.durationMs = builder.durationMs;
-        this.metadata = builder.metadata;
-    }
-
+public record StageResult(
+    String stageName,
+    boolean success,
+    String output,
+    long durationMs,
+    Map<String, String> metadata
+) {
     public String getStageName() { return stageName; }
     public boolean isSuccess() { return success; }
     public String getOutput() { return output; }
@@ -41,7 +33,13 @@ public class StageResult {
         public Builder metadata(Map<String, String> metadata) { this.metadata = metadata; return this; }
 
         public StageResult build() {
-            return new StageResult(this);
+            return new StageResult(
+                stageName,
+                success,
+                output,
+                durationMs,
+                metadata
+            );
         }
     }
 }
