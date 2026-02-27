@@ -21,11 +21,11 @@ class CiEngineCliE2eTest {
     }
     
     private static String findJarPath() throws Exception {
-        Path targetDir = Path.of("target");
+        Path targetDir = Path.of("target").toAbsolutePath();
         try (var files = java.nio.file.Files.list(targetDir)) {
             return files.filter(p -> p.toString().endsWith(".jar"))
                        .findFirst()
-                       .map(Path::toString)
+                       .map(p -> p.toAbsolutePath().toString())
                        .orElseThrow(() -> new RuntimeException("JAR not found in target/"));
         }
     }
@@ -87,16 +87,34 @@ class CiEngineCliE2eTest {
 
     @Test
     void checkoutClone_clonesRepository(@TempDir Path tempDir) throws Exception {
-        Path cloneDir = tempDir.resolve("MyLedger");
+        Path cloneDir = tempDir.resolve("Spring-Boot-CRUD-Example");
         
         ProcessResult result = runCli("checkout", "clone", 
-            "--url", "https://github.com/fishkingsin/MyLedger",
+            "--url", "https://github.com/fishkingsin/Spring-Boot-CRUD-Example",
             "--target", cloneDir.toString());
         
         assertEquals(0, result.exitCode, "Clone should succeed: " + result.stdout);
         assertTrue(result.stdout.contains("[SUCCESS]"), "Should show success message");
         assertTrue(java.nio.file.Files.exists(cloneDir), "Cloned directory should exist: " + cloneDir);
         assertTrue(java.nio.file.Files.exists(cloneDir.resolve(".git")), "Should contain .git directory");
+        assertTrue(java.nio.file.Files.exists(cloneDir.resolve("pom.xml")), "Should contain pom.xml for Maven");
+    }
+
+    @Test
+    void buildMaven_buildsProject(@TempDir Path tempDir) throws Exception {
+        Path cloneDir = tempDir.resolve("Spring-Boot-CRUD-Example");
+        
+        ProcessResult cloneResult = runCli("checkout", "clone", 
+            "--url", "https://github.com/fishkingsin/Spring-Boot-CRUD-Example",
+            "--target", cloneDir.toString());
+        
+        assertEquals(0, cloneResult.exitCode, "Clone should succeed");
+        
+        ProcessResult buildResult = runCliWithWorkingDir(cloneDir, "build", "maven");
+        
+        assertEquals(0, buildResult.exitCode, "Build should succeed: " + buildResult.stdout);
+        assertTrue(buildResult.stdout.contains("BUILD SUCCESS") || buildResult.stdout.contains("target"),
+            "Build should complete successfully");
     }
 
     private void copyConfigToTemp(Path tempDir) throws Exception {
@@ -118,6 +136,25 @@ class CiEngineCliE2eTest {
 
     private ProcessResult runCli(String... args) throws Exception {
         return runCliWithConfig(null, args);
+    }
+
+    private ProcessResult runCliWithWorkingDir(Path workingDir, String... args) throws Exception {
+        List<String> command = new ArrayList<>();
+        command.add("java");
+        command.add("-jar");
+        command.add(jarPath);
+        command.addAll(List.of(args));
+
+        ProcessBuilder pb = new ProcessBuilder(command);
+        pb.directory(workingDir.toFile());
+        pb.redirectErrorStream(true);
+        
+        Process process = pb.start();
+        
+        String output = new String(process.getInputStream().readAllBytes());
+        int exitCode = process.waitFor();
+        
+        return new ProcessResult(exitCode, output, "");
     }
 
     private ProcessResult runCliWithConfig(Path configDir, String... args) throws Exception {
