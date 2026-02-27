@@ -1,33 +1,32 @@
 package com.hsbc.ci.engine.core.cli.plugin;
 
 import com.hsbc.ci.engine.core.plugin.PluginManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import picocli.CommandLine;
 
 @CommandLine.Command(name = "plugin", 
-                     description = "Plugin management",
-                     subcommands = {PluginListCommand.class})
+                     description = "Plugin management")
 @Component
 public class PluginCommand implements CommandLineRunner {
 
+    @Autowired
+    private PluginManager pluginManager;
+
+    public PluginCommand() {
+    }
+
     @Override
     public void run(String... args) throws Exception {
-    }
-}
-
-@Component
-@CommandLine.Command(name = "list", description = "List available plugins")
-class PluginListCommand implements Runnable {
-
-    private final PluginManager pluginManager;
-
-    public PluginListCommand(PluginManager pluginManager) {
-        this.pluginManager = pluginManager;
+        if (args.length > 0 && "list".equals(args[0])) {
+            listPlugins();
+        }
     }
 
-    @Override
-    public void run() {
+    @CommandLine.Command(name = "list", description = "List available plugins")
+    public void listPlugins() {
         var plugins = pluginManager.listAllPlugins();
         
         System.out.println("Available Plugins:");

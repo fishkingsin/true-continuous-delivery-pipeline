@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 import picocli.CommandLine;
@@ -17,7 +18,12 @@ import picocli.CommandLine.Command;
 @ComponentScan(basePackages = {"com.hsbc.ci.engine.core"})
 public class CiEngineCommand implements CommandLineRunner, ExitCodeGenerator {
 
+    private final ApplicationContext context;
     private int exitCode = 0;
+
+    public CiEngineCommand(ApplicationContext context) {
+        this.context = context;
+    }
 
     public static void main(String[] args) {
         System.exit(SpringApplication.exit(
@@ -27,7 +33,19 @@ public class CiEngineCommand implements CommandLineRunner, ExitCodeGenerator {
 
     @Override
     public void run(String... args) throws Exception {
-        exitCode = new CommandLine(new RootCommand()).execute(args);
+        RootCommand root = new RootCommand();
+        CommandLine commandLine = new CommandLine(root)
+            .addSubcommand("pipeline", new PipelineCommand())
+            .addSubcommand("stage", new StageCommand())
+            .addSubcommand("deploy", new DeployCommand())
+            .addSubcommand("promote", new PromoteCommand())
+            .addSubcommand("config", new ConfigCommand())
+            .addSubcommand("version", new VersionCommand())
+            .addSubcommand("checkout", new CheckoutCommand())
+            .addSubcommand("build", new BuildCommand())
+            .addSubcommand("plugin", context.getBean(PluginCommand.class));
+        
+        exitCode = commandLine.execute(args);
     }
 
     @Override
@@ -37,18 +55,7 @@ public class CiEngineCommand implements CommandLineRunner, ExitCodeGenerator {
 
     @Command(name = "ci-engine",
              description = "Enterprise CD Pipeline Engine",
-             footer = "Documentation: https://docs.company.com/ci-engine",
-             subcommands = {
-                 PipelineCommand.class,
-                 StageCommand.class,
-                 DeployCommand.class,
-                 PromoteCommand.class,
-                 ConfigCommand.class,
-                 VersionCommand.class,
-                 CheckoutCommand.class,
-                 BuildCommand.class,
-                 PluginCommand.class
-             })
+             footer = "Documentation: https://docs.company.com/ci-engine")
     public static class RootCommand implements Runnable {
 
         @CommandLine.Option(names = {"-v", "--verbose"}, description = "Verbose output")
