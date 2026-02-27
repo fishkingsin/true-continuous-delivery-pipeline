@@ -1,5 +1,7 @@
 package com.hsbc.ci.engine.core.stages;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import com.hsbc.ci.engine.core.model.PipelineContext;
 import java.util.Map;
@@ -7,10 +9,13 @@ import java.util.Map;
 @Component
 public class BuildStage implements Stage {
 
+    private static final Logger log = LoggerFactory.getLogger(BuildStage.class);
+
     @Override
     public String execute(Map<String, Object> config, PipelineContext context) {
         String buildTool = (String) config.getOrDefault("build-tool", "maven");
         
+        log.info("Building with: {}", buildTool);
         System.out.println("  Building with: " + buildTool);
         
         try {
@@ -27,8 +32,10 @@ public class BuildStage implements Stage {
             if (exitCode != 0) {
                 throw new RuntimeException("Build failed with exit code: " + exitCode);
             }
+            log.info("Build completed successfully");
             return "Build completed successfully";
         } catch (Exception e) {
+            log.error("Build failed: {}", e.getMessage());
             throw new RuntimeException("Build failed: " + e.getMessage());
         }
     }

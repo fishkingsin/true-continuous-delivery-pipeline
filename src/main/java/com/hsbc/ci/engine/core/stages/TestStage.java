@@ -1,5 +1,7 @@
 package com.hsbc.ci.engine.core.stages;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import com.hsbc.ci.engine.core.model.PipelineContext;
 import java.util.Map;
@@ -7,10 +9,13 @@ import java.util.Map;
 @Component
 public class TestStage implements Stage {
 
+    private static final Logger log = LoggerFactory.getLogger(TestStage.class);
+
     @Override
     public String execute(Map<String, Object> config, PipelineContext context) {
         String testType = (String) config.getOrDefault("test-type", "unit");
         
+        log.info("Running tests: {}", testType);
         System.out.println("  Running tests: " + testType);
         
         try {
@@ -23,8 +28,10 @@ public class TestStage implements Stage {
             if (exitCode != 0) {
                 throw new RuntimeException("Tests failed with exit code: " + exitCode);
             }
+            log.info("Tests passed successfully");
             return "Tests passed successfully";
         } catch (Exception e) {
+            log.error("Tests failed: {}", e.getMessage());
             throw new RuntimeException("Tests failed: " + e.getMessage());
         }
     }

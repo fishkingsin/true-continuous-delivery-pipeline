@@ -332,7 +332,7 @@ public class PipelineRunCommand implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("[INFO] Loading pipeline: " + pipelineName);
+        logger.info("[INFO] Loading pipeline: " + pipelineName);
         
         PipelineContext context = PipelineContext.builder()
             .pipelineName(pipelineName)
@@ -352,7 +352,7 @@ public class PipelineRunCommand implements Runnable {
         PipelineResult result = orchestrator.execute(context);
 
         if (result.isSuccess()) {
-            System.out.println("[SUCCESS] Pipeline completed successfully");
+            logger.info("[SUCCESS] Pipeline completed successfully");
         } else {
             System.err.println("[ERROR] Pipeline failed: " + result.getError());
             System.exit(1);
@@ -445,7 +445,7 @@ import picocli.CommandLine;
 public class VersionCommand implements Runnable {
     @Override
     public void run() {
-        System.out.println("cd-engine version 1.0.0");
+        logger.info("cd-engine version 1.0.0");
     }
 }
 ```
@@ -734,7 +734,7 @@ public class ConfigurationLoader {
     private void loadPipelines() {
         Path pipelineDir = Paths.get(configPath, "pipelines");
         if (!Files.exists(pipelineDir)) {
-            System.out.println("[WARN] Pipeline directory not found: " + pipelineDir);
+            logger.info("[WARN] Pipeline directory not found: " + pipelineDir);
             return;
         }
 
@@ -752,7 +752,7 @@ public class ConfigurationLoader {
     private void loadEnvironments() {
         Path envFile = Paths.get(configPath, "environments.yml");
         if (!Files.exists(envFile)) {
-            System.out.println("[WARN] Environments file not found: " + envFile);
+            logger.info("[WARN] Environments file not found: " + envFile);
             return;
         }
 
@@ -849,11 +849,11 @@ public class PipelineOrchestrator {
         }
 
         if (context.isDryRun()) {
-            System.out.println("[DRY-RUN] Would execute pipeline: " + pipelineName);
+            logger.info("[DRY-RUN] Would execute pipeline: " + pipelineName);
             return PipelineResult.success(context);
         }
 
-        System.out.println("[INFO] Executing pipeline: " + pipelineName);
+        logger.info("[INFO] Executing pipeline: " + pipelineName);
 
         @SuppressWarnings("unchecked")
         List<Map<String, Object>> stages = (List<Map<String, Object>>) pipelineConfig.get("stages");
@@ -866,7 +866,7 @@ public class PipelineOrchestrator {
             String stageName = (String) stageConfig.get("name");
             String stageType = (String) stageConfig.get("type");
 
-            System.out.println("[INFO] Executing stage: " + stageName);
+            logger.info("[INFO] Executing stage: " + stageName);
 
             StageResult result = stageExecutor.execute(stageType, stageConfig, context);
             context.addStageResult(stageName, result);
@@ -1003,7 +1003,7 @@ public class BuildStage implements Stage {
     public String execute(Map<String, Object> config, PipelineContext context) {
         String buildTool = (String) config.getOrDefault("build-tool", "maven");
         
-        System.out.println("  Building with: " + buildTool);
+        logger.info("  Building with: " + buildTool);
         
         // Execute build command
         try {
@@ -1043,7 +1043,7 @@ public class TestStage implements Stage {
     public String execute(Map<String, Object> config, PipelineContext context) {
         String testType = (String) config.getOrDefault("test-type", "unit");
         
-        System.out.println("  Running tests: " + testType);
+        logger.info("  Running tests: " + testType);
         
         try {
             ProcessBuilder pb = new ProcessBuilder();
@@ -1083,7 +1083,7 @@ public class ContainerizeStage implements Stage {
         String tag = context.getVariable("GIT_COMMIT");
         if (tag == null) tag = "latest";
         
-        System.out.println("  Building Docker image: " + image + ":" + tag);
+        logger.info("  Building Docker image: " + image + ":" + tag);
         
         try {
             ProcessBuilder pb = new ProcessBuilder();
@@ -1249,7 +1249,7 @@ public class DeployStage implements Stage {
         String namespace = (String) config.getOrDefault("namespace", "default");
         String image = (String) config.getOrDefault("image", "myapp:latest");
         
-        System.out.println("  Deploying to: " + targetType + " namespace: " + namespace);
+        logger.info("  Deploying to: " + targetType + " namespace: " + namespace);
         
         try {
             if ("kubernetes".equals(targetType)) {
@@ -1275,14 +1275,14 @@ public class DeployStage implements Stage {
             throw new RuntimeException("kubectl not found");
         }
         
-        System.out.println("  [Kubernetes] Applying deployment to namespace: " + namespace);
+        logger.info("  [Kubernetes] Applying deployment to namespace: " + namespace);
         // In real implementation, would apply K8s manifests
         return "Deployed to Kubernetes namespace: " + namespace;
     }
 
     private String deployToECS(Map<String, Object> config) throws Exception {
         String cluster = (String) config.getOrDefault("cluster", "default");
-        System.out.println("  [ECS] Deploying to cluster: " + cluster);
+        logger.info("  [ECS] Deploying to cluster: " + cluster);
         // In real implementation, would use AWS CLI or SDK
         return "Deployed to ECS cluster: " + cluster;
     }

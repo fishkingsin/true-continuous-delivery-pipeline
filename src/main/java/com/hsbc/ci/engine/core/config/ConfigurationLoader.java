@@ -1,5 +1,7 @@
 package com.hsbc.ci.engine.core.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.Yaml;
 
@@ -10,6 +12,8 @@ import java.util.*;
 
 @Component
 public class ConfigurationLoader {
+
+    private static final Logger log = LoggerFactory.getLogger(ConfigurationLoader.class);
 
     private String configPath = "config";
     private Map<String, Object> pipelineConfigs = new HashMap<>();
@@ -27,7 +31,7 @@ public class ConfigurationLoader {
     private void loadPipelines() {
         Path pipelineDir = Paths.get(configPath, "pipelines");
         if (!Files.exists(pipelineDir)) {
-            System.out.println("[WARN] Pipeline directory not found: " + pipelineDir);
+            log.warn("Pipeline directory not found: {}", pipelineDir);
             return;
         }
 
@@ -37,9 +41,9 @@ public class ConfigurationLoader {
                 Yaml yaml = new Yaml();
                 pipelineConfigs.put(name, yaml.load(Files.readString(file)));
             }
-            System.out.println("[INFO] Loaded " + pipelineConfigs.size() + " pipelines");
+            log.info("Loaded {} pipelines", pipelineConfigs.size());
         } catch (IOException e) {
-            System.err.println("[ERROR] Failed to load pipelines: " + e.getMessage());
+            log.error("Failed to load pipelines: {}", e.getMessage());
         }
     }
 

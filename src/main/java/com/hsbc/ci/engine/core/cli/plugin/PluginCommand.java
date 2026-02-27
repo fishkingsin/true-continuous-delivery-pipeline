@@ -1,7 +1,8 @@
 package com.hsbc.ci.engine.core.cli.plugin;
 
 import com.hsbc.ci.engine.core.plugin.PluginManager;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,8 @@ import picocli.CommandLine;
 @Component
 public class PluginCommand implements CommandLineRunner {
 
+    private static final Logger log = LoggerFactory.getLogger(PluginCommand.class);
+    
     @Autowired
     private PluginManager pluginManager;
 
@@ -64,5 +67,10 @@ public class PluginCommand implements CommandLineRunner {
             && (notifiers == null || notifiers.isEmpty())) {
             System.out.println("(No plugins loaded. Edit config/plugins.yml to enable plugins)");
         }
+        
+        log.debug("Listed plugins: stages={}, gates={}, notifiers={}", 
+            stages != null ? stages.size() : 0,
+            gates != null ? gates.size() : 0,
+            notifiers != null ? notifiers.size() : 0);
     }
 }

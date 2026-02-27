@@ -1,5 +1,7 @@
 package com.hsbc.ci.engine.core.cli.build;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +13,8 @@ import java.util.Map;
 @CommandLine.Command(name = "maven", description = "Build with Maven")
 @Component
 public class MavenBuildCommand implements Runnable {
+
+    private static final Logger log = LoggerFactory.getLogger(MavenBuildCommand.class);
 
     @CommandLine.Option(names = {"-p", "--pom"}, description = "Path to pom.xml")
     private String pomPath = "pom.xml";
@@ -55,12 +59,14 @@ public class MavenBuildCommand implements Runnable {
                 buildMaven();
             }
         } catch (Exception e) {
+            log.error("Build failed: {}", e.getMessage());
             System.err.println("[ERROR] Build failed: " + e.getMessage());
             System.exit(1);
         }
     }
 
     private void buildFromConfig(String configFile) throws Exception {
+        log.info("Loading build config from: {}", configFile);
         System.out.println("[INFO] Loading build config from: " + configFile);
         
         org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml();
@@ -81,6 +87,7 @@ public class MavenBuildCommand implements Runnable {
         List<Map<String, Object>> projects = (List<Map<String, Object>>) build.get("projects");
         
         if (projects == null || projects.isEmpty()) {
+            log.info("No projects defined, running default build");
             System.out.println("[INFO] No projects defined, running default build");
             buildMaven();
             return;
@@ -94,10 +101,12 @@ public class MavenBuildCommand implements Runnable {
             String tool = (String) project.getOrDefault("tool", "maven");
             
             if (!"maven".equals(tool)) {
+                log.info("Skipping {} (not maven)", projectName);
                 System.out.println("[SKIP] Skipping " + projectName + " (not maven)");
                 continue;
             }
 
+            log.info("Building project: {}", projectName);
             System.out.println("[INFO] Building project: " + projectName);
             
             String projPom = (String) project.getOrDefault("pom", "pom.xml");
@@ -156,6 +165,7 @@ public class MavenBuildCommand implements Runnable {
         cmd.add("-f");
         cmd.add(pom);
 
+        log.debug("Running: {}", String.join(" ", cmd));
         System.out.println("[INFO] Running: " + String.join(" ", cmd));
 
         ProcessBuilder pb = new ProcessBuilder(cmd);
@@ -173,6 +183,7 @@ public class MavenBuildCommand implements Runnable {
             throw new RuntimeException("Maven build failed with exit code: " + exitCode);
         }
 
+        log.info("Build completed successfully");
         System.out.println("[SUCCESS] Build completed successfully");
     }
 }

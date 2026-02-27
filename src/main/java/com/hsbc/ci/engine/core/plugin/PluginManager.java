@@ -1,6 +1,8 @@
 package com.hsbc.ci.engine.core.plugin;
 
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.Yaml;
 
@@ -11,6 +13,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class PluginManager {
+
+    private static final Logger log = LoggerFactory.getLogger(PluginManager.class);
 
     private String pluginPath = "plugins";
     private final Map<String, StagePlugin> stagePlugins = new ConcurrentHashMap<>();
@@ -30,26 +34,25 @@ public class PluginManager {
     private void loadPlugins() {
         Path pluginDir = Paths.get(pluginPath);
         if (!Files.exists(pluginDir)) {
-            System.out.println("[INFO] Plugin directory not found: " + pluginDir);
+            log.info("Plugin directory not found: {}", pluginDir);
             return;
         }
 
         try {
             loadPluginConfig();
         } catch (Exception e) {
-            System.err.println("[WARN] Failed to load plugin config: " + e.getMessage());
+            log.warn("Failed to load plugin config: {}", e.getMessage());
         }
 
-        System.out.println("[INFO] Loaded " + stagePlugins.size() + " stage plugins");
-        System.out.println("[INFO] Loaded " + gatePlugins.size() + " gate plugins");
-        System.out.println("[INFO] Loaded " + notifierPlugins.size() + " notifier plugins");
+        log.info("Loaded {} stage plugins, {} gate plugins, {} notifier plugins",
+            stagePlugins.size(), gatePlugins.size(), notifierPlugins.size());
     }
 
     @SuppressWarnings("unchecked")
     private void loadPluginConfig() throws Exception {
         Path configFile = Paths.get("config/plugins.yml");
         if (!Files.exists(configFile)) {
-            System.out.println("[INFO] No plugins.yml found, using built-in plugins only");
+            log.info("No plugins.yml found, using built-in plugins only");
             loadBuiltInPlugins();
             return;
         }
@@ -68,31 +71,31 @@ public class PluginManager {
             Boolean enabled = (Boolean) pluginConfig.getOrDefault("enabled", true);
             
             if (!Boolean.TRUE.equals(enabled)) {
-                System.out.println("[INFO] Plugin disabled: " + entry.getKey());
+                log.info("Plugin disabled: {}", entry.getKey());
                 continue;
             }
 
-            System.out.println("[INFO] Registering plugin: " + entry.getKey());
+            log.info("Registering plugin: {}", entry.getKey());
         }
     }
 
     private void loadBuiltInPlugins() {
-        System.out.println("[INFO] Using built-in plugins only");
+        log.info("Using built-in plugins only");
     }
 
     public void registerStage(StagePlugin plugin) {
         stagePlugins.put(plugin.getName(), plugin);
-        System.out.println("[INFO] Registered stage plugin: " + plugin.getName());
+        log.info("Registered stage plugin: {}", plugin.getName());
     }
 
     public void registerGate(GatePlugin plugin) {
         gatePlugins.put(plugin.getName(), plugin);
-        System.out.println("[INFO] Registered gate plugin: " + plugin.getName());
+        log.info("Registered gate plugin: {}", plugin.getName());
     }
 
     public void registerNotifier(NotifierPlugin plugin) {
         notifierPlugins.put(plugin.getName(), plugin);
-        System.out.println("[INFO] Registered notifier plugin: " + plugin.getName());
+        log.info("Registered notifier plugin: {}", plugin.getName());
     }
 
     public StagePlugin getStagePlugin(String name) {

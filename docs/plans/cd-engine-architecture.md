@@ -279,7 +279,7 @@ public class PipelineRunCommand implements Runnable {
         PipelineResult result = orchestrator.execute(context);
         
         if (result.isSuccess()) {
-            System.out.println("Pipeline completed successfully");
+            logger.info("Pipeline completed successfully");
         } else {
             System.err.println("Pipeline failed: " + result.getError());
             System.exit(1);
@@ -351,7 +351,7 @@ public class K8sDeployCommand implements Runnable {
             .replicas(replicas)
             .build());
         
-        System.out.println("Deployed to " + namespace);
+        logger.info("Deployed to " + namespace);
     }
 }
 ```
@@ -388,8 +388,8 @@ public class PromoteCommand implements Runnable {
                 .build());
         
         if (result.requiresApproval()) {
-            System.out.println("Manual approval required for " + toEnvironment);
-            System.out.println("Run: cd-engine promote --from " + fromEnvironment + 
+            logger.info("Manual approval required for " + toEnvironment);
+            logger.info("Run: cd-engine promote --from " + fromEnvironment + 
                              " --to " + toEnvironment + " --approve");
         }
     }

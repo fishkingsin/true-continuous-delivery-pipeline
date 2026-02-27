@@ -1,5 +1,7 @@
 package com.hsbc.ci.engine.core.cli.checkout;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import picocli.CommandLine;
 
@@ -9,6 +11,8 @@ import java.util.Map;
 @CommandLine.Command(name = "clone", description = "Clone a git repository")
 @Component
 public class CloneCommand implements Runnable {
+
+    private static final Logger log = LoggerFactory.getLogger(CloneCommand.class);
 
     @CommandLine.Option(names = {"-u", "--url"}, description = "Repository URL")
     private String url;
@@ -40,12 +44,14 @@ public class CloneCommand implements Runnable {
                 System.exit(1);
             }
         } catch (Exception e) {
+            log.error("Clone failed: {}", e.getMessage());
             System.err.println("[ERROR] Clone failed: " + e.getMessage());
             System.exit(1);
         }
     }
 
     private void cloneFromConfig(String configFile) throws Exception {
+        log.info("Loading checkout config from: {}", configFile);
         System.out.println("[INFO] Loading checkout config from: " + configFile);
         
         org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml();
@@ -78,6 +84,7 @@ public class CloneCommand implements Runnable {
             Integer repoDepth = (Integer) repo.getOrDefault("depth", defaults != null ? (Integer) defaults.get("depth") : null);
             String repoToken = (String) repo.get("token");
 
+            log.info("Cloning {} to {}", repoUrl, repoTarget);
             System.out.println("[INFO] Cloning " + repoUrl + " to " + repoTarget);
             cloneRepository(repoUrl, repoTarget, repoBranch, repoDepth, repoToken);
         }
@@ -111,6 +118,7 @@ public class CloneCommand implements Runnable {
         cmd.add(effectiveUrl);
         cmd.add(targetDir);
 
+        log.debug("Running: {}", String.join(" ", cmd));
         System.out.println("[INFO] Running: " + String.join(" ", cmd));
 
         ProcessBuilder pb = new ProcessBuilder(cmd);
@@ -122,6 +130,7 @@ public class CloneCommand implements Runnable {
             throw new RuntimeException("Git clone failed with exit code: " + exitCode);
         }
 
+        log.info("Cloned to: {}", new File(targetDir).getAbsolutePath());
         System.out.println("[SUCCESS] Cloned to: " + new File(targetDir).getAbsolutePath());
     }
 
