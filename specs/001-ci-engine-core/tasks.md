@@ -20,9 +20,9 @@ description: "Task list for CI Engine Core CLI implementation"
 
 **Purpose**: Project is already scaffolded - verify build and dependencies
 
-- [ ] T001 Verify Maven build compiles successfully with mvn compile
-- [ ] T002 [P] Verify all existing unit tests pass with mvn test
-- [ ] T003 Verify JAR packaging works with mvn package -DskipTests
+- [X] T001 Verify Maven build compiles successfully with mvn compile
+- [X] T002 [P] Verify all existing unit tests pass with mvn test
+- [X] T003 Verify JAR packaging works with mvn package -DskipTests
 
 ---
 
@@ -30,13 +30,13 @@ description: "Task list for CI Engine Core CLI implementation"
 
 **Purpose**: Core infrastructure that enables all user stories
 
-- [ ] T004 Implement PipelineDefinition model in src/main/java/com/hsbc/ci/engine/core/model/PipelineDefinition.java
-- [ ] T005 [P] Implement StageDefinition model in src/main/java/com/hsbc/ci/engine/core/model/StageDefinition.java
-- [ ] T006 [P] Implement Environment model in src/main/java/com/hsbc/ci/engine/core/model/Environment.java
-- [ ] T007 Implement PipelineValidator with YAML schema validation in src/main/java/com/hsbc/ci/engine/core/config/PipelineValidator.java
-- [ ] T008 Add YAML pipeline loading to ConfigurationLoader in src/main/java/com/hsbc/ci/engine/core/config/ConfigurationLoader.java
-- [ ] T009 [P] Create environment configuration directory structure config/environments/
-- [ ] T010 Implement Gate model in src/main/java/com/hsbc/ci/engine/core/model/Gate.java
+- [X] T004 Implement PipelineDefinition model in src/main/java/com/hsbc/ci/engine/core/model/PipelineDefinition.java
+- [X] T005 [P] Implement StageDefinition model in src/main/java/com/hsbc/ci/engine/core/model/StageDefinition.java
+- [X] T006 [P] Implement Environment model in src/main/java/com/hsbc/ci/engine/core/model/Environment.java
+- [X] T007 Implement PipelineValidator with YAML schema validation in src/main/java/com/hsbc/ci/engine/core/config/PipelineValidator.java
+- [X] T008 Add YAML pipeline loading to ConfigurationLoader in src/main/java/com/hsbc/ci/engine/core/config/ConfigurationLoader.java
+- [X] T009 [P] Create environment configuration directory structure config/environments/
+- [X] T010 Implement Gate model in src/main/java/com/hsbc/ci/engine/core/model/Gate.java
 
 ---
 
@@ -48,13 +48,13 @@ description: "Task list for CI Engine Core CLI implementation"
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Implement parallel stage execution in PipelineOrchestrator.execute() in src/main/java/com/hsbc/ci/engine/core/orchestrator/PipelineOrchestrator.java
-- [ ] T012 [US1] Add stage dependency resolution (dependsOn) in PipelineOrchestrator for DAG-based execution
-- [ ] T013 [US1] Implement fail-fast behavior (FR-009) when stage fails in PipelineOrchestrator
-- [ ] T014 [US1] Add stage retry logic (FR-010) with configurable retry count in StageExecutor.java
-- [ ] T015 [US1] Implement exit code handling in PipelineCommand.java - return 0 success, 1 failure, 2 invalid definition
-- [ ] T016 [US1] Add progress output to PipelineCommand showing completed/running/pending stages
-- [ ] T017 [US1] Add pipeline status command showing execution progress in PipelineCommand.java
+- [X] T011 [P] [US1] Implement parallel stage execution in PipelineOrchestrator.execute() in src/main/java/com/hsbc/ci/engine/core/orchestrator/PipelineOrchestrator.java
+- [X] T012 [US1] Add stage dependency resolution (dependsOn) in PipelineOrchestrator for DAG-based execution
+- [X] T013 [US1] Implement fail-fast behavior (FR-009) when stage fails in PipelineOrchestrator
+- [X] T014 [US1] Add stage retry logic (FR-010) with configurable retry count in StageExecutor.java
+- [X] T015 [US1] Implement exit code handling in PipelineCommand.java - return 0 success, 1 failure, 2 invalid definition
+- [X] T016 [US1] Add progress output to PipelineCommand showing completed/running/pending stages
+- [X] T017 [US1] Add pipeline status command showing execution progress in PipelineCommand.java
 
 ### Tests for User Story 1
 
@@ -75,12 +75,12 @@ description: "Task list for CI Engine Core CLI implementation"
 
 ### Implementation for User Story 2
 
-- [ ] T022 [P] [US2] Implement pipeline validate subcommand in PipelineCommand.java
-- [ ] T023 [P] [US2] Add validation for required fields (name, stages) per FR-003
-- [ ] T024 [P] [US2] Add validation for stage types (build, test, deploy, containerize, checkout)
-- [ ] T025 [US2] Add validation for stage dependency references (dependsOn)
-- [ ] T026 [US2] Add support for stage timeout and retry validation
-- [ ] T027 [US2] Add environment variable substitution in pipeline definitions
+- [X] T022 [P] [US2] Implement pipeline validate subcommand in PipelineCommand.java
+- [X] T023 [P] [US2] Add validation for required fields (name, stages) per FR-003
+- [X] T024 [P] [US2] Add validation for stage types (build, test, deploy, containerize, checkout)
+- [X] T025 [US2] Add validation for stage dependency references (dependsOn)
+- [X] T026 [US2] Add support for stage timeout and retry validation
+- [X] T027 [US2] Add environment variable substitution in pipeline definitions
 
 ### Tests for User Story 2
 
@@ -100,16 +100,16 @@ description: "Task list for CI Engine Core CLI implementation"
 
 ### Implementation for User Story 3
 
-- [ ] T031 [P] [US3] Implement environment configuration loading in src/main/java/com/hsbc/ci/engine/core/config/EnvironmentLoader.java
-- [ ] T032 [P] [US3] Add environment variable override support (FR-007)
-- [ ] T033 [US3] Add environment validation - check required fields exist
-- [ ] T034 [US3] Add environment-specific variable substitution in pipeline context
-- [ ] T035 [US3] Implement config command environment subcommands in ConfigCommand.java
-- [ ] T036 [US3] Add environment promotion chain with auto-promote capability
+- [X] T031 [P] [US3] Implement environment configuration loading in src/main/java/com/hsbc/ci/engine/core/config/EnvironmentLoader.java
+- [X] T032 [P] [US3] Add environment variable override support (FR-007)
+- [X] T033 [US3] Add environment validation - check required fields exist
+- [X] T034 [US3] Add environment-specific variable substitution in pipeline context
+- [X] T035 [US3] Implement config command environment subcommands in ConfigCommand.java
+- [X] T036 [US3] Add environment promotion chain with auto-promote capability
 
 ### Tests for User Story 3
 
-- [ ] T037 [P] [US3] Add unit test for EnvironmentLoader in tests/config/EnvironmentLoaderTest.java
+- [X] T037 [P] [US3] Add unit test for EnvironmentLoader in tests/config/EnvironmentLoaderTest.java
 - [ ] T038 [US3] Add integration test for environment override in pipeline execution
 
 **Checkpoint**: At this point, User Story 3 is complete - environments can be configured and used in pipeline execution
@@ -120,12 +120,12 @@ description: "Task list for CI Engine Core CLI implementation"
 
 **Purpose**: Implement quality gates and plugin system
 
-- [ ] T039 [P] Implement GateExecutor in src/main/java/com/hsbc/ci/engine/core/plugin/GateExecutor.java
-- [ ] T040 [P] Implement test-passed gate in src/main/java/com/hsbc/ci/engine/core/plugin/gates/TestPassedGate.java
-- [ ] T041 [P] Implement coverage-threshold gate in src/main/java/com/hsbc/ci/engine/core/plugin/gates/CoverageGate.java
-- [ ] T042 Implement security-scan plugin integration in src/main/java/com/hsbc/ci/engine/core/plugin/gates/SecurityScanGate.java
-- [ ] T043 Implement sonarqube plugin integration in src/main/java/com/hsbc/ci/engine/core/plugin/gates/SonarQubeGate.java
-- [ ] T044 Add plugin configuration loading from config/plugins.yml in PluginManager.java
+- [X] T039 [P] Implement GateExecutor in src/main/java/com/hsbc/ci/engine/core/plugin/GateExecutor.java
+- [X] T040 [P] Implement test-passed gate in src/main/java/com/hsbc/ci/engine/core/plugin/gates/TestPassedGate.java
+- [X] T041 [P] Implement coverage-threshold gate in src/main/java/com/hsbc/ci/engine/core/plugin/gates/CoverageGate.java
+- [X] T042 Implement security-scan plugin integration in src/main/java/com/hsbc/ci/engine/core/plugin/gates/SecurityScanGate.java
+- [X] T043 Implement sonarqube plugin integration in src/main/java/com/hsbc/ci/engine/core/plugin/gates/SonarQubeGate.java
+- [X] T044 Add plugin configuration loading from config/plugins.yml in PluginManager.java
 
 ---
 
@@ -133,11 +133,11 @@ description: "Task list for CI Engine Core CLI implementation"
 
 **Purpose**: Implement multi-build tool support and git checkout
 
-- [ ] T045 [P] Add Maven build execution in BuildStage.java using mvn executable
-- [ ] T046 [P] Add Gradle build execution in BuildStage.java using gradlew
-- [ ] T047 [P] Add npm build execution in BuildStage.java
-- [ ] T048 [P] Add dotnet build execution in BuildStage.java
-- [ ] T049 Implement git clone in CloneCommand.java with configurable depth and target
+- [X] T045 [P] Add Maven build execution in BuildStage.java using mvn executable
+- [X] T046 [P] Add Gradle build execution in BuildStage.java using gradlew
+- [X] T047 [P] Add npm build execution in BuildStage.java
+- [X] T048 [P] Add dotnet build execution in BuildStage.java
+- [X] T049 Implement git clone in CloneCommand.java with configurable depth and target
 - [ ] T049a Implement artifact registry configuration loading from ci-engine.yml in src/main/java/com/hsbc/ci/engine/core/config/ArtifactRegistryConfig.java
 - [ ] T049b Add Docker registry support for artifact storage
 - [ ] T049c Add S3 artifact storage configuration
@@ -148,11 +148,11 @@ description: "Task list for CI Engine Core CLI implementation"
 
 **Purpose**: Implement Kubernetes and ECS deployment
 
-- [ ] T050 [P] Implement Kubernetes deployment in DeployStage.java with namespace support
-- [ ] T051 [P] Implement ECS deployment in DeployStage.java with cluster support
-- [ ] T052 Add rolling deployment strategy in src/main/java/com/hsbc/ci/engine/core/deploy/RollingStrategy.java
-- [ ] T053 Add blue-green deployment strategy in src/main/java/com/hsbc/ci/engine/core/deploy/BlueGreenStrategy.java
-- [ ] T054 Add canary deployment strategy in src/main/java/com/hsbc/ci/engine/core/deploy/CanaryStrategy.java
+- [X] T050 [P] Implement Kubernetes deployment in DeployStage.java with namespace support
+- [X] T051 [P] Implement ECS deployment in DeployStage.java with cluster support
+- [X] T052 Add rolling deployment strategy in src/main/java/com/hsbc/ci/engine/core/deploy/RollingStrategy.java
+- [X] T053 Add blue-green deployment strategy in src/main/java/com/hsbc/ci/engine/core/deploy/BlueGreenStrategy.java
+- [X] T054 Add canary deployment strategy in src/main/java/com/hsbc/ci/engine/core/deploy/CanaryStrategy.java
 
 ---
 
@@ -160,10 +160,10 @@ description: "Task list for CI Engine Core CLI implementation"
 
 **Purpose**: Implement notifications and credential management
 
-- [ ] T055 [P] Implement Slack notification in src/main/java/com/hsbc/ci/engine/core/plugin/NotifierPlugin.java
-- [ ] T056 [P] Implement Email notification in src/main/java/com/hsbc/ci/engine/core/plugin/NotifierPlugin.java
-- [ ] T057 Implement credential management in src/main/java/com/hsbc/ci/engine/core/config/CredentialManager.java
-- [ ] T058 Add support for Git, Docker, and AWS credentials
+- [X] T055 [P] Implement Slack notification in src/main/java/com/hsbc/ci/engine/core/plugin/notifiers/SlackNotifier.java
+- [X] T056 [P] Implement Email notification in src/main/java/com/hsbc/ci/engine/core/plugin/notifiers/EmailNotifier.java
+- [X] T057 Implement credential management in src/main/java/com/hsbc/ci/engine/core/config/CredentialManager.java
+- [X] T058 Add support for Git, Docker, and AWS credentials
 
 ---
 
@@ -171,9 +171,9 @@ description: "Task list for CI Engine Core CLI implementation"
 
 **Purpose**: Implement promotion policies and manual approvals
 
-- [ ] T059 Implement PromotionPolicy model in src/main/java/com/hsbc/ci/engine/core/model/PromotionPolicy.java
-- [ ] T060 Implement manual approval gate in src/main/java/com/hsbc/ci/engine/core/plugin/gates/ManualApprovalGate.java
-- [ ] T061 Implement fast-track, standard, production, security-patch policies in PromoteCommand.java
+- [X] T059 Implement PromotionPolicy model in src/main/java/com/hsbc/ci/engine/core/model/PromotionPolicy.java
+- [X] T060 Implement manual approval gate in src/main/java/com/hsbc/ci/engine/core/plugin/gates/ManualApprovalGate.java
+- [X] T061 Implement fast-track, standard, production, security-patch policies in PromoteCommand.java
 
 ---
 
@@ -181,13 +181,13 @@ description: "Task list for CI Engine Core CLI implementation"
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T062 [P] Add JSON output format support for pipeline list and status commands (FR-011)
-- [ ] T063 [P] Enhance help documentation for all CLI commands
-- [ ] T064 Add logging configuration for pipeline operations (FR-008)
-- [ ] T065 Add verbose mode support for debugging (--verbose flag)
-- [ ] T066 Add webhook integration for CI tool notification (FR-012)
-- [ ] T067 Run full test suite and fix any failures
-- [ ] T068 Update quickstart.md with working pipeline examples
+- [X] T062 [P] Add JSON output format support for pipeline list and status commands (FR-011) - JsonOutput.java
+- [X] T063 [P] Enhance help documentation for all CLI commands
+- [X] T064 Add logging configuration for pipeline operations (FR-008) - Already exists
+- [X] T065 Add verbose mode support for debugging (--verbose flag) - Already exists
+- [X] T066 Add webhook integration for CI tool notification (FR-012) - WebhookNotifier.java
+- [X] T067 Run full test suite and fix any failures
+- [X] T068 Update quickstart.md with working pipeline examples
 
 ---
 

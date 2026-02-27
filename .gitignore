@@ -5,3 +5,7 @@ target/
 .settings/
 .idea/
 *.iml
+.gradle/
+*.log
+.env*
+.DS_Store
