@@ -1,0 +1,68 @@
+plugins:
+  security-scan:
+    class: com.hsbc.ci.plugins.SecurityScanPlugin
+    version: "1.0.0"
+    enabled: false
+    config:
+      scanners:
+        - sast
+        - dast
+        - foss
+      threshold: HIGH
+      api-url: ${SECURITY_API_URL}
+      
+  sonarqube:
+    class: com.hsbc.ci.plugins.SonarQubePlugin
+    version: "1.0.0"
+    enabled: false
+    config:
+      url: https://sonar.company.com
+      token: ${SONAR_TOKEN}
+      project-key: ${SONAR_PROJECT_KEY}
+      
+  slack-notify:
+    class: com.hsbc.ci.plugins.SlackNotifier
+    version: "1.0.0"
+    enabled: false
+    config:
+      webhook: ${SLACK_WEBHOOK}
+      channel: "#ci-deployments"
+      
+  email-notify:
+    class: com.hsbc.ci.plugins.EmailNotifier
+    version: "1.0.0"
+    enabled: false
+    config:
+      smtp-host: smtp.company.com
+      smtp-port: 587
+      from: ci-engine@company.com
+      to:
+        - team@company.com
+        
+  performance-test:
+    class: com.hsbc.ci.plugins.PerformanceTestPlugin
+    version: "1.0.0"
+    enabled: false
+    config:
+      tool: k6
+      k6-options:
+        vus: 100
+        duration: 5m
+      thresholds:
+        - name: api-response-time
+          p95: 500ms
+        - name: error-rate
+          max: 1%
+          
+  chaos-engineering:
+    class: com.hsbc.ci.plugins.ChaosEngineerPlugin
+    version: "1.0.0"
+    enabled: false
+    config:
+      tool: litmus
+      experiments:
+        pod-kill:
+          enabled: true
+          chaos-duration: 30s
+        network-partition:
+          enabled: true

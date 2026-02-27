@@ -3,6 +3,7 @@ package com.hsbc.ci.engine.core.cli;
 import com.hsbc.ci.engine.core.CiEngineApplication;
 import com.hsbc.ci.engine.core.cli.checkout.CheckoutCommand;
 import com.hsbc.ci.engine.core.cli.build.BuildCommand;
+import com.hsbc.ci.engine.core.cli.plugin.PluginCommand;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
@@ -45,7 +46,8 @@ public class CiEngineCommand implements CommandLineRunner, ExitCodeGenerator {
                  ConfigCommand.class,
                  VersionCommand.class,
                  CheckoutCommand.class,
-                 BuildCommand.class
+                 BuildCommand.class,
+                 PluginCommand.class
              })
     public static class RootCommand implements Runnable {
 
