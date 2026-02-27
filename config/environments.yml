@@ -1,0 +1,97 @@
+environments:
+  sandbox:
+    description: Development sandbox for initial testing
+    order: 1
+    auto-promote: true
+    deploy:
+      type: kubernetes
+      namespace: sandbox
+    gates:
+      - type: tests-passed
+    resources:
+      cpu: 500m
+      memory: 512Mi
+
+  integration:
+    description: Integration testing environment
+    order: 2
+    auto-promote: true
+    deploy:
+      type: kubernetes
+      namespace: integration
+    gates:
+      - type: tests-passed
+      - type: integration-tests
+    resources:
+      cpu: 1000m
+      memory: 1Gi
+    replicas: 2
+
+  dev:
+    description: Developer testing environment
+    order: 3
+    auto-promote: true
+    deploy:
+      type: kubernetes
+      namespace: dev
+    gates:
+      - type: tests-passed
+      - type: code-quality
+    resources:
+      cpu: 2000m
+      memory: 2Gi
+    replicas: 2
+
+  uat:
+    description: User Acceptance Testing
+    order: 4
+    auto-promote: false
+    approval:
+      type: manual
+      roles: [qa-lead, product-owner]
+    deploy:
+      type: ecs
+      cluster: uat-cluster
+    gates:
+      - type: uat-tests-passed
+    resources:
+      cpu: 2000m
+      memory: 4Gi
+    replicas: 3
+
+  performance:
+    description: Performance testing environment
+    order: 5
+    auto-promote: false
+    deploy:
+      type: kubernetes
+      namespace: perf
+    gates:
+      - type: performance-thresholds
+    resources:
+      cpu: 4000m
+      memory: 8Gi
+    replicas: 3
+
+  production:
+    description: Production environment
+    order: 6
+    auto-promote: false
+    approval:
+      type: manual
+      roles: [release-manager]
+      timeout: 4h
+    deploy:
+      type: ecs
+      cluster: prod-cluster
+      strategy: blue-green
+    gates:
+      - type: production-readiness
+    resources:
+      cpu: 4000m
+      memory: 8Gi
+    replicas: 5
+    backup: true
+    monitoring:
+      datadog: true
+      pagerduty: true

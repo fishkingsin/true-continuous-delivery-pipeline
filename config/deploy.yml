@@ -1,0 +1,31 @@
+deploy:
+  kubernetes:
+    defaultNamespace: default
+    timeout: 300
+    rollbackOnFailure: true
+    imagePullSecret: docker-registry-secret
+    
+  ecs:
+    defaultCluster: default
+    timeout: 600
+    rollbackOnFailure: true
+    healthCheckGracePeriod: 30
+
+deploymentStrategies:
+  rolling:
+    maxSurge: 1
+    maxUnavailable: 0
+    
+  blue-green:
+    trafficSplit: 100
+    verificationDuration: 300
+    
+  canary:
+    initialTrafficPercentage: 10
+    incrementPercentage: 20
+    incrementInterval: 300
+
+manifests:
+  deploymentTemplate: templates/kubernetes/deployment.yml
+  serviceTemplate: templates/kubernetes/service.yml
+  ingressTemplate: templates/kubernetes/ingress.yml

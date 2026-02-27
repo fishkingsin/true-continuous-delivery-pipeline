@@ -1,0 +1,150 @@
+name: microservice-cd
+version: "1.0"
+description: Complete CD pipeline for microservices with security, quality gates, and multi-environment promotion
+
+stages:
+  # Build Stage
+  - name: build
+    type: build
+    config:
+      build-tool: maven
+      goals: clean package
+      jvm-opts: "-Xmx2g -Xms512m"
+    env:
+      MAVEN_OPTS: "-Xmx1g"
+
+  # Unit Tests
+  - name: unit-tests
+    type: test
+    config:
+      test-type: unit
+      coverage-min: 80
+    gates:
+      - type: test-passed
+      - type: coverage-threshold
+
+  # Security Scanning
+  - name: security-scan
+    type: plugin:security-scan
+    config:
+      scanners:
+        - sast
+        - foss
+      threshold: HIGH
+    gates:
+      - type: security-findings
+        max-critical: 0
+        max-high: 5
+
+  # Code Quality
+  - name: code-quality
+    type: plugin:sonarqube
+    config:
+      quality-gate: CD_PIPELINE
+      fail-on-quality-gate: true
+
+  # Containerize
+  - name: containerize
+    type: containerize
+    config:
+      dockerfile: Dockerfile
+      registry: docker.io/myorg
+      tags: ["${GIT_COMMIT}", "latest"]
+      push: true
+
+  # Class-level Integration Tests
+  - name: class-integration-tests
+    type: test
+    config:
+      test-type: integration
+      scope: class
+      depends-on: containerize
+    gates:
+      - type: test-passed
+
+  # Microservice Integration Tests
+  - name: microservice-integration-tests
+    type: test
+    config:
+      test-type: integration
+      scope: microservice
+      depends-on: containerize
+    gates:
+      - type: test-passed
+
+  # Inter-service Integration Tests
+  - name: inter-service-tests
+    type: test
+    config:
+      test-type: integration
+      scope: inter-service
+      environment: integration
+    gates:
+      - type: test-passed
+
+  # Deploy to Sandbox
+  - name: deploy-sandbox
+    type: deploy
+    target: kubernetes
+    environment: sandbox
+    config:
+      namespace: sandbox
+      auto-promote: true
+
+  # Deploy to Dev
+  - name: deploy-dev
+    type: deploy
+    target: kubernetes
+    environment: dev
+    config:
+      namespace: dev
+      auto-promote: true
+
+  # Deploy to UAT
+  - name: deploy-uat
+    type: deploy
+    target: ecs
+    environment: uat
+    config:
+      cluster: uat-cluster
+      auto-promote: false
+
+  # Performance Testing
+  - name: performance-test
+    type: plugin:performance-test
+    config:
+      k6-script: perf-tests/api-load.js
+      thresholds:
+        p95: 500ms
+        error-rate: 1%
+    gates:
+      - type: performance-baseline
+
+  # Chaos Engineering
+  - name: chaos-test
+    type: plugin:chaos-engineering
+    config:
+      experiments:
+        - pod-kill
+        - network-partition
+    gates:
+      - type: service-resilience
+
+  # Deploy to Production
+  - name: deploy-production
+    type: deploy
+    target: ecs
+    environment: production
+    config:
+      cluster: prod-cluster
+      strategy: blue-green
+      auto-promote: false
+
+# Environment promotion chain
+environments:
+  - sandbox
+  - integration
+  - dev
+  - uat
+  - performance
+  - production

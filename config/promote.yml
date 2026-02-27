@@ -1,0 +1,71 @@
+promotion:
+  policies:
+    - name: fast-track
+      description: Fast track for urgent bug fixes
+      conditions:
+        - type: commit-message
+          pattern: ".*\\[fast-track\\].*"
+      requirements:
+        - type: tests-passed
+        - type: manual-approval
+          roles: [tech-lead]
+
+    - name: standard
+      description: Standard promotion policy
+      conditions:
+        - type: always
+      requirements:
+        - type: tests-passed
+        - type: coverage
+          min: 80%
+        - type: security-scan
+        - type: deployment-successful
+
+    - name: production
+      description: Production release policy
+      conditions:
+        - type: environment-reached
+          environment: uat
+      requirements:
+        - type: tests-passed
+        - type: coverage
+          min: 85%
+        - type: security-scan
+        - type: performance-test
+        - type: manual-approval
+          roles: [release-manager, tech-lead]
+
+    - name: security-patch
+      description: Emergency security patch
+      conditions:
+        - type: commit-message
+          pattern: ".*\\[security\\].*"
+      requirements:
+        - type: tests-passed
+        - type: security-scan
+          max-critical: 0
+        - type: security-approval
+          roles: [security-team]
+
+gates:
+  test-passed:
+    enabled: true
+    
+  coverage:
+    min: 80
+    failOnDecrease: true
+    
+  security-scan:
+    max-critical: 0
+    max-high: 5
+    
+  code-quality:
+    quality-gate: PASSED
+    rating: A
+    
+  deployment-successful:
+    timeout: 300
+    
+  performance-baseline:
+    p95: 500ms
+    error-rate: 1%

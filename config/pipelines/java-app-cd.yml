@@ -1,0 +1,48 @@
+name: java-app-cd
+version: "1.0"
+description: Standard CD pipeline for Java applications
+
+stages:
+  - name: build
+    type: build
+    config:
+      build-tool: maven
+      goals: clean package -DskipTests
+      jvm-opts: "-Xmx2g"
+
+  - name: test
+    type: test
+    config:
+      test-type: unit
+      coverage-min: 75
+    gates:
+      - type: test-passed
+
+  - name: containerize
+    type: containerize
+    config:
+      dockerfile: Dockerfile
+      registry: docker.io/myorg
+      tags: ["${GIT_COMMIT}", "latest"]
+
+  - name: deploy-dev
+    type: deploy
+    target: kubernetes
+    environment: dev
+    config:
+      namespace: dev
+
+  - name: deploy-staging
+    type: deploy
+    target: kubernetes
+    environment: staging
+    config:
+      namespace: staging
+
+  - name: deploy-prod
+    type: deploy
+    target: ecs
+    environment: production
+    config:
+      cluster: prod-cluster
+      strategy: rolling

@@ -1,0 +1,34 @@
+ci-engine:
+  version: "1.0"
+  
+  global:
+    logLevel: INFO
+    parallelStages: false
+    timeout: 3600
+    retryCount: 3
+    
+  artifacts:
+    registry: docker.io
+    storageType: s3
+    s3Bucket: ci-artifacts
+    
+  notifications:
+    slack:
+      enabled: false
+      webhookUrl: ${SLACK_WEBHOOK_URL}
+    email:
+      enabled: true
+      smtpHost: smtp.company.com
+      from: ci-engine@company.com
+      
+  credentials:
+    git:
+      defaultToken: ${GIT_TOKEN}
+    docker:
+      defaultRegistry: docker.io
+      username: ${DOCKER_USERNAME}
+      password: ${DOCKER_PASSWORD}
+    aws:
+      region: us-east-1
+      accessKeyId: ${AWS_ACCESS_KEY_ID}
+      secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
