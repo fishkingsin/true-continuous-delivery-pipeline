@@ -4,20 +4,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.cdengine", "picocli.spring.boot"})
+@ComponentScan(basePackages = {"com.cdengine"})
 public class CdEngineCommand implements CommandLineRunner, ExitCodeGenerator {
 
-    @Bean
-    public CommandLine myCommand() {
-        return new CommandLine(new RootCommand());
-    }
+    private int exitCode = 0;
 
     public static void main(String[] args) {
         System.exit(SpringApplication.exit(
@@ -27,20 +23,13 @@ public class CdEngineCommand implements CommandLineRunner, ExitCodeGenerator {
 
     @Override
     public void run(String... args) throws Exception {
-        int exitCode = new CommandLine(new RootCommand()).execute(args);
-        setExitCode(exitCode);
+        exitCode = new CommandLine(new RootCommand()).execute(args);
     }
 
     @Override
     public int getExitCode() {
         return exitCode;
     }
-
-    public void setExitCode(int exitCode) {
-        this.exitCode = exitCode;
-    }
-
-    private int exitCode = 0;
 
     @Command(name = "cd-engine",
              description = "Enterprise CD Pipeline Engine",
@@ -60,8 +49,8 @@ public class CdEngineCommand implements CommandLineRunner, ExitCodeGenerator {
 
         @CommandLine.Option(names = {"-c", "--config"}, 
                           description = "Config directory path",
-                          defaultValue = "config")
-        private String configPath;
+                          paramLabel = "<path>")
+        private String configPath = "config";
 
         @CommandLine.Option(names = {"-h", "--help"}, 
                           usageHelp = true, 
@@ -71,6 +60,8 @@ public class CdEngineCommand implements CommandLineRunner, ExitCodeGenerator {
         @Override
         public void run() {
             if (help) {
+                CommandLine.usage(this, System.out);
+            } else {
                 CommandLine.usage(this, System.out);
             }
         }
