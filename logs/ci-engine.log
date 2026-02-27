@@ -38,3 +38,43 @@
 2026-02-27 18:41:44.541 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
 2026-02-27 18:41:44.541 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
 2026-02-27 18:41:44.541 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-02-27 19:23:48.646 INFO  [ForkJoinPool-1-worker-2] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.hsbc.ci.engine.core.config.ConfigurationLoaderTest]: ConfigurationLoaderTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-02-27 19:23:48.824 INFO  [ForkJoinPool-1-worker-2] org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.hsbc.ci.engine.core.CiEngineApplication for test class com.hsbc.ci.engine.core.config.ConfigurationLoaderTest
+2026-02-27 19:23:49.481 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Starting ConfigurationLoaderTest using Java 25.0.2 with PID 66564 (started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 19:23:49.488 DEBUG [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 19:23:49.493 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 19:23:50.423 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 19:23:50.423 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 19:23:50.423 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 19:23:50.423 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 19:23:50.424 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 19:23:50.424 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 19:23:50.424 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 19:23:50.489 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 19:23:50.669 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Started ConfigurationLoaderTest in 1.74 seconds (process running for 8.435)
+2026-02-27 19:23:51.572 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-02-27 19:23:51.574 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-02-27 19:23:51.579 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-02-27 19:23:51.580 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-02-27 19:23:51.580 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-02-27 19:23:51.580 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-02-27 19:24:40.593 INFO  [ForkJoinPool-1-worker-2] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.hsbc.ci.engine.core.config.ConfigurationLoaderTest]: ConfigurationLoaderTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-02-27 19:24:40.762 INFO  [ForkJoinPool-1-worker-2] org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.hsbc.ci.engine.core.CiEngineApplication for test class com.hsbc.ci.engine.core.config.ConfigurationLoaderTest
+2026-02-27 19:24:41.440 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Starting ConfigurationLoaderTest using Java 25.0.2 with PID 67056 (started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 19:24:41.447 DEBUG [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 19:24:41.453 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 19:24:42.363 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 19:24:42.363 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 19:24:42.363 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 19:24:42.363 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 19:24:42.364 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 19:24:42.364 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 19:24:42.364 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 19:24:42.433 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 19:24:42.635 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Started ConfigurationLoaderTest in 1.759 seconds (process running for 8.583)
+2026-02-27 19:24:43.577 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-02-27 19:24:43.579 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-02-27 19:24:43.583 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-02-27 19:24:43.584 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-02-27 19:24:43.585 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-02-27 19:24:43.585 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify

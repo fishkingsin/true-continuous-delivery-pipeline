@@ -19,7 +19,6 @@ public class ContainerizeStage implements Stage {
         String tag = context.getVariable("GIT_COMMIT");
         if (tag == null) tag = "latest";
         
-        log.info("Building Docker image: {}:{}", image, tag);
         System.out.println("  Building Docker image: " + image + ":" + tag);
         
         try {
@@ -30,6 +29,7 @@ public class ContainerizeStage implements Stage {
             int exitCode = process.waitFor();
             
             if (exitCode != 0) {
+                log.error("Docker build failed with exit code: {}", exitCode);
                 throw new RuntimeException("Docker build failed with exit code: " + exitCode);
             }
             

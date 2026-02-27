@@ -15,7 +15,6 @@ public class TestStage implements Stage {
     public String execute(Map<String, Object> config, PipelineContext context) {
         String testType = (String) config.getOrDefault("test-type", "unit");
         
-        log.info("Running tests: {}", testType);
         System.out.println("  Running tests: " + testType);
         
         try {
@@ -26,6 +25,7 @@ public class TestStage implements Stage {
             int exitCode = process.waitFor();
             
             if (exitCode != 0) {
+                log.error("Tests failed with exit code: {}", exitCode);
                 throw new RuntimeException("Tests failed with exit code: " + exitCode);
             }
             log.info("Tests passed successfully");

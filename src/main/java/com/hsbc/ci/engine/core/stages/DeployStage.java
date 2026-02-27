@@ -17,7 +17,6 @@ public class DeployStage implements Stage {
         String namespace = (String) config.getOrDefault("namespace", "default");
         String image = (String) config.getOrDefault("image", "myapp:latest");
         
-        log.info("Deploying to: {} namespace: {}", targetType, namespace);
         System.out.println("  Deploying to: " + targetType + " namespace: " + namespace);
         
         try {
@@ -35,7 +34,6 @@ public class DeployStage implements Stage {
 
     private String deployToKubernetes(String namespace, String image, Map<String, Object> config) 
             throws Exception {
-        log.debug("Checking kubectl...");
         System.out.println("  [Kubernetes] Checking kubectl...");
         
         ProcessBuilder pb = new ProcessBuilder("kubectl", "version", "--client");
@@ -52,17 +50,12 @@ public class DeployStage implements Stage {
         log.info("Would deploy to namespace: {} image: {}", namespace, image);
         System.out.println("  [Kubernetes] Would deploy to namespace: " + namespace + " image: " + image);
         
-        // In real implementation, would apply K8s manifests:
-        // kubectl set image deployment/myapp myapp=IMAGE -n NAMESPACE
-        // kubectl rollout status deployment/myapp -n NAMESPACE
-        
         return "Kubernetes deployment completed: namespace=" + namespace + ", image=" + image;
     }
 
     private String deployToECS(Map<String, Object> config) throws Exception {
         String cluster = (String) config.getOrDefault("cluster", "default");
         
-        log.debug("Checking AWS CLI...");
         System.out.println("  [ECS] Checking AWS CLI...");
         
         ProcessBuilder pb = new ProcessBuilder("aws", "--version");
@@ -78,9 +71,6 @@ public class DeployStage implements Stage {
         
         log.info("Would deploy to cluster: {}", cluster);
         System.out.println("  [ECS] Would deploy to cluster: " + cluster);
-        
-        // In real implementation, would update ECS service:
-        // aws ecs update-service --cluster CLUSTER --service SERVICE --force-new-deployment
         
         return "ECS deployment completed: cluster=" + cluster;
     }

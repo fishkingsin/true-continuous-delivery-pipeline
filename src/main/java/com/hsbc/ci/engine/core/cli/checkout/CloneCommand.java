@@ -51,7 +51,6 @@ public class CloneCommand implements Runnable {
     }
 
     private void cloneFromConfig(String configFile) throws Exception {
-        log.info("Loading checkout config from: {}", configFile);
         System.out.println("[INFO] Loading checkout config from: " + configFile);
         
         org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml();
@@ -84,7 +83,6 @@ public class CloneCommand implements Runnable {
             Integer repoDepth = (Integer) repo.getOrDefault("depth", defaults != null ? (Integer) defaults.get("depth") : null);
             String repoToken = (String) repo.get("token");
 
-            log.info("Cloning {} to {}", repoUrl, repoTarget);
             System.out.println("[INFO] Cloning " + repoUrl + " to " + repoTarget);
             cloneRepository(repoUrl, repoTarget, repoBranch, repoDepth, repoToken);
         }
@@ -118,7 +116,6 @@ public class CloneCommand implements Runnable {
         cmd.add(effectiveUrl);
         cmd.add(targetDir);
 
-        log.debug("Running: {}", String.join(" ", cmd));
         System.out.println("[INFO] Running: " + String.join(" ", cmd));
 
         ProcessBuilder pb = new ProcessBuilder(cmd);
@@ -130,7 +127,6 @@ public class CloneCommand implements Runnable {
             throw new RuntimeException("Git clone failed with exit code: " + exitCode);
         }
 
-        log.info("Cloned to: {}", new File(targetDir).getAbsolutePath());
         System.out.println("[SUCCESS] Cloned to: " + new File(targetDir).getAbsolutePath());
     }
 

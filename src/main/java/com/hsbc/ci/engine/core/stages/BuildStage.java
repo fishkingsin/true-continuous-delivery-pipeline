@@ -15,7 +15,6 @@ public class BuildStage implements Stage {
     public String execute(Map<String, Object> config, PipelineContext context) {
         String buildTool = (String) config.getOrDefault("build-tool", "maven");
         
-        log.info("Building with: {}", buildTool);
         System.out.println("  Building with: " + buildTool);
         
         try {
@@ -30,6 +29,7 @@ public class BuildStage implements Stage {
             int exitCode = process.waitFor();
             
             if (exitCode != 0) {
+                log.error("Build failed with exit code: {}", exitCode);
                 throw new RuntimeException("Build failed with exit code: " + exitCode);
             }
             log.info("Build completed successfully");
