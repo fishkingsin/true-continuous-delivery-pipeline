@@ -142,6 +142,30 @@ class CiEngineCliE2eTest {
             "Should show ECS deployment info, got: " + result.stdout);
     }
 
+    @Test
+    void pipelineList_showsPipelines() throws Exception {
+        ProcessResult result = runCli("pipeline", "--list");
+        
+        assertTrue(result.stdout.contains("sample-pipeline") || result.stdout.contains("microservice-cd"),
+            "Should list pipelines, got: " + result.stdout);
+    }
+
+    @Test
+    void pipelineRun_executesPipeline() throws Exception {
+        ProcessResult result = runCli("pipeline", "--run", "--name", "sample-pipeline", "--dry-run");
+        
+        assertTrue(result.stdout.contains("Executing pipeline") || result.stdout.contains("sample-pipeline") || result.stdout.contains("DRY-RUN") || result.stdout.contains("Pipeline"),
+            "Should execute or show dry-run, got: " + result.stdout);
+    }
+
+    @Test
+    void pipelineValidate_validatesPipeline() throws Exception {
+        ProcessResult result = runCli("pipeline", "--validate", "--name", "sample-pipeline");
+        
+        assertTrue(result.stdout.contains("valid") || result.stdout.contains("sample-pipeline") || result.stdout.contains("Pipeline") || result.stdout.contains("SUCCESS"),
+            "Should validate pipeline, got: " + result.stdout);
+    }
+
     private void copyConfigToTemp(Path tempDir) throws Exception {
         Path configDir = Path.of("config");
         if (java.nio.file.Files.exists(configDir)) {

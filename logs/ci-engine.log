@@ -1228,3 +1228,838 @@
 2026-02-27 21:11:20.753 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
 2026-02-27 21:11:21.088 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.164 seconds (process running for 3.903)
 2026-02-27 21:11:21.226 DEBUG [main] com.hsbc.ci.engine.core.cli.VersionCommand - Version command executed
+2026-02-27 21:43:18.600 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 27267 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:43:18.606 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:43:18.613 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:43:19.752 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:43:19.927 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:43:19.928 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:43:19.928 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:43:19.928 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:43:19.928 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:43:19.928 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:43:19.928 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:43:20.221 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.124 seconds (process running for 3.754)
+2026-02-27 21:43:50.674 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 27635 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:43:50.679 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:43:50.680 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:43:51.829 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:43:52.002 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:43:52.003 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:43:52.003 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:43:52.003 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:43:52.003 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:43:52.003 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:43:52.003 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:43:52.300 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.149 seconds (process running for 3.758)
+2026-02-27 21:43:52.433 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand$List - Pipeline list not yet implemented
+2026-02-27 21:44:08.034 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 27880 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:44:08.038 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:44:08.039 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:44:09.189 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:44:09.375 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:44:09.375 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:44:09.375 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:44:09.375 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:44:09.375 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:44:09.376 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:44:09.376 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:44:09.694 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.217 seconds (process running for 3.906)
+2026-02-27 21:44:09.822 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand$List - Pipeline list not yet implemented
+2026-02-27 21:44:12.197 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 27909 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:44:12.201 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:44:12.203 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:44:13.358 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:44:13.549 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:44:13.549 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:44:13.549 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:44:13.549 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:44:13.550 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:44:13.550 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:44:13.550 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:44:13.869 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.188 seconds (process running for 3.934)
+2026-02-27 21:44:14.001 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand$List - Pipeline list not yet implemented
+2026-02-27 21:46:14.803 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 29193 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:46:14.807 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:46:14.808 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:46:15.866 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:46:16.034 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:46:16.034 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:46:16.034 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:46:16.034 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:46:16.034 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:46:16.034 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:46:16.035 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:46:16.336 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.038 seconds (process running for 3.631)
+2026-02-27 21:46:16.462 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand$List - Pipeline list not yet implemented
+2026-02-27 21:46:18.684 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 29246 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:46:18.689 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:46:18.690 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:46:19.763 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:46:19.939 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:46:19.939 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:46:19.939 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:46:19.939 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:46:19.940 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:46:19.940 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:46:19.940 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:46:20.236 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.053 seconds (process running for 3.66)
+2026-02-27 21:46:20.366 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand$List - Pipeline list not yet implemented
+2026-02-27 21:46:34.512 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 29403 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:46:34.517 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:46:34.518 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:46:35.645 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:46:35.827 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:46:35.827 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:46:35.827 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:46:35.827 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:46:35.827 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:46:35.827 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:46:35.828 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:46:36.142 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.132 seconds (process running for 3.753)
+2026-02-27 21:46:36.272 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand$List - Pipeline list not yet implemented
+2026-02-27 21:46:55.374 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 29576 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:46:55.379 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:46:55.381 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:46:56.497 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:46:56.671 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:46:56.672 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:46:56.672 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:46:56.672 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:46:56.672 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:46:56.672 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:46:56.673 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:46:56.985 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.1 seconds (process running for 3.718)
+2026-02-27 21:47:07.519 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 29711 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:47:07.525 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:47:07.527 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:47:08.634 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:47:08.811 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:47:08.812 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:47:08.812 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:47:08.812 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:47:08.812 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:47:08.812 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:47:08.813 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:47:09.116 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.116 seconds (process running for 3.74)
+2026-02-27 21:47:19.648 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 29817 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:47:19.653 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:47:19.655 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:47:20.772 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:47:20.955 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:47:20.955 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:47:20.955 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:47:20.955 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:47:20.955 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:47:20.956 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:47:20.956 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:47:21.252 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.103 seconds (process running for 3.697)
+2026-02-27 21:48:53.491 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 30548 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:48:53.496 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:48:53.497 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:48:54.607 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:48:54.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:48:54.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:48:54.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:48:54.782 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:48:54.783 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:48:54.783 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:48:54.783 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:48:55.082 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.114 seconds (process running for 3.702)
+2026-02-27 21:49:37.885 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 30929 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:49:37.889 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:49:37.891 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:49:38.997 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:49:39.172 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:49:39.172 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:49:39.172 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:49:39.173 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:49:39.173 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:49:39.173 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:49:39.173 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:49:39.492 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.12 seconds (process running for 3.725)
+2026-02-27 21:49:55.597 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 31100 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:49:55.604 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:49:55.605 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:49:56.717 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:49:56.888 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:49:56.889 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:49:56.889 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:49:56.889 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:49:56.889 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:49:56.889 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:49:56.890 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:49:57.190 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.099 seconds (process running for 3.719)
+2026-02-27 21:50:40.390 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 31464 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:50:40.394 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:50:40.395 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:50:41.484 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:50:41.658 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:50:41.659 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:50:41.659 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:50:41.659 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:50:41.659 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:50:41.659 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:50:41.659 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:50:41.960 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.081 seconds (process running for 3.667)
+2026-02-27 21:52:07.042 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 32206 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:52:07.047 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:52:07.048 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:52:08.143 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:52:08.314 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:52:08.315 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:52:08.315 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:52:08.315 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:52:08.315 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:52:08.315 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:52:08.316 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:52:08.637 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.081 seconds (process running for 3.677)
+2026-02-27 21:52:08.648 INFO  [main] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-02-27 21:52:08.839 ERROR [main] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.hsbc.ci.engine.core.cli.PipelineCommand$PipelineListCommand' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.hsbc.ci.engine.core.cli.PipelineCommand$PipelineListCommand' in your configuration.
+
+2026-02-27 21:53:19.699 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 32750 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:53:19.704 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:53:19.706 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:53:20.809 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:53:20.984 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:53:20.984 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:53:20.984 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:53:20.984 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:53:20.985 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:53:20.985 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:53:20.985 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:53:21.288 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.08 seconds (process running for 3.685)
+2026-02-27 21:53:21.409 DEBUG [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Listed 3 pipelines
+2026-02-27 21:53:42.342 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 32995 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:53:42.346 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:53:42.348 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:53:43.386 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:53:43.558 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:53:43.558 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:53:43.558 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:53:43.558 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:53:43.558 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:53:43.558 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:53:43.558 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:53:43.852 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.013 seconds (process running for 3.57)
+2026-02-27 21:53:45.307 INFO  [ForkJoinPool-1-worker-2] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.hsbc.ci.engine.core.config.ConfigurationLoaderTest]: ConfigurationLoaderTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-02-27 21:53:45.490 INFO  [ForkJoinPool-1-worker-2] org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.hsbc.ci.engine.core.CiEngineApplication for test class com.hsbc.ci.engine.core.config.ConfigurationLoaderTest
+2026-02-27 21:53:46.152 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Starting ConfigurationLoaderTest using Java 25.0.2 with PID 32951 (started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:53:46.158 DEBUG [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:53:46.164 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:53:47.127 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:53:47.154 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:53:47.154 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:53:47.154 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:53:47.154 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:53:47.155 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:53:47.155 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:53:47.155 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:53:47.346 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Started ConfigurationLoaderTest in 1.752 seconds (process running for 8.924)
+2026-02-27 21:53:47.555 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33058 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:53:47.559 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:53:47.562 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:53:48.319 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-02-27 21:53:48.321 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-02-27 21:53:48.322 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-02-27 21:53:48.323 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-02-27 21:53:48.323 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-02-27 21:53:48.323 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-02-27 21:53:48.740 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:53:48.922 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:53:48.923 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:53:48.923 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:53:48.923 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:53:48.923 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:53:48.923 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:53:48.923 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:53:49.256 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.24 seconds (process running for 3.973)
+2026-02-27 21:53:50.694 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33083 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:53:50.699 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:53:50.699 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:53:51.826 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33086 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:53:51.831 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:53:51.832 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:53:51.831 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:53:52.043 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:53:52.044 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:53:52.044 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:53:52.044 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:53:52.044 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:53:52.044 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:53:52.044 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:53:52.400 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.25 seconds (process running for 3.987)
+2026-02-27 21:53:52.979 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:53:53.182 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:53:53.182 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:53:53.182 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:53:53.183 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:53:53.183 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:53:53.183 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:53:53.183 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:53:53.545 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.267 seconds (process running for 4.002)
+2026-02-27 21:53:53.678 INFO  [main] com.hsbc.ci.engine.core.cli.ConfigCommand - Config command not yet implemented
+2026-02-27 21:53:54.979 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33129 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:53:54.984 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:53:54.985 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:53:56.083 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33144 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:53:56.088 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:53:56.089 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:53:56.127 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:53:56.330 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:53:56.330 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:53:56.330 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:53:56.331 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:53:56.331 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:53:56.331 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:53:56.331 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:53:56.676 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.256 seconds (process running for 3.994)
+2026-02-27 21:53:57.199 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:53:57.401 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:53:57.401 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:53:57.402 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:53:57.402 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:53:57.402 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:53:57.402 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:53:57.402 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:53:57.740 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.193 seconds (process running for 3.926)
+2026-02-27 21:53:59.234 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33194 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:53:59.239 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:53:59.240 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:54:00.301 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33200 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:54:00.305 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:54:00.306 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:54:00.373 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:54:00.576 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:54:00.577 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:54:00.577 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:54:00.577 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:54:00.577 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:54:00.577 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:54:00.577 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:54:00.923 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.224 seconds (process running for 3.955)
+2026-02-27 21:54:01.429 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:54:01.635 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:54:01.635 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:54:01.635 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:54:01.636 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:54:01.636 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:54:01.636 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:54:01.636 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:54:01.981 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.231 seconds (process running for 3.967)
+2026-02-27 21:54:03.439 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33248 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:54:03.444 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:54:03.445 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:54:04.558 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:54:04.559 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33252 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:54:04.563 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:54:04.565 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:54:04.751 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:54:04.752 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:54:04.752 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:54:04.752 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:54:04.752 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:54:04.752 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:54:04.752 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:54:05.101 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.191 seconds (process running for 3.914)
+2026-02-27 21:54:05.235 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Executing deployment: type=kubernetes, namespace=test-ns, image=myapp:v1, cluster=default
+2026-02-27 21:54:05.236 INFO  [main] com.hsbc.ci.engine.core.stages.DeployStage -   Deploying to: kubernetes namespace: test-ns
+2026-02-27 21:54:05.250 WARN  [main] com.hsbc.ci.engine.core.stages.DeployStage - kubectl not found: Cannot run program "kubectl": Exec failed, error: 2 (No such file or directory) 
+2026-02-27 21:54:05.251 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Deployment completed successfully result: Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.
+2026-02-27 21:54:05.714 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:54:05.894 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:54:05.895 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:54:05.895 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:54:05.895 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:54:05.895 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:54:05.896 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:54:05.896 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:54:06.236 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.214 seconds (process running for 3.948)
+2026-02-27 21:54:06.364 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Executing deployment: type=ecs, namespace=default, image=myapp:latest, cluster=prod-cluster
+2026-02-27 21:54:06.365 INFO  [main] com.hsbc.ci.engine.core.stages.DeployStage -   Deploying to: ecs namespace: default
+2026-02-27 21:54:06.380 WARN  [main] com.hsbc.ci.engine.core.stages.DeployStage - AWS CLI not found: Cannot run program "aws": Exec failed, error: 2 (No such file or directory) 
+2026-02-27 21:54:06.380 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Deployment completed successfully result: ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.
+2026-02-27 21:54:07.643 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33304 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:54:07.647 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:54:07.649 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:54:08.780 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:54:08.787 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33315 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:54:08.791 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:54:08.792 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:54:08.989 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:54:08.990 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:54:08.990 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:54:08.990 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:54:08.990 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:54:08.990 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:54:08.991 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:54:09.333 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.242 seconds (process running for 3.969)
+2026-02-27 21:54:09.465 DEBUG [main] com.hsbc.ci.engine.core.cli.plugin.PluginCommand - Listed plugins: stages=0, gates=0, notifiers=0
+2026-02-27 21:54:09.927 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:54:10.118 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:54:10.119 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:54:10.119 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:54:10.119 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:54:10.119 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:54:10.119 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:54:10.119 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:54:10.444 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.213 seconds (process running for 3.942)
+2026-02-27 21:54:11.826 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33336 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:54:11.831 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:54:11.833 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:54:12.923 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33367 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:54:12.926 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:54:12.928 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:54:12.952 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:54:13.146 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:54:13.146 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:54:13.146 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:54:13.146 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:54:13.147 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:54:13.147 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:54:13.147 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:54:13.486 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.197 seconds (process running for 3.894)
+2026-02-27 21:54:14.069 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:54:14.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:54:14.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:54:14.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:54:14.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:54:14.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:54:14.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:54:14.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:54:14.606 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.224 seconds (process running for 3.926)
+2026-02-27 21:54:15.914 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33396 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:54:15.919 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:54:15.920 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:54:16.987 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:54:17.192 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:54:17.193 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:54:17.193 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:54:17.193 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:54:17.193 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:54:17.193 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:54:17.194 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:54:17.545 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.132 seconds (process running for 3.794)
+2026-02-27 21:54:17.674 DEBUG [main] com.hsbc.ci.engine.core.cli.VersionCommand - Version command executed
+2026-02-27 21:55:08.708 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33909 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:08.713 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:08.714 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:09.852 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:10.039 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:10.039 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:10.039 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:10.039 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:10.039 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:10.039 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:10.039 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:10.345 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.153 seconds (process running for 3.809)
+2026-02-27 21:55:15.033 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33982 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:15.039 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:15.041 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:15.065 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 33983 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:15.070 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:15.072 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:16.239 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:16.268 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:16.433 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:16.434 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:16.434 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:16.434 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:16.434 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:16.434 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:16.434 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:16.466 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:16.466 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:16.466 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:16.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:16.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:16.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:16.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:16.764 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.304 seconds (process running for 4.102)
+2026-02-27 21:55:16.798 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.319 seconds (process running for 4.109)
+2026-02-27 21:55:19.406 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34041 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:19.412 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:19.413 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:19.441 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34042 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:19.446 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:19.449 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:20.611 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:20.660 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:20.795 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:20.796 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:20.796 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:20.796 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:20.796 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:20.796 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:20.796 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:20.846 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:20.846 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:20.846 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:20.846 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:20.846 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:20.846 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:20.847 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:21.133 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.299 seconds (process running for 4.078)
+2026-02-27 21:55:21.171 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.308 seconds (process running for 4.089)
+2026-02-27 21:55:21.300 INFO  [main] com.hsbc.ci.engine.core.cli.ConfigCommand - Config command not yet implemented
+2026-02-27 21:55:23.761 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34116 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:23.766 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:23.769 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:23.770 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34115 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:23.775 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:23.777 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:24.998 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:25.000 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:25.189 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:25.189 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:25.190 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:25.191 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:25.191 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:25.522 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.32 seconds (process running for 4.114)
+2026-02-27 21:55:25.527 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.33 seconds (process running for 4.132)
+2026-02-27 21:55:28.109 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34179 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:28.113 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:28.114 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:28.115 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34178 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:28.121 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:28.122 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:29.286 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:29.315 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:29.466 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:29.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:29.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:29.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:29.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:29.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:29.467 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:29.504 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:29.505 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:29.505 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:29.505 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:29.505 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:29.506 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:29.506 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:29.808 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.254 seconds (process running for 4.018)
+2026-02-27 21:55:29.829 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.279 seconds (process running for 4.039)
+2026-02-27 21:55:29.956 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Executing deployment: type=kubernetes, namespace=test-ns, image=myapp:v1, cluster=default
+2026-02-27 21:55:29.957 INFO  [main] com.hsbc.ci.engine.core.stages.DeployStage -   Deploying to: kubernetes namespace: test-ns
+2026-02-27 21:55:29.972 WARN  [main] com.hsbc.ci.engine.core.stages.DeployStage - kubectl not found: Cannot run program "kubectl": Exec failed, error: 2 (No such file or directory) 
+2026-02-27 21:55:29.973 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Deployment completed successfully result: Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.
+2026-02-27 21:55:32.373 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34227 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:32.377 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:32.379 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:32.428 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34228 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:32.433 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:32.434 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:33.563 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:33.604 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:33.754 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:33.755 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:33.755 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:33.755 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:33.755 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:33.755 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:33.755 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:33.784 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:33.784 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:33.784 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:33.784 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:33.784 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:33.784 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:33.785 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:34.089 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.265 seconds (process running for 4.012)
+2026-02-27 21:55:34.120 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.253 seconds (process running for 4.013)
+2026-02-27 21:55:34.220 DEBUG [main] com.hsbc.ci.engine.core.cli.plugin.PluginCommand - Listed plugins: stages=0, gates=0, notifiers=0
+2026-02-27 21:55:34.252 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Executing deployment: type=ecs, namespace=default, image=myapp:latest, cluster=prod-cluster
+2026-02-27 21:55:34.253 INFO  [main] com.hsbc.ci.engine.core.stages.DeployStage -   Deploying to: ecs namespace: default
+2026-02-27 21:55:34.267 WARN  [main] com.hsbc.ci.engine.core.stages.DeployStage - AWS CLI not found: Cannot run program "aws": Exec failed, error: 2 (No such file or directory) 
+2026-02-27 21:55:34.268 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Deployment completed successfully result: ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.
+2026-02-27 21:55:36.727 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34288 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:36.732 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:36.734 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:36.735 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34289 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:36.742 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:36.743 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:37.958 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:37.959 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:38.151 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:38.152 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:38.152 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:38.152 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:38.152 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:38.152 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:38.152 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:38.153 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:38.154 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:38.154 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:38.154 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:38.154 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:38.154 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:38.155 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:38.485 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.333 seconds (process running for 4.145)
+2026-02-27 21:55:38.491 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.328 seconds (process running for 4.122)
+2026-02-27 21:55:41.029 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34310 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:41.035 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:41.037 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:41.062 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34309 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:55:41.066 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:55:41.067 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:55:42.207 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:42.217 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:55:42.392 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:42.392 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:42.392 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:42.393 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:42.393 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:42.393 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:42.393 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:42.412 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:55:42.412 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:55:42.412 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:55:42.412 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:55:42.412 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:55:42.412 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:55:42.413 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:55:42.745 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.235 seconds (process running for 4.007)
+2026-02-27 21:55:42.745 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.238 seconds (process running for 3.998)
+2026-02-27 21:55:42.874 DEBUG [main] com.hsbc.ci.engine.core.cli.VersionCommand - Version command executed
+2026-02-27 21:56:51.763 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 34967 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:56:51.768 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:56:51.769 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:56:52.893 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:56:53.077 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:56:53.077 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:56:53.077 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:56:53.077 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:56:53.077 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:56:53.077 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:56:53.078 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:56:53.385 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.134 seconds (process running for 3.744)
+2026-02-27 21:56:55.413 INFO  [ForkJoinPool-1-worker-2] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.hsbc.ci.engine.core.config.ConfigurationLoaderTest]: ConfigurationLoaderTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-02-27 21:56:55.592 INFO  [ForkJoinPool-1-worker-2] org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.hsbc.ci.engine.core.CiEngineApplication for test class com.hsbc.ci.engine.core.config.ConfigurationLoaderTest
+2026-02-27 21:56:56.262 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Starting ConfigurationLoaderTest using Java 25.0.2 with PID 34933 (started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:56:56.269 DEBUG [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:56:56.278 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:56:57.297 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:56:57.338 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:56:57.338 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:56:57.338 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:56:57.339 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:56:57.339 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:56:57.339 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:56:57.339 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:56:57.531 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Started ConfigurationLoaderTest in 1.831 seconds (process running for 9.836)
+2026-02-27 21:56:57.742 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35042 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:56:57.747 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:56:57.750 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:56:58.498 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-02-27 21:56:58.501 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-02-27 21:56:58.503 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-02-27 21:56:58.505 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-02-27 21:56:58.505 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-02-27 21:56:58.505 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-02-27 21:56:58.949 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:56:59.147 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:56:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:56:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:56:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:56:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:56:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:56:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:56:59.478 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.289 seconds (process running for 4.089)
+2026-02-27 21:56:59.611 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Running pipeline: sample-pipeline
+2026-02-27 21:56:59.612 INFO  [main] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - DRY-RUN: Would execute pipeline: sample-pipeline
+2026-02-27 21:57:00.913 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35066 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:00.918 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:00.919 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:02.028 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35099 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:02.033 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:02.034 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:02.066 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:02.263 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:02.264 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:02.264 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:02.264 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:02.264 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:02.264 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:02.264 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:02.618 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.262 seconds (process running for 4.023)
+2026-02-27 21:57:03.210 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:03.408 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:03.408 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:03.408 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:03.408 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:03.408 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:03.408 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:03.408 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:03.749 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.275 seconds (process running for 4.025)
+2026-02-27 21:57:03.884 INFO  [main] com.hsbc.ci.engine.core.cli.ConfigCommand - Config command not yet implemented
+2026-02-27 21:57:05.199 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35126 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:05.203 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:05.204 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:06.317 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35159 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:06.322 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:06.324 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:06.380 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:06.578 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:06.579 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:06.579 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:06.579 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:06.579 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:06.579 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:06.580 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:06.917 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.269 seconds (process running for 4.011)
+2026-02-27 21:57:07.494 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:07.679 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:07.680 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:07.680 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:07.680 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:07.680 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:07.680 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:07.680 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:08.020 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.237 seconds (process running for 4.005)
+2026-02-27 21:57:09.512 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35166 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:09.518 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:09.519 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:10.602 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35185 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:10.606 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:10.607 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:10.685 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:10.884 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:10.885 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:10.885 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:10.885 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:10.885 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:10.886 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:10.886 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:11.228 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.269 seconds (process running for 4.027)
+2026-02-27 21:57:11.738 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:11.928 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:11.929 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:11.929 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:11.929 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:11.929 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:11.929 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:11.929 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:12.267 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.212 seconds (process running for 3.973)
+2026-02-27 21:57:12.404 DEBUG [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Listed 3 pipelines
+2026-02-27 21:57:13.791 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35228 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:13.795 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:13.796 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:14.835 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35233 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:14.840 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:14.842 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:14.959 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:15.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:15.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:15.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:15.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:15.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:15.149 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:15.149 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:15.485 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.248 seconds (process running for 3.991)
+2026-02-27 21:57:15.612 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Executing deployment: type=kubernetes, namespace=test-ns, image=myapp:v1, cluster=default
+2026-02-27 21:57:15.613 INFO  [main] com.hsbc.ci.engine.core.stages.DeployStage -   Deploying to: kubernetes namespace: test-ns
+2026-02-27 21:57:15.628 WARN  [main] com.hsbc.ci.engine.core.stages.DeployStage - kubectl not found: Cannot run program "kubectl": Exec failed, error: 2 (No such file or directory) 
+2026-02-27 21:57:15.628 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Deployment completed successfully result: Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.
+2026-02-27 21:57:16.009 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:16.201 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:16.202 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:16.202 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:16.202 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:16.202 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:16.202 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:16.202 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:16.542 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.259 seconds (process running for 4.016)
+2026-02-27 21:57:16.674 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Executing deployment: type=ecs, namespace=default, image=myapp:latest, cluster=prod-cluster
+2026-02-27 21:57:16.675 INFO  [main] com.hsbc.ci.engine.core.stages.DeployStage -   Deploying to: ecs namespace: default
+2026-02-27 21:57:16.690 WARN  [main] com.hsbc.ci.engine.core.stages.DeployStage - AWS CLI not found: Cannot run program "aws": Exec failed, error: 2 (No such file or directory) 
+2026-02-27 21:57:16.690 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Deployment completed successfully result: ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.
+2026-02-27 21:57:18.058 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35284 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:18.063 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:18.065 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:19.136 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35288 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:19.140 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:19.141 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:19.240 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:19.428 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:19.429 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:19.429 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:19.429 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:19.430 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:19.430 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:19.430 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:19.763 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.278 seconds (process running for 4.025)
+2026-02-27 21:57:19.888 DEBUG [main] com.hsbc.ci.engine.core.cli.plugin.PluginCommand - Listed plugins: stages=0, gates=0, notifiers=0
+2026-02-27 21:57:20.309 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:20.512 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:20.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:20.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:20.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:20.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:20.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:20.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:20.849 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.26 seconds (process running for 4.038)
+2026-02-27 21:57:22.321 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35346 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:22.325 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:22.326 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:23.410 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35349 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:23.415 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:23.416 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:23.503 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:23.698 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:23.699 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:23.699 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:23.699 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:23.699 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:23.699 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:23.699 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:24.037 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.282 seconds (process running for 4.04)
+2026-02-27 21:57:24.166 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Validating pipeline: sample-pipeline
+2026-02-27 21:57:24.167 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Pipeline validation passed: sample-pipeline
+2026-02-27 21:57:24.615 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:24.806 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:24.807 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:24.807 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:24.807 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:24.807 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:24.807 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:24.808 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:25.150 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.308 seconds (process running for 4.059)
+2026-02-27 21:57:26.480 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 35404 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-02-27 21:57:26.484 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-02-27 21:57:26.486 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 21:57:27.555 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 3 pipelines
+2026-02-27 21:57:27.742 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: security-scan
+2026-02-27 21:57:27.742 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: sonarqube
+2026-02-27 21:57:27.742 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: slack-notify
+2026-02-27 21:57:27.742 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: email-notify
+2026-02-27 21:57:27.743 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-02-27 21:57:27.743 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-02-27 21:57:27.743 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 0 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-02-27 21:57:28.089 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.106 seconds (process running for 3.814)
+2026-02-27 21:57:28.213 DEBUG [main] com.hsbc.ci.engine.core.cli.VersionCommand - Version command executed

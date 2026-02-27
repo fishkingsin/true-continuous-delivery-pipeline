@@ -56,7 +56,7 @@ public class CiEngineCommand implements CommandLineRunner, ExitCodeGenerator {
     public void run(String... args) throws Exception {
         RootCommand root = new RootCommand();
         CommandLine commandLine = new CommandLine(root)
-            .addSubcommand("pipeline", new PipelineCommand())
+            .addSubcommand("pipeline", context.getBean(PipelineCommand.class))
             .addSubcommand("stage", new StageCommand())
             .addSubcommand("deploy", context.getBean(DeployCommand.class))
             .addSubcommand("promote", new PromoteCommand())
