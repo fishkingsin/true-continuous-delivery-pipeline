@@ -1,0 +1,93 @@
+name: build-test-scan-containerize
+version: "1.0"
+description: Build → Parallel (unit-test, security-scan, code-quality, containerize) with fail-fast
+
+stages:
+  # ============================================
+  # STAGE 1: BUILD (runs first)
+  # ============================================
+  - name: build
+    type: build
+    config:
+      build-tool: maven
+      goals: clean package
+      jvm-opts: "-Xmx2g -Xms512m"
+    timeout: 600
+
+  # ============================================
+  # STAGE 2: PARALLEL EXECUTION (fail-fast)
+  # All stages depend on 'build' completing
+  # If ANY stage fails, pipeline stops immediately
+  # ============================================
+  
+  # --- Parallel Stage A: Unit Tests ---
+  - name: unit-tests
+    type: test
+    dependsOn:
+      - build
+    config:
+      test-type: unit
+      coverage-min: 80
+    timeout: 300
+    gates:
+      - type: test-passed
+      - type: coverage-threshold
+        minCoverage: 80
+
+  # --- Parallel Stage B: Security Scan ---
+  - name: security-scan
+    type: plugin:security-scan
+    dependsOn:
+      - build
+    config:
+      scanners:
+        - sast
+        - dast
+        - foss
+      threshold: HIGH
+    timeout: 300
+    gates:
+      - type: security-scan
+        maxCritical: 0
+        maxHigh: 5
+
+  # --- Parallel Stage C: Code Quality ---
+  - name: code-quality
+    type: plugin:sonarqube
+    dependsOn:
+      - build
+    config:
+      quality-gate: CD_PIPELINE
+      fail-on-quality-gate: true
+    timeout: 300
+    gates:
+      - type: sonarqube
+        minCoverage: 80
+        maxBlocker: 0
+        maxCritical: 0
+        maxMajor: 10
+
+  # --- Parallel Stage D: Containerize ---
+  - name: containerize
+    type: containerize
+    dependsOn:
+      - build
+    config:
+      dockerfile: Dockerfile
+      registry: docker.io/myorg
+      tags: 
+        - "${GIT_COMMIT}"
+        - "latest"
+      push: true
+    timeout: 300
+
+# ============================================
+# FAIL-FAST BEHAVIOR
+# ============================================
+# The orchestrator implements fail-fast:
+# - Stages run in parallel when dependencies are met
+# - If ANY parallel stage fails:
+#   1. Pipeline immediately returns failure
+#   2. All running stages are cancelled
+#   3. Remaining stages are not executed
+# ============================================

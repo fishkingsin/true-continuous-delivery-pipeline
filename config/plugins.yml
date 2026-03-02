@@ -1,8 +1,8 @@
 plugins:
   security-scan:
-    class: com.hsbc.ci.plugins.SecurityScanPlugin
+    class: com.hsbc.ci.engine.core.plugin.gates.SecurityScanGate
     version: "1.0.0"
-    enabled: false
+    enabled: true
     config:
       scanners:
         - sast
@@ -12,26 +12,26 @@ plugins:
       api-url: ${SECURITY_API_URL}
       
   sonarqube:
-    class: com.hsbc.ci.plugins.SonarQubePlugin
+    class: com.hsbc.ci.engine.core.plugin.gates.SonarQubeGate
     version: "1.0.0"
-    enabled: false
+    enabled: true
     config:
       url: https://sonar.company.com
       token: ${SONAR_TOKEN}
       project-key: ${SONAR_PROJECT_KEY}
       
   slack-notify:
-    class: com.hsbc.ci.plugins.SlackNotifier
+    class: com.hsbc.ci.engine.core.plugin.notifiers.SlackNotifier
     version: "1.0.0"
-    enabled: false
+    enabled: true
     config:
       webhook: ${SLACK_WEBHOOK}
       channel: "#ci-deployments"
       
   email-notify:
-    class: com.hsbc.ci.plugins.EmailNotifier
+    class: com.hsbc.ci.engine.core.plugin.notifiers.EmailNotifier
     version: "1.0.0"
-    enabled: false
+    enabled: true
     config:
       smtp-host: smtp.company.com
       smtp-port: 587

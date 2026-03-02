@@ -28,6 +28,7 @@ stages:
     type: plugin:security-scan
     config:
       scanners:
+        - cont
         - sast
         - foss
       threshold: HIGH
