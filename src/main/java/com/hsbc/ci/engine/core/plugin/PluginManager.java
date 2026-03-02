@@ -1,5 +1,7 @@
 package com.hsbc.ci.engine.core.plugin;
 
+import com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage;
+import com.hsbc.ci.engine.core.plugin.stages.SonarQubeStage;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,10 +52,11 @@ public class PluginManager {
 
     @SuppressWarnings("unchecked")
     private void loadPluginConfig() throws Exception {
+        loadBuiltInPlugins();
+        
         Path configFile = Paths.get("config/plugins.yml");
         if (!Files.exists(configFile)) {
             log.info("No plugins.yml found, using built-in plugins only");
-            loadBuiltInPlugins();
             return;
         }
 
@@ -62,7 +65,6 @@ public class PluginManager {
         Map<String, Object> plugins = (Map<String, Object>) config.get("plugins");
 
         if (plugins == null) {
-            loadBuiltInPlugins();
             return;
         }
 
@@ -81,6 +83,9 @@ public class PluginManager {
 
     private void loadBuiltInPlugins() {
         log.info("Using built-in plugins only");
+        
+        registerStage(new SecurityScanStage());
+        registerStage(new SonarQubeStage());
     }
 
     public void registerStage(StagePlugin plugin) {

@@ -58,10 +58,10 @@ description: "Task list for CI Engine Core CLI implementation"
 
 ### Tests for User Story 1
 
-- [ ] T018 [P] [US1] Add unit test for sequential stage execution in tests/orchestrator/PipelineOrchestratorTest.java
-- [ ] T019 [P] [US1] Add unit test for parallel stage execution (multiple stages with dependsOn)
-- [ ] T020 [US1] Add unit test for fail-fast behavior when stage fails
-- [ ] T021 [US1] Add unit test for stage retry logic in tests/stages/StageExecutorTest.java
+- [X] T018 [P] [US1] Add unit test for sequential stage execution in tests/orchestrator/PipelineOrchestratorTest.java
+- [X] T019 [P] [US1] Add unit test for parallel stage execution (multiple stages with dependsOn)
+- [X] T020 [US1] Add unit test for fail-fast behavior when stage fails
+- [X] T021 [US1] Add unit test for stage retry logic in tests/stages/StageExecutorTest.java
 
 **Checkpoint**: At this point, User Story 1 should be fully functional - pipelines can execute with parallel execution, progress reporting, proper exit codes, and fail-fast behavior
 
@@ -84,9 +84,9 @@ description: "Task list for CI Engine Core CLI implementation"
 
 ### Tests for User Story 2
 
-- [ ] T028 [P] [US2] Add unit test for PipelineValidator in tests/config/PipelineValidatorTest.java
-- [ ] T029 [P] [US2] Add unit test for invalid stage type detection
-- [ ] T030 [US2] Add unit test for missing dependency reference detection
+- [X] T028 [P] [US2] Add unit test for PipelineValidator in tests/config/PipelineValidatorTest.java
+- [X] T029 [P] [US2] Add unit test for invalid stage type detection
+- [X] T030 [US2] Add unit test for missing dependency reference detection
 
 **Checkpoint**: At this point, User Story 2 is complete - pipeline definitions can be validated without execution
 
@@ -138,9 +138,9 @@ description: "Task list for CI Engine Core CLI implementation"
 - [X] T047 [P] Add npm build execution in BuildStage.java
 - [X] T048 [P] Add dotnet build execution in BuildStage.java
 - [X] T049 Implement git clone in CloneCommand.java with configurable depth and target
-- [ ] T049a Implement artifact registry configuration loading from ci-engine.yml in src/main/java/com/hsbc/ci/engine/core/config/ArtifactRegistryConfig.java
-- [ ] T049b Add Docker registry support for artifact storage
-- [ ] T049c Add S3 artifact storage configuration
+- [X] T049a Implement artifact registry configuration loading from ci-engine.yml in src/main/java/com/hsbc/ci/engine/core/config/ArtifactRegistryConfig.java
+- [X] T049b Add Docker registry support for artifact storage
+- [X] T049c Add S3 artifact storage configuration
 
 ---
 

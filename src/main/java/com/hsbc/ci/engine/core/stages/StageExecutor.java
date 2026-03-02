@@ -1,10 +1,11 @@
 package com.hsbc.ci.engine.core.stages;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.hsbc.ci.engine.core.model.PipelineContext;
 import com.hsbc.ci.engine.core.model.StageResult;
+import com.hsbc.ci.engine.core.plugin.PluginManager;
+import com.hsbc.ci.engine.core.plugin.StagePlugin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +26,9 @@ public class StageExecutor {
 
     @Autowired
     private DeployStage deployStage;
+
+    @Autowired
+    private PluginManager pluginManager;
 
     public StageExecutor() {
     }
@@ -67,6 +71,14 @@ public class StageExecutor {
     }
 
     private Stage getStage(String type) {
+        if (type == null) {
+            return null;
+        }
+
+        if (type.startsWith("plugin:")) {
+            return getPluginStage(type);
+        }
+
         return switch (type) {
             case "build" -> buildStage;
             case "test" -> testStage;
@@ -74,5 +86,43 @@ public class StageExecutor {
             case "deploy" -> deployStage;
             default -> null;
         };
+    }
+
+    private Stage getPluginStage(String pluginType) {
+        String pluginName = pluginType.substring("plugin:".length());
+        StagePlugin plugin = pluginManager.getStagePlugin(pluginName);
+        
+        if (plugin == null) {
+            return null;
+        }
+        
+        return new PluginStageWrapper(pluginName, plugin);
+    }
+
+    private static class PluginStageWrapper implements Stage {
+        private final String pluginName;
+        private final StagePlugin plugin;
+
+        public PluginStageWrapper(String pluginName, StagePlugin plugin) {
+            this.pluginName = pluginName;
+            this.plugin = plugin;
+        }
+
+        @Override
+        public String execute(Map<String, Object> config, PipelineContext context) {
+            Map<String, Object> pluginContext = new HashMap<>();
+            if (context != null) {
+                pluginContext.put("pipelineName", context.getPipelineName());
+                pluginContext.put("environment", context.getEnvironment());
+                pluginContext.put("variables", context.getVariables());
+            }
+            
+            try {
+                plugin.execute(config, pluginContext);
+                return "[SUCCESS] Plugin executed: " + pluginName;
+            } catch (Exception e) {
+                return "[ERROR] Plugin execution failed: " + pluginName + " - " + e.getMessage();
+            }
+        }
     }
 }
