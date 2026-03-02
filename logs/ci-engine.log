@@ -6591,3 +6591,556 @@ Technical Debt: 2h 15m
 2026-03-02 19:26:52.829 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Running security scanner: foss
 2026-03-02 19:26:52.829 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Security scan completed: [sast] Static Analysis Security Testing - CRITICAL: 0, HIGH: 2, MEDIUM: 5, LOW: 10 [SUCCESS]; [foss] Free and Open Source Software scan - Vulnerabilities: 3, Outdated: 5 [SUCCESS]
 2026-03-02 19:26:52.829 ERROR [main] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Pipeline failed: build-test-scan-containerize
+2026-03-02 22:24:11.308 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 78888 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:24:11.314 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:24:11.316 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:24:12.500 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:24:12.676 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:24:12.717 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:24:12.718 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:24:12.719 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:24:12.728 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:24:12.728 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:24:12.728 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:24:12.728 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:24:12.728 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:24:12.729 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:24:12.729 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:24:12.735 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:12.735 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:12.735 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:12.736 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:12.736 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:12.736 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:12.736 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:12.736 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:12.976 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.198 seconds (process running for 3.845)
+2026-03-02 22:24:13.100 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Running pipeline: build-test-scan-containerize
+2026-03-02 22:24:13.101 INFO  [main] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Executing pipeline: build-test-scan-containerize
+2026-03-02 22:24:13.102 INFO  [main] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Running pre-stage plugin: sonarqube
+2026-03-02 22:24:13.102 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SonarQubeStage - Executing SonarQube analysis (legacy method)
+2026-03-02 22:24:13.102 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SonarQubeStage - SonarQube analysis completed: SonarQube Code Analysis Report
+=================================
+Lines of Code: 15,432
+Coverage: 82.5%
+Quality Gate: PASSED
+Bugs: 0
+Code Smells: 12
+Vulnerabilities: 0
+Security Hotspots: 3
+Technical Debt: 2h 15m
+
+[SUCCESS] SonarQube analysis passed
+2026-03-02 22:24:13.102 INFO  [main] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Running pre-stage plugin: security-scan
+2026-03-02 22:24:13.102 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Executing security scan (legacy method)
+2026-03-02 22:24:13.102 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Running security scanner: sast
+2026-03-02 22:24:13.102 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Running security scanner: foss
+2026-03-02 22:24:13.103 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Security scan completed: [sast] Static Analysis Security Testing - CRITICAL: 0, HIGH: 2, MEDIUM: 5, LOW: 10 [SUCCESS]; [foss] Free and Open Source Software scan - Vulnerabilities: 3, Outdated: 5 [SUCCESS]
+2026-03-02 22:24:13.108 INFO  [pool-2-thread-3] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Executing stage: security-scan (type: plugin:security-scan)
+2026-03-02 22:24:13.129 INFO  [pool-2-thread-2] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Executing stage: unit-tests (type: test)
+2026-03-02 22:24:13.129 INFO  [pool-2-thread-5] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Executing stage: containerize (type: containerize)
+2026-03-02 22:24:13.107 INFO  [pool-2-thread-1] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Executing stage: build (type: build)
+2026-03-02 22:24:13.108 INFO  [pool-2-thread-4] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Executing stage: code-quality (type: plugin:sonarqube)
+2026-03-02 22:24:13.147 INFO  [pool-2-thread-5] com.hsbc.ci.engine.core.stages.ContainerizeStage - Building Docker image: docker.io/myorg/myapp:latest
+2026-03-02 22:24:13.154 INFO  [pool-2-thread-4] com.hsbc.ci.engine.core.plugin.stages.SonarQubeStage - Executing SonarQube analysis (legacy method)
+2026-03-02 22:24:13.154 INFO  [pool-2-thread-3] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Executing security scan (legacy method)
+2026-03-02 22:24:13.155 INFO  [pool-2-thread-4] com.hsbc.ci.engine.core.plugin.stages.SonarQubeStage - SonarQube analysis completed: SonarQube Code Analysis Report
+=================================
+Lines of Code: 15,432
+Coverage: 82.5%
+Quality Gate: PASSED
+Bugs: 0
+Code Smells: 12
+Vulnerabilities: 0
+Security Hotspots: 3
+Technical Debt: 2h 15m
+
+[SUCCESS] SonarQube analysis passed
+2026-03-02 22:24:13.158 INFO  [pool-2-thread-3] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Running security scanner: sast
+2026-03-02 22:24:13.159 INFO  [pool-2-thread-4] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Stage completed: code-quality (19ms)
+2026-03-02 22:24:13.160 INFO  [pool-2-thread-3] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Running security scanner: dast
+2026-03-02 22:24:13.160 INFO  [pool-2-thread-1] com.hsbc.ci.engine.core.stages.BuildStage - Running: mvn clean package -DskipTests
+2026-03-02 22:24:13.160 INFO  [pool-2-thread-3] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Running security scanner: foss
+2026-03-02 22:24:13.161 INFO  [pool-2-thread-3] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Security scan completed: [sast] Static Analysis Security Testing - CRITICAL: 0, HIGH: 2, MEDIUM: 5, LOW: 10 [SUCCESS]; [dast] Dynamic Analysis Security Testing - CRITICAL: 0, HIGH: 1, MEDIUM: 3 [SUCCESS]; [foss] Free and Open Source Software scan - Vulnerabilities: 3, Outdated: 5 [SUCCESS]
+2026-03-02 22:24:13.162 INFO  [pool-2-thread-3] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Stage completed: security-scan (24ms)
+2026-03-02 22:24:13.174 WARN  [pool-2-thread-5] com.hsbc.ci.engine.core.stages.ContainerizeStage - Docker not available or build failed: Cannot run program "docker": Exec failed, error: 2 (No such file or directory) , using placeholder
+2026-03-02 22:24:13.175 INFO  [pool-2-thread-5] com.hsbc.ci.engine.core.stages.ContainerizeStage - Using placeholder containerization (Docker not available)
+2026-03-02 22:24:13.175 INFO  [pool-2-thread-5] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Stage completed: containerize (37ms)
+2026-03-02 22:24:28.556 INFO  [pool-2-thread-1] com.hsbc.ci.engine.core.stages.BuildStage - Build completed successfully with maven
+2026-03-02 22:24:28.557 INFO  [pool-2-thread-1] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Stage completed: build (15418ms)
+2026-03-02 22:24:31.134 ERROR [ForkJoinPool-1-worker-1] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Pipeline not found: unknown-pipeline-that-does-not-exist
+2026-03-02 22:24:31.146 ERROR [ForkJoinPool-1-worker-1] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Pipeline not found: sample-pipeline
+2026-03-02 22:24:33.401 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79116 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:24:33.406 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:24:33.408 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:24:34.568 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:24:34.752 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:24:34.794 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:24:34.795 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:24:34.796 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:24:34.800 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:24:34.800 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:24:34.800 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:24:34.800 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:24:34.800 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:24:34.800 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:24:34.800 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:24:34.807 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:34.807 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:34.807 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:34.808 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:34.808 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:34.808 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:34.808 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:34.808 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:35.057 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.16 seconds (process running for 3.773)
+2026-03-02 22:24:35.494 INFO  [ForkJoinPool-1-worker-2] org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.hsbc.ci.engine.core.config.ConfigurationLoaderTest]: ConfigurationLoaderTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-02 22:24:35.711 INFO  [ForkJoinPool-1-worker-2] org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.hsbc.ci.engine.core.CiEngineApplication for test class com.hsbc.ci.engine.core.config.ConfigurationLoaderTest
+2026-03-02 22:24:36.896 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Starting ConfigurationLoaderTest using Java 25.0.2 with PID 79066 (started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:24:36.899 DEBUG [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:24:36.901 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:24:37.684 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79169 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:24:37.690 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:24:37.691 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:24:38.303 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:24:38.329 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:24:38.333 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:24:38.335 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:24:38.358 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:24:38.359 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:24:38.359 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:24:38.360 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:24:38.360 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:24:38.360 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:24:38.360 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:24:38.452 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:24:38.455 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:38.456 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:38.457 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:38.458 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:38.459 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:38.459 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:38.459 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:38.459 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:38.643 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.ConfigurationLoaderTest - Started ConfigurationLoaderTest in 2.41 seconds (process running for 11.071)
+2026-03-02 22:24:38.990 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:24:39.194 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:24:39.239 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:24:39.241 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:24:39.242 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:24:39.252 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:24:39.252 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:24:39.252 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:24:39.252 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:24:39.252 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:24:39.253 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:24:39.253 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:24:39.261 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:39.261 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:39.262 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:39.262 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:39.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:39.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:39.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:39.262 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:39.546 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.42 seconds (process running for 4.197)
+2026-03-02 22:24:40.385 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.config.EnvironmentLoader - Applied environment overrides for: dev
+2026-03-02 22:24:40.445 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: mvn clean package -DskipTests
+2026-03-02 22:24:45.932 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed with exit code: 1
+2026-03-02 22:24:45.933 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Build failed with exit code: 1
+2026-03-02 22:24:45.935 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Unsupported build tool: unsupported-tool
+2026-03-02 22:24:45.937 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: mvn clean package -DskipTests
+2026-03-02 22:24:48.382 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed with exit code: 1
+2026-03-02 22:24:48.383 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Build failed with exit code: 1
+2026-03-02 22:24:48.385 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: gradle build -x test
+2026-03-02 22:24:48.400 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Cannot run program "gradle" (in directory "/tmp"): Exec failed, error: 2 (No such file or directory) 
+2026-03-02 22:24:48.402 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: gradle clean build -x test
+2026-03-02 22:24:48.416 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Cannot run program "gradle" (in directory "/tmp"): Exec failed, error: 2 (No such file or directory) 
+2026-03-02 22:24:48.418 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: mvn clean package -DskipTests
+2026-03-02 22:24:50.763 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed with exit code: 1
+2026-03-02 22:24:50.764 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Build failed with exit code: 1
+2026-03-02 22:24:50.766 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: dotnet publish
+2026-03-02 22:24:51.418 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed with exit code: 1
+2026-03-02 22:24:51.418 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Build failed with exit code: 1
+2026-03-02 22:24:51.422 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: dotnet build
+2026-03-02 22:24:51.427 ERROR [main] com.hsbc.ci.engine.core.cli.checkout.CloneCommand - Clone failed: Git clone failed with exit code: 128
+2026-03-02 22:24:51.936 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed with exit code: 1
+2026-03-02 22:24:51.936 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Build failed with exit code: 1
+2026-03-02 22:24:51.940 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: make all
+2026-03-02 22:24:51.987 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed with exit code: 2
+2026-03-02 22:24:51.988 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Build failed with exit code: 2
+2026-03-02 22:24:51.992 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: npm run build
+2026-03-02 22:24:52.178 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed with exit code: 254
+2026-03-02 22:24:52.179 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Build failed with exit code: 254
+2026-03-02 22:24:52.182 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: mvn clean compile -DskipTests
+2026-03-02 22:24:53.924 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79345 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:24:53.930 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:24:53.931 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:24:54.800 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed with exit code: 1
+2026-03-02 22:24:54.801 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Build failed with exit code: 1
+2026-03-02 22:24:54.806 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Running: npm run build
+2026-03-02 22:24:54.943 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed with exit code: 254
+2026-03-02 22:24:54.943 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.stages.BuildStage - Build failed: Build failed with exit code: 254
+2026-03-02 22:24:54.992 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:54.992 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:54.993 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:54.993 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:54.993 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:54.993 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:54.993 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:54.993 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:54.994 ERROR [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Gate failed: test-passed - Test stage 'test' failed: Failed
+2026-03-02 22:24:55.000 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.000 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.001 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.001 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.002 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.002 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.002 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.002 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.004 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.004 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.004 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.005 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.005 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.005 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.005 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.005 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.005 WARN  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Gate not found: unknown-gate
+2026-03-02 22:24:55.006 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.007 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.007 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.007 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.008 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.008 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.008 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.008 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.009 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.010 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.010 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.010 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.010 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.010 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.010 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.010 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.011 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.011 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.011 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.011 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.011 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.011 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.011 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.011 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.018 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.019 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.019 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.019 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.019 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.019 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.019 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.020 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.022 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.023 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.025 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.026 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.026 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.027 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.027 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.028 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.030 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.031 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.031 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.031 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.034 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.036 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.036 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.036 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.038 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.038 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.038 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.038 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.038 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.038 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.038 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.038 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.071 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.073 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-03-02 22:24:55.076 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:24:55.077 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:24:55.077 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.077 INFO  [ForkJoinPool-1-worker-2] com.hsbc.ci.engine.core.plugin.PluginManager - Registered notifier plugin: slack-notify
+2026-03-02 22:24:55.229 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:24:55.444 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:24:55.494 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:24:55.495 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:24:55.496 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:24:55.506 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:24:55.507 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:24:55.507 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:24:55.507 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:24:55.507 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:24:55.508 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:24:55.508 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:24:55.515 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:55.515 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:55.515 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:55.516 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:55.516 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:55.516 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:55.516 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:55.516 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:55.804 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.436 seconds (process running for 4.251)
+2026-03-02 22:24:55.960 DEBUG [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Listed 4 pipelines
+2026-03-02 22:24:57.575 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79415 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:24:57.582 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:24:57.584 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:24:58.470 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79416 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:24:58.476 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:24:58.478 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:24:58.878 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:24:59.093 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:24:59.141 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:24:59.143 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:24:59.144 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:24:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:24:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:24:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:24:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:24:59.148 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:24:59.149 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:24:59.149 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:24:59.156 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:24:59.156 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:24:59.156 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:24:59.157 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:24:59.157 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:24:59.157 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:24:59.157 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:24:59.157 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:24:59.440 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.43 seconds (process running for 4.26)
+2026-03-02 22:24:59.578 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Executing deployment: type=kubernetes, namespace=test-ns, image=myapp:v1, cluster=default
+2026-03-02 22:24:59.578 INFO  [main] com.hsbc.ci.engine.core.stages.DeployStage -   Deploying to: kubernetes namespace: test-ns
+2026-03-02 22:24:59.592 WARN  [main] com.hsbc.ci.engine.core.stages.DeployStage - kubectl not found: Cannot run program "kubectl": Exec failed, error: 2 (No such file or directory) 
+2026-03-02 22:24:59.593 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Deployment completed successfully result: Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.
+2026-03-02 22:24:59.752 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:24:59.967 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:25:00.016 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:25:00.017 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:25:00.018 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:25:00.022 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:25:00.022 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:25:00.022 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:25:00.022 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:25:00.022 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:25:00.023 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:25:00.023 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:25:00.030 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:25:00.030 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:25:00.031 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:25:00.031 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:25:00.031 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:25:00.031 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:25:00.031 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:25:00.031 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:25:00.335 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.424 seconds (process running for 4.263)
+2026-03-02 22:25:02.071 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79525 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:25:02.076 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:25:02.078 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:25:02.959 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79526 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:25:02.964 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:25:02.966 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:25:03.403 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:25:03.617 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:25:03.666 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:25:03.667 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:25:03.668 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:25:03.677 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:25:03.677 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:25:03.677 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:25:03.677 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:25:03.677 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:25:03.678 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:25:03.679 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:25:03.685 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:25:03.685 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:25:03.685 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:25:03.686 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:25:03.686 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:25:03.686 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:25:03.686 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:25:03.686 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:25:04.004 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.509 seconds (process running for 4.301)
+2026-03-02 22:25:04.146 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Executing deployment: type=ecs, namespace=default, image=myapp:latest, cluster=prod-cluster
+2026-03-02 22:25:04.147 INFO  [main] com.hsbc.ci.engine.core.stages.DeployStage -   Deploying to: ecs namespace: default
+2026-03-02 22:25:04.162 WARN  [main] com.hsbc.ci.engine.core.stages.DeployStage - AWS CLI not found: Cannot run program "aws": Exec failed, error: 2 (No such file or directory) 
+2026-03-02 22:25:04.162 INFO  [main] com.hsbc.ci.engine.core.cli.DeployCommand - Deployment completed successfully result: ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.
+2026-03-02 22:25:04.279 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:25:04.479 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:25:04.525 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:25:04.527 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:25:04.527 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:25:04.537 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:25:04.537 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:25:04.537 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:25:04.537 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:25:04.538 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:25:04.538 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:25:04.538 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:25:04.544 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:25:04.545 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:25:04.545 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:25:04.546 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:25:04.546 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:25:04.546 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:25:04.546 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:25:04.546 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:25:04.864 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.444 seconds (process running for 4.276)
+2026-03-02 22:25:05.004 DEBUG [main] com.hsbc.ci.engine.core.cli.VersionCommand - Version command executed
+2026-03-02 22:25:06.603 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79563 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:25:06.608 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:25:06.611 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:25:07.456 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79572 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:25:07.462 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:25:07.463 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:25:07.901 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:25:08.102 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:25:08.149 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:25:08.150 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:25:08.151 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:25:08.161 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:25:08.162 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:25:08.162 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:25:08.162 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:25:08.162 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:25:08.162 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:25:08.163 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:25:08.170 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:25:08.170 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:25:08.170 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:25:08.171 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:25:08.171 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:25:08.171 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:25:08.171 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:25:08.171 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:25:08.449 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.39 seconds (process running for 4.176)
+2026-03-02 22:25:08.749 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:25:08.962 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:25:09.010 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:25:09.011 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:25:09.012 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:25:09.016 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:25:09.016 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:25:09.016 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:25:09.017 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:25:09.017 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:25:09.017 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:25:09.018 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:25:09.025 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:25:09.025 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:25:09.026 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:25:09.026 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:25:09.026 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:25:09.026 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:25:09.026 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:25:09.026 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:25:09.339 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.444 seconds (process running for 4.23)
+2026-03-02 22:25:09.481 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Validating pipeline: sample-pipeline
+2026-03-02 22:25:09.482 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Pipeline validation passed: sample-pipeline
+2026-03-02 22:25:11.047 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79607 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:25:11.052 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:25:11.054 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:25:11.944 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79623 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:25:11.949 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:25:11.951 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:25:12.359 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:25:12.565 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:25:12.614 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:25:12.616 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:25:12.616 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:25:12.631 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:25:12.631 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:25:12.631 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:25:12.631 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:25:12.632 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:25:12.632 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:25:12.633 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:25:12.640 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:25:12.640 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:25:12.640 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:25:12.640 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:25:12.641 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:25:12.641 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:25:12.641 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:25:12.641 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:25:12.936 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.45 seconds (process running for 4.218)
+2026-03-02 22:25:13.248 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:25:13.452 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:25:13.501 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:25:13.503 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:25:13.503 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:25:13.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:25:13.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:25:13.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:25:13.513 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:25:13.514 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:25:13.514 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:25:13.515 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:25:13.520 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:25:13.521 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:25:13.521 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:25:13.522 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:25:13.522 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:25:13.522 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:25:13.522 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:25:13.522 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:25:13.820 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.435 seconds (process running for 4.231)
+2026-03-02 22:25:13.960 DEBUG [main] com.hsbc.ci.engine.core.cli.plugin.PluginCommand - Listed plugins: stages=2, gates=4, notifiers=0
+2026-03-02 22:25:15.502 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Starting CiEngineApplication v1.0.0-SNAPSHOT using Java 25.0.2 with PID 79653 (/Users/james/Development/true-continuous-delivery-pipeline/target/ci-engine-core-1.0.0-SNAPSHOT.jar started by james in /Users/james/Development/true-continuous-delivery-pipeline)
+2026-03-02 22:25:15.507 DEBUG [main] com.hsbc.ci.engine.core.CiEngineApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-03-02 22:25:15.508 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-02 22:25:16.704 INFO  [main] com.hsbc.ci.engine.core.config.ConfigurationLoader - Loaded 4 pipelines
+2026-03-02 22:25:16.898 INFO  [main] com.hsbc.ci.engine.core.config.EnvironmentLoader - Loaded 0 environments
+2026-03-02 22:25:16.938 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Using built-in plugins only
+2026-03-02 22:25:16.940 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: security-scan
+2026-03-02 22:25:16.940 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered stage plugin: sonarqube
+2026-03-02 22:25:16.949 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: security-scan
+2026-03-02 22:25:16.949 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: sonarqube
+2026-03-02 22:25:16.949 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: slack-notify
+2026-03-02 22:25:16.949 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registering plugin: email-notify
+2026-03-02 22:25:16.950 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: performance-test
+2026-03-02 22:25:16.950 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Plugin disabled: chaos-engineering
+2026-03-02 22:25:16.951 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Loaded 2 stage plugins, 0 gate plugins, 0 notifier plugins
+2026-03-02 22:25:16.956 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: test-passed
+2026-03-02 22:25:16.958 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: coverage-threshold
+2026-03-02 22:25:16.958 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: security-scan
+2026-03-02 22:25:16.958 INFO  [main] com.hsbc.ci.engine.core.plugin.GateExecutor - Registered gate: sonarqube
+2026-03-02 22:25:16.958 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: test-passed
+2026-03-02 22:25:16.959 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: coverage-threshold
+2026-03-02 22:25:16.959 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: security-scan
+2026-03-02 22:25:16.959 INFO  [main] com.hsbc.ci.engine.core.plugin.PluginManager - Registered gate plugin: sonarqube
+2026-03-02 22:25:17.234 INFO  [main] com.hsbc.ci.engine.core.CiEngineApplication - Started CiEngineApplication in 2.247 seconds (process running for 3.964)
+2026-03-02 22:25:17.367 INFO  [main] com.hsbc.ci.engine.core.cli.PipelineCommand - Running pipeline: sample-pipeline
+2026-03-02 22:25:17.368 INFO  [main] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - DRY-RUN: Would execute pipeline: sample-pipeline
+2026-03-02 22:25:17.591 ERROR [pool-2-thread-2] com.hsbc.ci.engine.core.stages.TestStage - Tests failed with exit code: 1
+2026-03-02 22:25:17.592 ERROR [pool-2-thread-2] com.hsbc.ci.engine.core.stages.TestStage - Tests failed: Tests failed with exit code: 1
+2026-03-02 22:25:17.592 ERROR [pool-2-thread-2] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Stage failed: unit-tests
+2026-03-02 22:25:17.593 INFO  [main] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Running post-stage plugin: sonarqube
+2026-03-02 22:25:17.593 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SonarQubeStage - Executing SonarQube analysis (legacy method)
+2026-03-02 22:25:17.593 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SonarQubeStage - SonarQube analysis completed: SonarQube Code Analysis Report
+=================================
+Lines of Code: 15,432
+Coverage: 82.5%
+Quality Gate: PASSED
+Bugs: 0
+Code Smells: 12
+Vulnerabilities: 0
+Security Hotspots: 3
+Technical Debt: 2h 15m
+
+[SUCCESS] SonarQube analysis passed
+2026-03-02 22:25:17.594 INFO  [main] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Running post-stage plugin: security-scan
+2026-03-02 22:25:17.594 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Executing security scan (legacy method)
+2026-03-02 22:25:17.595 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Running security scanner: sast
+2026-03-02 22:25:17.595 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Running security scanner: foss
+2026-03-02 22:25:17.595 INFO  [main] com.hsbc.ci.engine.core.plugin.stages.SecurityScanStage - Security scan completed: [sast] Static Analysis Security Testing - CRITICAL: 0, HIGH: 2, MEDIUM: 5, LOW: 10 [SUCCESS]; [foss] Free and Open Source Software scan - Vulnerabilities: 3, Outdated: 5 [SUCCESS]
+2026-03-02 22:25:17.596 ERROR [main] com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator - Pipeline failed: build-test-scan-containerize

@@ -37,6 +37,8 @@ public class PluginManager {
         Path pluginDir = Paths.get(pluginPath);
         if (!Files.exists(pluginDir)) {
             log.info("Plugin directory not found: {}", pluginDir);
+            // use default 
+            // loadBuiltInPlugins(); ?
             return;
         }
 
