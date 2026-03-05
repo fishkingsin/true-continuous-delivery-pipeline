@@ -2,6 +2,44 @@
 
 **Date**: 2026-02-28
 
+## Prerequisites
+
+Before running the CLI, ensure you have:
+
+```bash
+# Required directories (must exist)
+mkdir -p plugins              # For external plugins
+mkdir -p config/pipelines     # For pipeline definitions
+mkdir -p config/environments # For environment configs
+
+# Required tools (for actual execution)
+- Java 21+           # Run: java -version
+- Docker             # For containerize stage (optional - uses placeholder if not available)
+- Maven 3.8+        # For Maven builds (optional)
+- Gradle             # For Gradle builds (optional)
+- kubectl            # For Kubernetes deployments (optional)
+- AWS CLI            # For ECS deployments (optional)
+
+# Environment variables (optional)
+export CI_GIT_TOKEN=your_github_token
+export CI_DOCKER_USERNAME=your_docker_user
+export CI_DOCKER_PASSWORD=your_docker_pass
+```
+
+### Plugins Folder
+
+The `plugins/` directory is used for external plugin JARs. 
+
+- **Empty**: Built-in plugins (security-scan, sonarqube, slack, email) will still work
+- **With JARs**: Place compiled plugin JARs here for custom extensions
+
+```bash
+# Example: Place custom plugin
+# cp my-custom-plugin.jar plugins/
+
+# Built-in plugins work without any JARs in this folder
+```
+
 ## Installation
 
 ```bash

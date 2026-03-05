@@ -128,12 +128,12 @@ public class PipelineCommand implements Runnable {
             }
 
             PipelineResult result = pipelineOrchestrator.execute(context);
+            String output = PipelineOutputFormatter.formatPipelineOutput(name, env, context.getStageResults(), !result.isSuccess());
+            System.out.println(output);
 
             if (result.isSuccess()) {
-                printPipelineOutput(name, env, context.getStageResults(), false);
                 System.exit(EXIT_SUCCESS);
             } else {
-                printPipelineOutput(name, env, context.getStageResults(), true);
                 System.out.println("[FAILED] Pipeline failed: " + result.getError());
                 System.exit(EXIT_FAILURE);
             }
@@ -146,45 +146,6 @@ public class PipelineCommand implements Runnable {
             System.err.println("[ERROR] Pipeline failed: " + e.getMessage());
             System.exit(EXIT_FAILURE);
         }
-    }
-
-    private void printPipelineOutput(String pipelineName, String environment, Map<String, StageResult> stageResults, boolean failed) {
-        System.out.println("[INFO] Loading pipeline: " + pipelineName);
-        System.out.println("[INFO] Environment: " + (environment != null ? environment : "default"));
-        System.out.println();
-
-        int width = 62;
-        String title = "CD Pipeline: " + pipelineName;
-        
-        System.out.println("╔" + "═".repeat(width - 2) + "╗");
-        System.out.printf("║  %-" + (width - 6) + "s║\n", title);
-        System.out.println("╠" + "═".repeat(width - 2) + "╣");
-
-        if (stageResults != null && !stageResults.isEmpty()) {
-            for (Map.Entry<String, StageResult> entry : stageResults.entrySet()) {
-                String stageName = entry.getKey();
-                StageResult sr = entry.getValue();
-                
-                String statusIcon = sr.isSuccess() ? "✓" : "✗";
-                String progress = sr.isSuccess() ? "100%" : "0%";
-                String progressBar = sr.isSuccess() ? "████████████" : "............";
-                
-                System.out.printf("║  %s %-" + (width - 18) + "s [%s] %5s   ║\n", 
-                    statusIcon, stageName, progressBar, progress);
-            }
-        } else {
-            System.out.printf("║  %-" + (width - 4) + "s║\n", "(No stages executed)");
-        }
-
-        System.out.println("╠" + "═".repeat(width - 2) + "╣");
-        
-        if (failed) {
-            System.out.printf("║  [FAILED] Pipeline execution failed                   ║\n");
-        } else {
-            System.out.printf("║  [SUCCESS] Pipeline completed successfully              ║\n");
-        }
-        
-        System.out.println("╚" + "═".repeat(width - 2) + "╝");
     }
 
     private void doValidate() {
