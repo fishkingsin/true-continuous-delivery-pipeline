@@ -110,7 +110,7 @@ description: "Task list for CI Engine Core CLI implementation"
 ### Tests for User Story 3
 
 - [X] T037 [P] [US3] Add unit test for EnvironmentLoader in tests/config/EnvironmentLoaderTest.java
-- [ ] T038 [US3] Add integration test for environment override in pipeline execution
+- [X] T038 [US3] Add integration test for environment override in pipeline execution
 
 **Checkpoint**: At this point, User Story 3 is complete - environments can be configured and used in pipeline execution
 

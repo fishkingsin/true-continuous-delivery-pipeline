@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hsbc.ci.engine.core.config.ConfigurationLoader;
+import com.hsbc.ci.engine.core.config.EnvironmentLoader;
 import com.hsbc.ci.engine.core.model.PipelineContext;
 import com.hsbc.ci.engine.core.model.PipelineDefinition;
 import com.hsbc.ci.engine.core.model.PipelineResult;
@@ -32,20 +33,23 @@ public class PipelineOrchestrator {
     private final StageExecutor stageExecutor;
     private final PluginManager pluginManager;
     private final PipelineValidator pipelineValidator;
+    private final EnvironmentLoader environmentLoader;
 
     public PipelineOrchestrator() {
-        this(null, null, null, null);
+        this(null, null, null, null, null);
     }
 
     @Autowired
     public PipelineOrchestrator(ConfigurationLoader configLoader, 
                                 StageExecutor stageExecutor,
                                 PluginManager pluginManager,
-                                PipelineValidator pipelineValidator) {
+                                PipelineValidator pipelineValidator,
+                                EnvironmentLoader environmentLoader) {
         this.configLoader = configLoader;
         this.stageExecutor = stageExecutor;
         this.pluginManager = pluginManager;
         this.pipelineValidator = pipelineValidator != null ? pipelineValidator : new PipelineValidator();
+        this.environmentLoader = environmentLoader;
     }
 
     public PipelineResult execute(PipelineContext context) {
@@ -63,6 +67,8 @@ public class PipelineOrchestrator {
             log.error("Pipeline validation failed: {}", validationResult.getErrors());
             return PipelineResult.failed("Pipeline validation failed: " + String.join(", ", validationResult.getErrors()));
         }
+
+        applyEnvironmentOverrides(context);
 
         if (context.isDryRun()) {
             log.info("DRY-RUN: Would execute pipeline: {}", pipelineName);
@@ -227,6 +233,12 @@ public class PipelineOrchestrator {
                 log.info("Running pre-stage plugin: {}", pluginName);
                 plugin.execute(new HashMap<>(), new HashMap<>());
             }
+        }
+    }
+
+    private void applyEnvironmentOverrides(PipelineContext context) {
+        if (environmentLoader != null) {
+            environmentLoader.applyEnvironmentOverrides(context);
         }
     }
 

@@ -98,31 +98,4 @@ public class StageExecutor {
         
         return new PluginStageWrapper(pluginName, plugin);
     }
-
-    private static class PluginStageWrapper implements Stage {
-        private final String pluginName;
-        private final StagePlugin plugin;
-
-        public PluginStageWrapper(String pluginName, StagePlugin plugin) {
-            this.pluginName = pluginName;
-            this.plugin = plugin;
-        }
-
-        @Override
-        public String execute(Map<String, Object> config, PipelineContext context) {
-            Map<String, Object> pluginContext = new HashMap<>();
-            if (context != null) {
-                pluginContext.put("pipelineName", context.getPipelineName());
-                pluginContext.put("environment", context.getEnvironment());
-                pluginContext.put("variables", context.getVariables());
-            }
-            
-            try {
-                plugin.execute(config, pluginContext);
-                return "[SUCCESS] Plugin executed: " + pluginName;
-            } catch (Exception e) {
-                return "[ERROR] Plugin execution failed: " + pluginName + " - " + e.getMessage();
-            }
-        }
-    }
 }

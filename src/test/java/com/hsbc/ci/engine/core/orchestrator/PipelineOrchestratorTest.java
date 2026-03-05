@@ -1,6 +1,7 @@
 package com.hsbc.ci.engine.core.orchestrator;
 
 import com.hsbc.ci.engine.core.config.ConfigurationLoader;
+import com.hsbc.ci.engine.core.config.EnvironmentLoader;
 import com.hsbc.ci.engine.core.config.PipelineValidator;
 import com.hsbc.ci.engine.core.model.PipelineContext;
 import com.hsbc.ci.engine.core.model.PipelineResult;
@@ -26,13 +27,26 @@ class PipelineOrchestratorTest {
     }
 
     @Test
+    void orchestrator_hasEnvironmentLoaderField() {
+        boolean hasEnvLoader = false;
+        for (var field : PipelineOrchestrator.class.getDeclaredFields()) {
+            if (field.getType().equals(EnvironmentLoader.class)) {
+                hasEnvLoader = true;
+                break;
+            }
+        }
+        assertTrue(hasEnvLoader, "PipelineOrchestrator should have EnvironmentLoader field");
+    }
+
+    @Test
     void orchestrator_canBeConstructedWithDependencies() {
         ConfigurationLoader cl = new ConfigurationLoader();
         StageExecutor se = new StageExecutor();
         PluginManager pm = new PluginManager();
         PipelineValidator pv = new PipelineValidator();
+        EnvironmentLoader el = new EnvironmentLoader();
         
-        PipelineOrchestrator orch = new PipelineOrchestrator(cl, se, pm, pv);
+        PipelineOrchestrator orch = new PipelineOrchestrator(cl, se, pm, pv, el);
         
         assertNotNull(orch);
     }
@@ -43,7 +57,9 @@ class PipelineOrchestratorTest {
         StageExecutor stageExecutor = new StageExecutor();
         PluginManager pluginManager = new PluginManager();
         
-        PipelineOrchestrator orchestrator = new PipelineOrchestrator(configLoader, stageExecutor, pluginManager, new PipelineValidator());
+        PipelineOrchestrator orchestrator = new PipelineOrchestrator(
+            configLoader, stageExecutor, pluginManager, 
+            new PipelineValidator(), new EnvironmentLoader());
 
         PipelineContext context = PipelineContext.builder()
             .pipelineName("unknown-pipeline-that-does-not-exist")
@@ -61,7 +77,9 @@ class PipelineOrchestratorTest {
         StageExecutor stageExecutor = new StageExecutor();
         PluginManager pluginManager = new PluginManager();
         
-        PipelineOrchestrator orchestrator = new PipelineOrchestrator(configLoader, stageExecutor, pluginManager, new PipelineValidator());
+        PipelineOrchestrator orchestrator = new PipelineOrchestrator(
+            configLoader, stageExecutor, pluginManager, 
+            new PipelineValidator(), new EnvironmentLoader());
 
         PipelineContext context = PipelineContext.builder()
             .pipelineName("sample-pipeline")
