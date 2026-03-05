@@ -24,23 +24,28 @@ import java.util.stream.Collectors;
 public class PipelineOrchestrator {
 
     private static final Logger log = LoggerFactory.getLogger(PipelineOrchestrator.class);
+    private static final int POLLING_INTERVAL_MS = 100;
+    private static final int MIN_THREAD_POOL_SIZE = 2;
+    private static final int DEFAULT_THREAD_POOL_MULTIPLIER = 1;
 
-    private ConfigurationLoader configLoader;
-    private StageExecutor stageExecutor;
-    private PluginManager pluginManager;
-    private PipelineValidator pipelineValidator;
+    private final ConfigurationLoader configLoader;
+    private final StageExecutor stageExecutor;
+    private final PluginManager pluginManager;
+    private final PipelineValidator pipelineValidator;
 
     public PipelineOrchestrator() {
+        this(null, null, null, null);
     }
 
     @Autowired
     public PipelineOrchestrator(ConfigurationLoader configLoader, 
                                 StageExecutor stageExecutor,
-                                PluginManager pluginManager) {
+                                PluginManager pluginManager,
+                                PipelineValidator pipelineValidator) {
         this.configLoader = configLoader;
         this.stageExecutor = stageExecutor;
         this.pluginManager = pluginManager;
-        this.pipelineValidator = new PipelineValidator();
+        this.pipelineValidator = pipelineValidator != null ? pipelineValidator : new PipelineValidator();
     }
 
     public PipelineResult execute(PipelineContext context) {
@@ -94,7 +99,7 @@ public class PipelineOrchestrator {
         Map<String, CompletableFuture<Void>> runningStages = new ConcurrentHashMap<>();
         
         ExecutorService executor = Executors.newFixedThreadPool(
-            Math.max(2, Runtime.getRuntime().availableProcessors())
+            Math.max(MIN_THREAD_POOL_SIZE, Runtime.getRuntime().availableProcessors() * DEFAULT_THREAD_POOL_MULTIPLIER)
         );
 
         try {
@@ -128,11 +133,11 @@ public class PipelineOrchestrator {
                 while (it.hasNext()) {
                     Map.Entry<String, CompletableFuture<Void>> entry = it.next();
                     try {
-                        entry.getValue().get(100, TimeUnit.MILLISECONDS);
+                        entry.getValue().get(POLLING_INTERVAL_MS, TimeUnit.MILLISECONDS);
                         completedStages.add(entry.getKey());
                         it.remove();
                     } catch (TimeoutException e) {
-                        // Stage still running
+                        log.trace("Stage {} still running", entry.getKey());
                     } catch (ExecutionException e) {
                         log.error("Stage execution failed: {}", entry.getKey(), e.getCause());
                         return PipelineResult.failed("Stage failed: " + entry.getKey() + " - " + e.getCause().getMessage());

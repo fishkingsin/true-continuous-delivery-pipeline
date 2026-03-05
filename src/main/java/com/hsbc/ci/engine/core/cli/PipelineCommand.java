@@ -24,15 +24,18 @@ public class PipelineCommand implements Runnable {
 
     private static final Logger log = LoggerFactory.getLogger(PipelineCommand.class);
 
-    private static final int EXIT_SUCCESS = 0;
-    private static final int EXIT_FAILURE = 1;
-    private static final int EXIT_INVALID_DEFINITION = 2;
+    public static final int EXIT_SUCCESS = 0;
+    public static final int EXIT_FAILURE = 1;
+    public static final int EXIT_INVALID_DEFINITION = 2;
 
     @Autowired
     private ConfigurationLoader configurationLoader;
 
     @Autowired
     private PipelineOrchestrator pipelineOrchestrator;
+
+    @Autowired
+    private PipelineValidator pipelineValidator;
 
     @Option(names = {"--list"}, description = "List pipelines")
     private boolean list;
@@ -61,18 +64,32 @@ public class PipelineCommand implements Runnable {
     @Option(names = {"--verbose"}, description = "Verbose output")
     private boolean verbose;
 
+    private int exitCode = EXIT_SUCCESS;
+
+    public int getExitCode() {
+        return exitCode;
+    }
+
     @Override
     public void run() {
-        if (list) {
-            doList();
-        } else if (run) {
-            doRun();
-        } else if (validate) {
-            doValidate();
-        } else if (status) {
-            doStatus();
-        } else {
-            System.out.println("Use: pipeline --list | pipeline --run --name <name> | pipeline --validate --name <name> | pipeline --status --name <name>");
+        try {
+            if (list) {
+                doList();
+            } else if (run) {
+                doRun();
+            } else if (validate) {
+                doValidate();
+            } else if (status) {
+                doStatus();
+            } else {
+                System.out.println("Use: pipeline --list | pipeline --run --name <name> | pipeline --validate --name <name> | pipeline --status --name <name>");
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println("[ERROR] " + e.getMessage());
+            exitCode = EXIT_INVALID_DEFINITION;
+        } catch (PipelineExecutionException e) {
+            System.err.println("[ERROR] " + e.getMessage());
+            exitCode = EXIT_FAILURE;
         }
     }
 
@@ -94,11 +111,8 @@ public class PipelineCommand implements Runnable {
     }
 
     private void doRun() {
-        if (name == null) {
-            System.out.println("Error: --name required");
-            System.exit(EXIT_FAILURE);
-        }
-
+        validatePipelineName();
+        
         try {
             if (verbose) {
                 System.out.println(">>> Starting pipeline: " + name);
@@ -132,41 +146,49 @@ public class PipelineCommand implements Runnable {
             System.out.println(output);
 
             if (result.isSuccess()) {
-                System.exit(EXIT_SUCCESS);
+                System.out.println("[SUCCESS] Pipeline completed: " + name);
+                exitCode = EXIT_SUCCESS;
             } else {
                 System.out.println("[FAILED] Pipeline failed: " + result.getError());
-                System.exit(EXIT_FAILURE);
+                exitCode = EXIT_FAILURE;
             }
         } catch (Exception e) {
             log.error("Pipeline execution failed: {}", e.getMessage());
-            if (e.getMessage() != null && e.getMessage().contains("validation")) {
-                System.err.println("[ERROR] Invalid pipeline definition: " + e.getMessage());
-                System.exit(EXIT_INVALID_DEFINITION);
-            }
-            System.err.println("[ERROR] Pipeline failed: " + e.getMessage());
-            System.exit(EXIT_FAILURE);
+            handleExecutionError(e);
+        }
+    }
+
+    private void validatePipelineName() {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("--name is required");
+        }
+    }
+
+    private void handleExecutionError(Exception e) {
+        String message = e.getMessage();
+        if (message != null && message.contains("validation")) {
+            System.err.println("[ERROR] Invalid pipeline definition: " + message);
+            exitCode = EXIT_INVALID_DEFINITION;
+        } else {
+            System.err.println("[ERROR] Pipeline failed: " + message);
+            exitCode = EXIT_FAILURE;
         }
     }
 
     private void doValidate() {
-        if (name == null) {
-            System.out.println("Error: --name required");
-            System.exit(EXIT_FAILURE);
-        }
-
+        validatePipelineName();
+        
         log.info("Validating pipeline: {}", name);
 
         var pipeline = configurationLoader.getPipeline(name);
 
         if (pipeline == null) {
-            System.out.println("[ERROR] Pipeline not found: " + name);
-            System.exit(EXIT_INVALID_DEFINITION);
+            throw new IllegalArgumentException("Pipeline not found: " + name);
         }
 
         try {
             PipelineDefinition def = configurationLoader.loadPipelineDefinition(name);
-            PipelineValidator validator = new PipelineValidator();
-            PipelineValidator.ValidationResult validationResult = validator.validate(def);
+            PipelineValidator.ValidationResult validationResult = pipelineValidator.validate(def);
             
             if (!validationResult.isValid()) {
                 System.out.println("[INFO] Validating: pipelines/" + name + ".yml");
@@ -174,7 +196,8 @@ public class PipelineCommand implements Runnable {
                     System.out.println("  ✗ " + error);
                 }
                 System.out.println("[FAILED] Configuration is invalid");
-                System.exit(EXIT_INVALID_DEFINITION);
+                exitCode = EXIT_INVALID_DEFINITION;
+                return;
             }
             
             System.out.println("[INFO] Validating: pipelines/" + name + ".yml");
@@ -185,21 +208,16 @@ public class PipelineCommand implements Runnable {
 
             log.info("Pipeline validation passed: {}", name);
         } catch (Exception e) {
-            System.out.println("[ERROR] Validation error: " + e.getMessage());
-            System.exit(EXIT_INVALID_DEFINITION);
+            throw new PipelineExecutionException("Validation error: " + e.getMessage());
         }
     }
 
     private void doStatus() {
-        if (name == null) {
-            System.out.println("Error: --name required");
-            System.exit(EXIT_FAILURE);
-        }
-
+        validatePipelineName();
+        
         var pipeline = configurationLoader.getPipeline(name);
         if (pipeline == null) {
-            System.out.println("[ERROR] Pipeline not found: " + name);
-            System.exit(EXIT_INVALID_DEFINITION);
+            throw new IllegalArgumentException("Pipeline not found: " + name);
         }
 
         System.out.println("Pipeline: " + name);
@@ -222,6 +240,12 @@ public class PipelineCommand implements Runnable {
         if (pipeline.containsKey("environments")) {
             var envs = (java.util.List<?>) pipeline.get("environments");
             System.out.println("\nEnvironments: " + String.join(", ", envs.stream().map(Object::toString).toList()));
+        }
+    }
+
+    public static class PipelineExecutionException extends RuntimeException {
+        public PipelineExecutionException(String message) {
+            super(message);
         }
     }
 }

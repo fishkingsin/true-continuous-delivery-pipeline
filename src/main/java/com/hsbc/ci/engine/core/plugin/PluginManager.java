@@ -36,16 +36,16 @@ public class PluginManager {
     private void loadPlugins() {
         Path pluginDir = Paths.get(pluginPath);
         if (!Files.exists(pluginDir)) {
-            log.info("Plugin directory not found: {}", pluginDir);
-            // use default 
-            // loadBuiltInPlugins(); ?
+            log.info("Plugin directory not found: {}, using built-in plugins", pluginDir);
+            loadBuiltInPlugins();
             return;
         }
 
         try {
             loadPluginConfig();
         } catch (Exception e) {
-            log.warn("Failed to load plugin config: {}", e.getMessage());
+            log.error("Failed to load plugin config: {}, using built-in plugins", e.getMessage(), e);
+            loadBuiltInPlugins();
         }
 
         log.info("Loaded {} stage plugins, {} gate plugins, {} notifier plugins",

@@ -1,6 +1,7 @@
 package com.hsbc.ci.engine.core.orchestrator;
 
 import com.hsbc.ci.engine.core.config.ConfigurationLoader;
+import com.hsbc.ci.engine.core.config.PipelineValidator;
 import com.hsbc.ci.engine.core.model.PipelineContext;
 import com.hsbc.ci.engine.core.model.PipelineResult;
 import com.hsbc.ci.engine.core.model.StageDefinition;
@@ -29,8 +30,9 @@ class PipelineOrchestratorTest {
         ConfigurationLoader cl = new ConfigurationLoader();
         StageExecutor se = new StageExecutor();
         PluginManager pm = new PluginManager();
+        PipelineValidator pv = new PipelineValidator();
         
-        PipelineOrchestrator orch = new PipelineOrchestrator(cl, se, pm);
+        PipelineOrchestrator orch = new PipelineOrchestrator(cl, se, pm, pv);
         
         assertNotNull(orch);
     }
@@ -41,7 +43,7 @@ class PipelineOrchestratorTest {
         StageExecutor stageExecutor = new StageExecutor();
         PluginManager pluginManager = new PluginManager();
         
-        PipelineOrchestrator orchestrator = new PipelineOrchestrator(configLoader, stageExecutor, pluginManager);
+        PipelineOrchestrator orchestrator = new PipelineOrchestrator(configLoader, stageExecutor, pluginManager, new PipelineValidator());
 
         PipelineContext context = PipelineContext.builder()
             .pipelineName("unknown-pipeline-that-does-not-exist")
@@ -59,7 +61,7 @@ class PipelineOrchestratorTest {
         StageExecutor stageExecutor = new StageExecutor();
         PluginManager pluginManager = new PluginManager();
         
-        PipelineOrchestrator orchestrator = new PipelineOrchestrator(configLoader, stageExecutor, pluginManager);
+        PipelineOrchestrator orchestrator = new PipelineOrchestrator(configLoader, stageExecutor, pluginManager, new PipelineValidator());
 
         PipelineContext context = PipelineContext.builder()
             .pipelineName("sample-pipeline")

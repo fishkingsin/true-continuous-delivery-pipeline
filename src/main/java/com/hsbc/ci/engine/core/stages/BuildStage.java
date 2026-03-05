@@ -14,42 +14,29 @@ public class BuildStage implements Stage {
 
     private static final Logger log = LoggerFactory.getLogger(BuildStage.class);
 
+    private static final String BUILDTOOL_MAVEN = "maven";
+    private static final String BUILDTOOL_GRADLE = "gradle";
+    private static final String BUILDTOOL_NPM = "npm";
+    private static final String BUILDTOOL_DOTNET = "dotnet";
+    private static final String BUILDTOOL_MAKE = "make";
+
+    private static final Set<String> SUPPORTED_BUILD_TOOLS = Set.of(
+        BUILDTOOL_MAVEN, "mvn",
+        BUILDTOOL_GRADLE,
+        BUILDTOOL_NPM, "node",
+        BUILDTOOL_DOTNET,
+        BUILDTOOL_MAKE
+    );
+
     @Override
     public String execute(Map<String, Object> config, PipelineContext context) {
-        String buildTool = (String) config.getOrDefault("build-tool", "maven");
-        String workingDir = (String) config.getOrDefault("working-dir", ".");
+        String buildTool = normalizeBuildTool((String) config.getOrDefault("build-tool", "maven"));
+        String workingDir = resolveWorkingDir(config, context);
         
-        String contextDir = context.getVariable("WORKING_DIRECTORY");
-        if (contextDir != null && !contextDir.isEmpty()) {
-            workingDir = contextDir;
-        }
-        
-        System.out.println("  Building with: " + buildTool + " in: " + workingDir);
+        log.info("Building with: {} in: {}", buildTool, workingDir);
         
         try {
-            int exitCode;
-            
-            switch (buildTool.toLowerCase()) {
-                case "maven":
-                case "mvn":
-                    exitCode = runMaven(workingDir, config);
-                    break;
-                case "gradle":
-                    exitCode = runGradle(workingDir, config);
-                    break;
-                case "npm":
-                case "node":
-                    exitCode = runNpm(workingDir, config);
-                    break;
-                case "dotnet":
-                    exitCode = runDotnet(workingDir, config);
-                    break;
-                case "make":
-                    exitCode = runMake(workingDir, config);
-                    break;
-                default:
-                    throw new RuntimeException("Unsupported build tool: " + buildTool);
-            }
+            int exitCode = executeBuild(buildTool, workingDir, config);
             
             if (exitCode != 0) {
                 log.error("Build failed with exit code: {}", exitCode);
@@ -65,96 +52,109 @@ public class BuildStage implements Stage {
         }
     }
 
+    private String normalizeBuildTool(String tool) {
+        return switch (tool.toLowerCase()) {
+            case "mvn" -> BUILDTOOL_MAVEN;
+            case "node" -> BUILDTOOL_NPM;
+            default -> tool.toLowerCase();
+        };
+    }
+
+    private String resolveWorkingDir(Map<String, Object> config, PipelineContext context) {
+        String workingDir = (String) config.getOrDefault("working-dir", ".");
+        String contextDir = context.getVariable("WORKING_DIRECTORY");
+        if (contextDir != null && !contextDir.isEmpty()) {
+            return contextDir;
+        }
+        return workingDir;
+    }
+
+    private int executeBuild(String buildTool, String workingDir, Map<String, Object> config) throws Exception {
+        return switch (buildTool) {
+            case BUILDTOOL_MAVEN -> runMaven(workingDir, config);
+            case BUILDTOOL_GRADLE -> runGradle(workingDir, config);
+            case BUILDTOOL_NPM -> runNpm(workingDir, config);
+            case BUILDTOOL_DOTNET -> runDotnet(workingDir, config);
+            case BUILDTOOL_MAKE -> runMake(workingDir, config);
+            default -> throw new RuntimeException("Unsupported build tool: " + buildTool);
+        };
+    }
+
     private int runMaven(String workingDir, Map<String, Object> config) throws Exception {
-        List<String> args = new ArrayList<>();
-        args.add("mvn");
-        
-        String goals = (String) config.getOrDefault("goals", "clean package");
-        args.addAll(Arrays.asList(goals.split(" ")));
-        
-        Boolean skipTests = (Boolean) config.getOrDefault("skipTests", true);
-        if (skipTests) {
-            args.add("-DskipTests");
-        }
-        
-        String options = (String) config.get("options");
-        if (options != null && !options.isEmpty()) {
-            args.addAll(Arrays.asList(options.split(" ")));
-        }
-        
+        List<String> args = buildCommand("mvn", config, 
+            () -> ((String) config.getOrDefault("goals", "clean package")).split(" "),
+            () -> {
+                List<String> opts = new ArrayList<>();
+                if (Boolean.TRUE.equals(config.getOrDefault("skipTests", true))) {
+                    opts.add("-DskipTests");
+                }
+                return opts;
+            });
         return runProcess(args, workingDir);
     }
 
     private int runGradle(String workingDir, Map<String, Object> config) throws Exception {
-        List<String> args = new ArrayList<>();
-        
         Path gradlew = Paths.get(workingDir, "gradlew");
-        if (Files.exists(gradlew)) {
-            args.add("./gradlew");
-        } else {
-            args.add("gradle");
-        }
+        String gradleCmd = Files.exists(gradlew) ? "./gradlew" : "gradle";
         
-        String tasks = (String) config.getOrDefault("tasks", "build");
-        args.addAll(Arrays.asList(tasks.split(" ")));
-        
-        Boolean skipTests = (Boolean) config.getOrDefault("skipTests", true);
-        if (skipTests) {
-            args.add("-x");
-            args.add("test");
-        }
-        
-        String options = (String) config.get("options");
-        if (options != null && !options.isEmpty()) {
-            args.addAll(Arrays.asList(options.split(" ")));
-        }
-        
+        List<String> args = buildCommand(gradleCmd, config,
+            () -> ((String) config.getOrDefault("tasks", "build")).split(" "),
+            () -> {
+                List<String> opts = new ArrayList<>();
+                if (Boolean.TRUE.equals(config.getOrDefault("skipTests", true))) {
+                    opts.add("-x");
+                    opts.add("test");
+                }
+                return opts;
+            });
         return runProcess(args, workingDir);
     }
 
     private int runNpm(String workingDir, Map<String, Object> config) throws Exception {
-        List<String> args = new ArrayList<>();
-        args.add("npm");
-        
-        String command = (String) config.getOrDefault("command", "run build");
-        args.addAll(Arrays.asList(command.split(" ")));
-        
-        String options = (String) config.get("options");
-        if (options != null && !options.isEmpty()) {
-            args.addAll(Arrays.asList(options.split(" ")));
-        }
-        
+        List<String> args = buildCommand("npm", config,
+            () -> ((String) config.getOrDefault("command", "run build")).split(" "),
+            ArrayList::new);
         return runProcess(args, workingDir);
     }
 
     private int runDotnet(String workingDir, Map<String, Object> config) throws Exception {
-        List<String> args = new ArrayList<>();
-        args.add("dotnet");
-        
-        String command = (String) config.getOrDefault("command", "build");
-        args.addAll(Arrays.asList(command.split(" ")));
-        
-        String options = (String) config.get("options");
-        if (options != null && !options.isEmpty()) {
-            args.addAll(Arrays.asList(options.split(" ")));
-        }
-        
+        List<String> args = buildCommand("dotnet", config,
+            () -> ((String) config.getOrDefault("command", "build")).split(" "),
+            ArrayList::new);
         return runProcess(args, workingDir);
     }
 
     private int runMake(String workingDir, Map<String, Object> config) throws Exception {
+        List<String> args = buildCommand("make", config,
+            () -> new String[]{(String) config.getOrDefault("target", "all")},
+            ArrayList::new);
+        return runProcess(args, workingDir);
+    }
+
+    @FunctionalInterface
+    private interface CommandExtractor {
+        String[] extract();
+    }
+
+    @FunctionalInterface
+    private interface OptionsExtractor {
+        List<String> extract();
+    }
+
+    private List<String> buildCommand(String baseCmd, Map<String, Object> config,
+                                       CommandExtractor commandExtractor,
+                                       OptionsExtractor optionsExtractor) {
         List<String> args = new ArrayList<>();
-        args.add("make");
-        
-        String target = (String) config.getOrDefault("target", "all");
-        args.add(target);
+        args.add(baseCmd);
+        args.addAll(Arrays.asList(commandExtractor.extract()));
+        args.addAll(optionsExtractor.extract());
         
         String options = (String) config.get("options");
-        if (options != null && !options.isEmpty()) {
+        if (options != null && !options.isBlank()) {
             args.addAll(Arrays.asList(options.split(" ")));
         }
         
-        return runProcess(args, workingDir);
+        return args;
     }
 
     private int runProcess(List<String> args, String workingDir) throws Exception {
@@ -162,14 +162,14 @@ public class BuildStage implements Stage {
         pb.directory(new File(workingDir));
         pb.redirectErrorStream(true);
         
-        log.info("Running: {}", String.join(" ", args));
+        log.debug("Running: {}", String.join(" ", args));
         
         Process process = pb.start();
         
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println("  " + line);
+                log.debug("  {}", line);
             }
         }
         

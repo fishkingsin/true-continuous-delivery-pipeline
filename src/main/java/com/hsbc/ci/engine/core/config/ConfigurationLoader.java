@@ -20,6 +20,7 @@ public class ConfigurationLoader {
 
     private static final Logger log = LoggerFactory.getLogger(ConfigurationLoader.class);
 
+    private final Yaml yaml = new Yaml();
     private String configPath = "config";
     private Map<String, Object> pipelineConfigs = new HashMap<>();
 
@@ -43,12 +44,11 @@ public class ConfigurationLoader {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(pipelineDir, "*.yml")) {
             for (Path file : stream) {
                 String name = file.getFileName().toString().replace(".yml", "");
-                Yaml yaml = new Yaml();
                 pipelineConfigs.put(name, yaml.load(Files.readString(file)));
             }
             log.info("Loaded {} pipelines", pipelineConfigs.size());
         } catch (IOException e) {
-            log.error("Failed to load pipelines: {}", e.getMessage());
+            log.error("Failed to load pipelines: {}", e.getMessage(), e);
         }
     }
 
@@ -68,7 +68,6 @@ public class ConfigurationLoader {
             if (!Files.exists(path)) {
                 throw new FileNotFoundException("Config file not found: " + filePath);
             }
-            Yaml yaml = new Yaml();
             return yaml.load(Files.readString(path));
         } catch (Exception e) {
             throw new RuntimeException("Failed to load YAML file: " + e.getMessage(), e);
