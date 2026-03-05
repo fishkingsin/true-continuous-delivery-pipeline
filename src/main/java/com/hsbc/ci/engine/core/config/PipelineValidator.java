@@ -2,12 +2,14 @@ package com.hsbc.ci.engine.core.config;
 
 import com.hsbc.ci.engine.core.model.PipelineDefinition;
 import com.hsbc.ci.engine.core.model.StageDefinition;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
+@Component
 public class PipelineValidator {
 
     private static final Set<String> VALID_STAGE_TYPES = Set.of(
