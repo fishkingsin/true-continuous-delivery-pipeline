@@ -50,7 +50,23 @@ public class SonarQubeStage implements StagePlugin {
         log.info("SonarQube analysis completed: {}", output);
     }
 
+    /**
+     * Placeholder method for SonarQube analysis.
+     * 
+     * In production, this should:
+     * 1. Connect to SonarQube server using configured URL and token
+     * 2. Run sonar-scanner CLI or use SonarQube API
+     * 3. Fetch analysis results (coverage, bugs, code smells, etc.)
+     * 4. Return actual metrics from the SonarQube server
+     * 
+     * Example integration:
+     * - Use sonar-scanner-maven-plugin for Maven projects
+     * - Use sonar-scanner CLI for other build tools
+     * - Call SonarQube REST API for detailed metrics
+     */
     private String runSonarAnalysis(Map<String, Object> context) {
+        // PLACEHOLDER: This returns mock data for testing purposes
+        // Replace with actual SonarQube integration in production
         return """
             SonarQube Code Analysis Report
             =================================
