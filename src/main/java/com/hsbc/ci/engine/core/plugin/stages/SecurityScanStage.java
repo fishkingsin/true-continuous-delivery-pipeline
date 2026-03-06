@@ -96,15 +96,47 @@ public class SecurityScanStage implements StagePlugin {
         return "Scanner not found: " + scanner;
     }
 
+    /**
+     * Placeholder for SAST (Static Application Security Testing) scanner.
+     * 
+     * In production, integrate with:
+     * - SonarQube
+     * - Semgrep
+     * - Checkmarx
+     * - Fortify
+     * - Snyk Code
+     */
     private String runSastScanner(Map<String, Object> config) {
+        // PLACEHOLDER: Returns mock data for testing
         return "[sast] Static Analysis Security Testing - CRITICAL: 0, HIGH: 2, MEDIUM: 5, LOW: 10 [SUCCESS]";
     }
 
+    /**
+     * Placeholder for DAST (Dynamic Application Security Testing) scanner.
+     * 
+     * In production, integrate with:
+     * - OWASP ZAP
+     * - Burp Suite
+     * - Acunetix
+     * - Nessus
+     */
     private String runDastScanner(Map<String, Object> config) {
+        // PLACEHOLDER: Returns mock data for testing
         return "[dast] Dynamic Analysis Security Testing - CRITICAL: 0, HIGH: 1, MEDIUM: 3 [SUCCESS]";
     }
 
+    /**
+     * Placeholder for FOSS (Free and Open Source Software) vulnerability scanner.
+     * 
+     * In production, integrate with:
+     * - OWASP Dependency-Check
+     * - Snyk
+     * - GitHub Dependabot
+     * - WhiteSource
+     * - FOSSA
+     */
     private String runFossScanner(Map<String, Object> config) {
+        // PLACEHOLDER: Returns mock data for testing
         return "[foss] Free and Open Source Software scan - Vulnerabilities: 3, Outdated: 5 [SUCCESS]";
     }
 }
