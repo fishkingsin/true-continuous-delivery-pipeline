@@ -72,7 +72,26 @@ public class ContainerizeStage implements Stage {
         return "Containerized: " + registry + "/" + image + ":" + tag;
     }
 
+    /**
+     * Placeholder for container build when Docker is not available.
+     * 
+     * In production, this should:
+     * 1. Build container image using Docker or BuildKit
+     * 2. Run security scans on the image (e.g., Trivy, Clair)
+     * 3. Scan for vulnerabilities in dependencies
+     * 4. Push to container registry (Docker Hub, ECR, GCR, ACR)
+     * 5. Generate and store image digest for traceability
+     * 6. Tag image with git commit SHA and version
+     * 
+     * Alternative container build tools:
+     * - BuildKit (buildx)
+     * - Kaniko (for Kubernetes)
+     * - Cloud Native Buildpacks
+     * - Jib (for Java applications)
+     */
     private String runPlaceholder(String registry, String image, String tag, String dockerfile) {
+        // PLACEHOLDER: Returns mock output when Docker is not available
+        // Replace with actual container build logic in production
         log.info("Using placeholder containerization (Docker not available)");
         
         String placeholderOutput = """
