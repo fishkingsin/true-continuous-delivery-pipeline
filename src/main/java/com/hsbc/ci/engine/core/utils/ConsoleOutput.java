@@ -1,4 +1,4 @@
-package com.hsbc.ci.engine.core.cli;
+package com.hsbc.ci.engine.core.utils;
 
 public interface ConsoleOutput {
     void print(String message);

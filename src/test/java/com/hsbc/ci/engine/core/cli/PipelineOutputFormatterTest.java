@@ -1,5 +1,6 @@
 package com.hsbc.ci.engine.core.cli;
 
+import com.hsbc.ci.engine.core.utils.PipelineOutputFormatter;
 import com.hsbc.ci.engine.core.model.StageResult;
 import org.junit.jupiter.api.Test;
 

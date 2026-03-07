@@ -1,4 +1,4 @@
-package com.hsbc.ci.engine.core.cli;
+package com.hsbc.ci.engine.core.utils;
 
 import com.hsbc.ci.engine.core.model.StageResult;
 import java.util.Map;

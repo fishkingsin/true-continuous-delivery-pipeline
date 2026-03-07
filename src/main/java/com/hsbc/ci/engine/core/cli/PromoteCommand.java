@@ -1,5 +1,6 @@
 package com.hsbc.ci.engine.core.cli;
 
+import com.hsbc.ci.engine.core.utils.ConsoleOutput;
 import com.hsbc.ci.engine.core.config.EnvironmentLoader;
 import com.hsbc.ci.engine.core.model.Environment;
 import com.hsbc.ci.engine.core.model.PromotionPolicy;

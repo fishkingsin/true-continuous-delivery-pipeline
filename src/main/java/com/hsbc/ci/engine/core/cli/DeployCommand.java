@@ -1,5 +1,6 @@
 package com.hsbc.ci.engine.core.cli;
 
+import com.hsbc.ci.engine.core.utils.ConsoleOutput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

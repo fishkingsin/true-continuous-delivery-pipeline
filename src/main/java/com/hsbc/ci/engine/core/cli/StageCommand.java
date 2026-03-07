@@ -11,6 +11,7 @@ public class StageCommand implements Runnable {
 
     @Override
     public void run() {
+        // TODO: not yet integrate
         log.info("Stage command not yet implemented");
         System.out.println("Stage command not yet implemented");
     }
