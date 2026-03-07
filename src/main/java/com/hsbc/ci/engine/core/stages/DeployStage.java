@@ -19,7 +19,7 @@ public class DeployStage implements Stage {
         String namespace = (String) config.getOrDefault("namespace", "default");
         String image = (String) config.getOrDefault("image", "myapp:latest");
 
-        log.info("  Deploying to: {} namespace: {}", targetType, namespace);
+        log.info("Deploying to: {} namespace: {}", targetType, namespace);
         
         try {
             if ("kubernetes".equals(targetType)) {
@@ -36,7 +36,7 @@ public class DeployStage implements Stage {
 
     private String deployToKubernetes(String namespace, String image, Map<String, Object> config) 
             throws Exception {
-        System.out.println("  [Kubernetes] Checking kubectl...");
+        log.debug("Checking kubectl availability...");
         
         try {
             ProcessBuilder pb = new ProcessBuilder("kubectl", "version", "--client");
@@ -46,17 +46,14 @@ public class DeployStage implements Stage {
             
             if (exitCode != 0) {
                 log.warn("kubectl not found - skipping deployment");
-                System.out.println("  [Kubernetes] kubectl not found - skipping deployment");
                 return "Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.";
             }
         } catch (IOException e) {
             log.warn("kubectl not found: {}", e.getMessage());
-            System.out.println("  [Kubernetes] kubectl not found - skipping deployment");
             return "Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.";
         }
         
         log.info("Would deploy to namespace: {} image: {}", namespace, image);
-        System.out.println("  [Kubernetes] Would deploy to namespace: " + namespace + " image: " + image);
         
         return "Kubernetes deployment completed: namespace=" + namespace + ", image=" + image;
     }
@@ -64,7 +61,7 @@ public class DeployStage implements Stage {
     private String deployToECS(Map<String, Object> config) throws Exception {
         String cluster = (String) config.getOrDefault("cluster", "default");
         
-        System.out.println("  [ECS] Checking AWS CLI...");
+        log.debug("Checking AWS CLI availability...");
         
         try {
             ProcessBuilder pb = new ProcessBuilder("aws", "--version");
@@ -74,17 +71,14 @@ public class DeployStage implements Stage {
             
             if (exitCode != 0) {
                 log.warn("AWS CLI not found - skipping deployment");
-                System.out.println("  [ECS] AWS CLI not found - skipping deployment");
                 return "ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.";
             }
         } catch (IOException e) {
             log.warn("AWS CLI not found: {}", e.getMessage());
-            System.out.println("  [ECS] AWS CLI not found - skipping deployment");
             return "ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.";
         }
         
         log.info("Would deploy to cluster: {}", cluster);
-        System.out.println("  [ECS] Would deploy to cluster: " + cluster);
         
         return "ECS deployment completed: cluster=" + cluster;
     }

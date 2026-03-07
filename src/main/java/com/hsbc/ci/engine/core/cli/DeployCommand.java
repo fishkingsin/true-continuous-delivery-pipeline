@@ -22,6 +22,9 @@ public class DeployCommand implements Runnable {
     @Autowired
     private DeployStage deployStage;
 
+    @Autowired
+    private ConsoleOutput console;
+
     @Option(names = {"-t", "--type"}, description = "Deployment type (kubernetes, ecs)", required = true)
     private String type;
 
@@ -33,9 +36,6 @@ public class DeployCommand implements Runnable {
 
     @Option(names = {"-c", "--cluster"}, description = "ECS cluster")
     private String cluster = "default";
-
-    @Option(names = {"--dry-run"}, description = "Dry run mode")
-    private boolean dryRun;
 
     @Override
     public void run() {
@@ -53,13 +53,12 @@ public class DeployCommand implements Runnable {
                 .pipelineName("cli-deploy")
                 .build());
 
-            System.out.println(result);
+            console.print(result);
             log.info("Deployment completed successfully result: {}", result);
 
         } catch (Exception e) {
             log.error("Deployment failed: {}", e.getMessage());
-            System.err.println("[ERROR] Deployment failed: " + e.getMessage());
-            System.exit(1);
+            console.printError("[ERROR] Deployment failed: " + e.getMessage());
         }
     }
 }

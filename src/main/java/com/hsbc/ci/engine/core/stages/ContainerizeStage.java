@@ -93,6 +93,7 @@ public class ContainerizeStage implements Stage {
         // PLACEHOLDER: Returns mock output when Docker is not available
         // Replace with actual container build logic in production
         log.info("Using placeholder containerization (Docker not available)");
+        log.info("Placeholder container build for image: {}/{}:{}", registry, image, tag);
         
         String placeholderOutput = """
             [PLACEHOLDER] Container Build
@@ -111,7 +112,6 @@ public class ContainerizeStage implements Stage {
             [SUCCESS] Placeholder containerize completed
             """.formatted(registry, image, tag, dockerfile, registry);
         
-        System.out.println(placeholderOutput);
         return placeholderOutput;
     }
 }
