@@ -12,11 +12,9 @@ import com.hsbc.ci.engine.core.model.PipelineContext;
 import com.hsbc.ci.engine.core.model.PipelineDefinition;
 import com.hsbc.ci.engine.core.orchestrator.PipelineOrchestrator;
 import com.hsbc.ci.engine.core.model.PipelineResult;
-import com.hsbc.ci.engine.core.model.StageResult;
 import com.hsbc.ci.engine.core.config.PipelineValidator;
 
 import java.util.Collection;
-import java.util.Map;
 
 @Command(name = "pipeline", description = "Manage pipelines")
 @Component
@@ -36,6 +34,9 @@ public class PipelineCommand implements Runnable {
 
     @Autowired
     private PipelineValidator pipelineValidator;
+
+    @Autowired
+    private ConsoleOutput console;
 
     @Option(names = {"--list"}, description = "List pipelines")
     private boolean list;
@@ -82,13 +83,13 @@ public class PipelineCommand implements Runnable {
             } else if (status) {
                 doStatus();
             } else {
-                System.out.println("Use: pipeline --list | pipeline --run --name <name> | pipeline --validate --name <name> | pipeline --status --name <name>");
+                console.print("Use: pipeline --list | pipeline --run --name <name> | pipeline --validate --name <name> | pipeline --status --name <name>");
             }
         } catch (IllegalArgumentException e) {
-            System.err.println("[ERROR] " + e.getMessage());
+            console.printError("[ERROR] " + e.getMessage());
             exitCode = EXIT_INVALID_DEFINITION;
         } catch (PipelineExecutionException e) {
-            System.err.println("[ERROR] " + e.getMessage());
+            console.printError("[ERROR] " + e.getMessage());
             exitCode = EXIT_FAILURE;
         }
     }
@@ -96,14 +97,14 @@ public class PipelineCommand implements Runnable {
     private void doList() {
         Collection<String> pipelines = configurationLoader.listPipelines();
 
-        System.out.println("Available Pipelines:");
-        System.out.println("");
+        console.print("Available Pipelines:");
+        console.print("");
 
         if (pipelines.isEmpty()) {
-            System.out.println("(No pipelines found. Add pipeline configs to config/pipelines/)");
+            console.print("(No pipelines found. Add pipeline configs to config/pipelines/)");
         } else {
             for (String pipeline : pipelines) {
-                System.out.println("  " + pipeline);
+                console.print("  " + pipeline);
             }
         }
 
@@ -115,7 +116,7 @@ public class PipelineCommand implements Runnable {
         
         try {
             if (verbose) {
-                System.out.println(">>> Starting pipeline: " + name);
+                console.print(">>> Starting pipeline: " + name);
             }
             log.info("Running pipeline: {}", name);
 
@@ -131,25 +132,25 @@ public class PipelineCommand implements Runnable {
                     if (parts.length == 2) {
                         context.addVariable(parts[0], parts[1]);
                         if (verbose) {
-                            System.out.println("    Variable: " + parts[0] + "=" + parts[1]);
+                            console.print("    Variable: " + parts[0] + "=" + parts[1]);
                         }
                     }
                 }
             }
 
             if (verbose) {
-                System.out.println(">>> Executing pipeline...");
+                console.print(">>> Executing pipeline...");
             }
 
             PipelineResult result = pipelineOrchestrator.execute(context);
             String output = PipelineOutputFormatter.formatPipelineOutput(name, env, context.getStageResults(), !result.isSuccess());
-            System.out.println(output);
+            console.print(output);
 
             if (result.isSuccess()) {
-                System.out.println("[SUCCESS] Pipeline completed: " + name);
+                console.print("[SUCCESS] Pipeline completed: " + name);
                 exitCode = EXIT_SUCCESS;
             } else {
-                System.out.println("[FAILED] Pipeline failed: " + result.getError());
+                console.print("[FAILED] Pipeline failed: " + result.getError());
                 exitCode = EXIT_FAILURE;
             }
         } catch (Exception e) {
@@ -167,10 +168,10 @@ public class PipelineCommand implements Runnable {
     private void handleExecutionError(Exception e) {
         String message = e.getMessage();
         if (message != null && message.contains("validation")) {
-            System.err.println("[ERROR] Invalid pipeline definition: " + message);
+            console.printError("[ERROR] Invalid pipeline definition: " + message);
             exitCode = EXIT_INVALID_DEFINITION;
         } else {
-            System.err.println("[ERROR] Pipeline failed: " + message);
+            console.printError("[ERROR] Pipeline failed: " + message);
             exitCode = EXIT_FAILURE;
         }
     }
@@ -191,20 +192,20 @@ public class PipelineCommand implements Runnable {
             PipelineValidator.ValidationResult validationResult = pipelineValidator.validate(def);
             
             if (!validationResult.isValid()) {
-                System.out.println("[INFO] Validating: pipelines/" + name + ".yml");
+                console.print("[INFO] Validating: pipelines/" + name + ".yml");
                 for (String error : validationResult.getErrors()) {
-                    System.out.println("  ✗ " + error);
+                    console.print("  ✗ " + error);
                 }
-                System.out.println("[FAILED] Configuration is invalid");
+                console.print("[FAILED] Configuration is invalid");
                 exitCode = EXIT_INVALID_DEFINITION;
                 return;
             }
             
-            System.out.println("[INFO] Validating: pipelines/" + name + ".yml");
-            System.out.println("[INFO] ✓ Pipeline syntax valid");
-            System.out.println("[INFO] ✓ All referenced stages exist");
-            System.out.println("[INFO] ✓ Environment references valid");
-            System.out.println("[SUCCESS] Configuration is valid");
+            console.print("[INFO] Validating: pipelines/" + name + ".yml");
+            console.print("[INFO] ✓ Pipeline syntax valid");
+            console.print("[INFO] ✓ All referenced stages exist");
+            console.print("[INFO] ✓ Environment references valid");
+            console.print("[SUCCESS] Configuration is valid");
 
             log.info("Pipeline validation passed: {}", name);
         } catch (Exception e) {
@@ -220,26 +221,26 @@ public class PipelineCommand implements Runnable {
             throw new IllegalArgumentException("Pipeline not found: " + name);
         }
 
-        System.out.println("Pipeline: " + name);
+        console.print("Pipeline: " + name);
         
         if (pipeline.containsKey("description")) {
-            System.out.println("Description: " + pipeline.get("description"));
+            console.print("Description: " + pipeline.get("description"));
         }
         
         if (pipeline.containsKey("stages")) {
             var stages = (java.util.List<?>) pipeline.get("stages");
-            System.out.println("\nStages (" + stages.size() + "):");
+            console.print("\nStages (" + stages.size() + "):");
             for (Object stageObj : stages) {
                 var stage = (java.util.Map<String, Object>) stageObj;
                 String stageName = (String) stage.get("name");
                 String stageType = (String) stage.get("type");
-                System.out.println("  - " + stageName + " (" + stageType + ")");
+                console.print("  - " + stageName + " (" + stageType + ")");
             }
         }
 
         if (pipeline.containsKey("environments")) {
             var envs = (java.util.List<?>) pipeline.get("environments");
-            System.out.println("\nEnvironments: " + String.join(", ", envs.stream().map(Object::toString).toList()));
+            console.print("\nEnvironments: " + String.join(", ", envs.stream().map(Object::toString).toList()));
         }
     }
 

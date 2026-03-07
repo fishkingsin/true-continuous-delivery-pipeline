@@ -34,7 +34,6 @@ public class SlackNotifier implements NotifierPlugin {
         
         if (webhookUrl == null || webhookUrl.isEmpty()) {
             log.warn("Slack webhook URL not configured - skipping notification");
-            System.out.println("[SLACK] Webhook not configured - skipping");
             return;
         }
         
@@ -50,15 +49,12 @@ public class SlackNotifier implements NotifierPlugin {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             
             if (response.statusCode() == 200) {
-                log.info("Slack notification sent successfully");
-                System.out.println("[SLACK] Notification sent: " + notification.getTitle());
+                log.info("Slack notification sent successfully: {}", notification.getTitle());
             } else {
-                log.error("Slack notification failed: {}", response.statusCode());
-                System.out.println("[SLACK] Failed to send: " + response.statusCode());
+                log.error("Slack notification failed with status: {}", response.statusCode());
             }
         } catch (Exception e) {
             log.error("Failed to send Slack notification: {}", e.getMessage());
-            System.out.println("[SLACK] Error: " + e.getMessage());
         }
     }
 

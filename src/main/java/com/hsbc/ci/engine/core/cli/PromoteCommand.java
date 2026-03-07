@@ -8,6 +8,7 @@ import com.hsbc.ci.engine.core.plugin.GateResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Command(name = "promote", description = "Promote releases between environments")
+@Component
 public class PromoteCommand implements Runnable {
 
     private static final Logger log = LoggerFactory.getLogger(PromoteCommand.class);
@@ -24,6 +26,9 @@ public class PromoteCommand implements Runnable {
 
     @Autowired
     private GateExecutor gateExecutor;
+
+    @Autowired
+    private ConsoleOutput console;
 
     @Option(names = {"-p", "--pipeline"}, description = "Pipeline name")
     private String pipeline;
@@ -46,26 +51,26 @@ public class PromoteCommand implements Runnable {
         
         PromotionPolicy promotionPolicy = PromotionPolicy.fromType(policy);
         
-        System.out.println("Promotion Request");
-        System.out.println("=================");
-        System.out.println("From: " + (fromEnv != null ? fromEnv : "current"));
-        System.out.println("To: " + toEnv);
-        System.out.println("Policy: " + promotionPolicy.getName());
-        System.out.println("Description: " + promotionPolicy.getDescription());
+        console.print("Promotion Request");
+        console.print("=================");
+        console.print("From: " + (fromEnv != null ? fromEnv : "current"));
+        console.print("To: " + toEnv);
+        console.print("Policy: " + promotionPolicy.getName());
+        console.print("Description: " + promotionPolicy.getDescription());
         
         if (dryRun) {
-            System.out.println("\n[DRY RUN] Would perform promotion");
+            console.print("\n[DRY RUN] Would perform promotion");
             return;
         }
         
         if (!promotionPolicy.isAutoApprove() && (promotionPolicy.getApprovers() == null || promotionPolicy.getApprovers().isEmpty())) {
-            System.out.println("\nWaiting for approval...");
+            console.print("\nWaiting for approval...");
         }
         
         if (promotionPolicy.getRequiredGates() != null && !promotionPolicy.getRequiredGates().isEmpty()) {
-            System.out.println("\nRunning required gates:");
+            console.print("\nRunning required gates:");
             for (String gate : promotionPolicy.getRequiredGates()) {
-                System.out.println("  - " + gate);
+                console.print("  - " + gate);
             }
         }
         
@@ -89,16 +94,16 @@ public class PromoteCommand implements Runnable {
         }
         
         if (targetEnv == null) {
-            System.out.println("[ERROR] Target environment not found: " + toEnv);
+            console.print("[ERROR] Target environment not found: " + toEnv);
             return;
         }
         
-        System.out.println("\nPromoting from " + 
+        console.print("\nPromoting from " + 
             (currentEnv != null ? currentEnv.getName() : "none") + 
             " to " + targetEnv.getName());
         
         if (environmentLoader.shouldAutoPromote(targetEnv.getName())) {
-            System.out.println("[AUTO-PROMOTE] Environment configured for auto-promotion");
+            console.print("[AUTO-PROMOTE] Environment configured for auto-promotion");
         }
         
         boolean gatesPassed = true;
@@ -106,9 +111,9 @@ public class PromoteCommand implements Runnable {
             for (String gateType : policy.getRequiredGates()) {
                 GateResult result = gateExecutor.executeGate(gateType, Map.of(), null);
                 if (result.isPassed()) {
-                    System.out.println("[GATE PASSED] " + gateType + ": " + result.getMessage());
+                    console.print("[GATE PASSED] " + gateType + ": " + result.getMessage());
                 } else {
-                    System.out.println("[GATE FAILED] " + gateType + ": " + result.getMessage());
+                    console.print("[GATE FAILED] " + gateType + ": " + result.getMessage());
                     gatesPassed = false;
                     break;
                 }
@@ -116,10 +121,10 @@ public class PromoteCommand implements Runnable {
         }
         
         if (!gatesPassed) {
-            System.out.println("\n[ERROR] Promotion blocked - gates failed");
+            console.print("\n[ERROR] Promotion blocked - gates failed");
             return;
         }
         
-        System.out.println("\n[SUCCESS] Promotion completed to " + targetEnv.getName());
+        console.print("\n[SUCCESS] Promotion completed to " + targetEnv.getName());
     }
 }

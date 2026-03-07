@@ -36,7 +36,6 @@ public class EmailNotifier implements NotifierPlugin {
     public void notify(Notification notification) {
         if (to == null || to.isEmpty()) {
             log.warn("Email 'to' address not configured - skipping notification");
-            System.out.println("[EMAIL] Recipient not configured - skipping");
             return;
         }
         
@@ -44,10 +43,7 @@ public class EmailNotifier implements NotifierPlugin {
         String body = buildEmailBody(notification);
         
         log.info("Sending email notification to: {}", to);
-        System.out.println("[EMAIL] Would send email:");
-        System.out.println("  To: " + to);
-        System.out.println("  Subject: " + subject);
-        System.out.println("  Body: " + body.substring(0, Math.min(100, body.length())) + "...");
+        log.debug("Email subject: {}, body preview: {}", subject, body.substring(0, Math.min(100, body.length())));
     }
 
     private String buildEmailBody(Notification notification) {
