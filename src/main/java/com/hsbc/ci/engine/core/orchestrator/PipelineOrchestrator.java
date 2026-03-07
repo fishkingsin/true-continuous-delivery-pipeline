@@ -22,6 +22,7 @@ import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 @Component
+// TODO: clean code
 public class PipelineOrchestrator {
 
     private static final Logger log = LoggerFactory.getLogger(PipelineOrchestrator.class);

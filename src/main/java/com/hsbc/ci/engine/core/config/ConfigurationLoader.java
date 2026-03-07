@@ -14,7 +14,7 @@ import jakarta.annotation.PostConstruct;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
-
+// TODO: clean code
 @Component
 public class ConfigurationLoader {
 

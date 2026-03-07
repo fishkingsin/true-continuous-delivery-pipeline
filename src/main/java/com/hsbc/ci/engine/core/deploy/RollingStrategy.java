@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
-
+// TODO: not yet integrate
 public class RollingStrategy implements DeploymentStrategy {
 
     private static final Logger log = LoggerFactory.getLogger(RollingStrategy.class);
