@@ -14,6 +14,13 @@ public class SecurityScanStage implements StagePlugin {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityScanStage.class);
 
+    private static final String SECURITY_SCAN_SAST = "sast";
+    private static final String SECURITY_SCAN_CONT = "cont";
+    private static final String SECURITY_SCAN_DAST = "dast";
+    private static final String SECURITY_SCAN_FOSS = "foss";
+    private static final String SECURITY_SCAN_CONFIG_KEY = "scanners";
+
+
     @Override
     public String getName() {
         return "security-scan";
@@ -73,24 +80,27 @@ public class SecurityScanStage implements StagePlugin {
     }
 
     private List<String> getScanners(Map<String, Object> config) {
-        Object scannersObj = config.get("scanners");
+        Object scannersObj = config.get(SECURITY_SCAN_CONFIG_KEY);
         if (scannersObj instanceof List) {
             @SuppressWarnings("unchecked")
             List<String> scanners = (List<String>) scannersObj;
             return scanners;
         }
-        return List.of("sast", "foss");
+        log.warn("getScanners unable prase config {} return default [sast, foss]", config);
+        return List.of(SECURITY_SCAN_SAST, SECURITY_SCAN_FOSS);
     }
 
     private String runScanner(String scanner, Map<String, Object> config) {
         log.info("Running security scanner: {}", scanner);
         
-        if ("sast".equals(scanner)) {
+        if (SECURITY_SCAN_SAST.equals(scanner)) {
             return runSastScanner(config);
-        } else if ("dast".equals(scanner)) {
+        } else if (SECURITY_SCAN_DAST.equals(scanner)) {
             return runDastScanner(config);
-        } else if ("foss".equals(scanner)) {
+        } else if (SECURITY_SCAN_FOSS.equals(scanner)) {
             return runFossScanner(config);
+        } else if (SECURITY_SCAN_CONT.equals(scanner)) {
+            return "CONT is not yet support: " + scanner;
         }
         
         return "Scanner not found: " + scanner;
