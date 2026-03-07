@@ -8,6 +8,7 @@ import java.util.Map;
 
 @Configuration
 @ConfigurationProperties(prefix = "artifact-registry")
+// not yet integrated
 public class ArtifactRegistryConfig {
 
     private Map<String, DockerRegistry> dockerRegistries = new HashMap<>();
