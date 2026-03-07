@@ -2,10 +2,14 @@ package com.hsbc.ci.engine.core.cli.build;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yaml.snakeyaml.Yaml;
 import picocli.CommandLine;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -68,14 +72,14 @@ public class MavenBuildCommand implements Runnable {
     private void buildFromConfig(String configFile) throws Exception {
         System.out.println("[INFO] Loading build config from: " + configFile);
         
-        org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml();
-        java.nio.file.Path path = java.nio.file.Paths.get(configFile);
-        if (!java.nio.file.Files.exists(path)) {
+        Yaml yaml = new Yaml();
+        Path path = Paths.get(configFile);
+        if (!Files.exists(path)) {
             throw new java.io.FileNotFoundException("Config file not found: " + configFile);
         }
         
         @SuppressWarnings("unchecked")
-        Map<String, Object> config = yaml.load(java.nio.file.Files.readString(path));
+        Map<String, Object> config = yaml.load(Files.readString(path));
         Map<String, Object> build = (Map<String, Object>) config.get("build");
         
         if (build == null) {

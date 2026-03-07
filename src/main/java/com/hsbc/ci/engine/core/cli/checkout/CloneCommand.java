@@ -3,9 +3,13 @@ package com.hsbc.ci.engine.core.cli.checkout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.yaml.snakeyaml.Yaml;
 import picocli.CommandLine;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 
 @CommandLine.Command(name = "clone", description = "Clone a git repository")
@@ -53,13 +57,13 @@ public class CloneCommand implements Runnable {
     private void cloneFromConfig(String configFile) throws Exception {
         System.out.println("[INFO] Loading checkout config from: " + configFile);
         
-        org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml();
-        java.nio.file.Path path = java.nio.file.Paths.get(configFile);
-        if (!java.nio.file.Files.exists(path)) {
+        Yaml yaml = new Yaml();
+        Path path = Paths.get(configFile);
+        if (!Files.exists(path)) {
             throw new java.io.FileNotFoundException("Config file not found: " + configFile);
         }
         
-        Map<String, Object> config = yaml.load(java.nio.file.Files.readString(path));
+        Map<String, Object> config = yaml.load(Files.readString(path));
         Map<String, Object> checkout = (Map<String, Object>) config.get("checkout");
         
         if (checkout == null) {
