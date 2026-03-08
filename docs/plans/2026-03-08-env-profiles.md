@@ -125,3 +125,51 @@ The property files contain placeholder values that should be replaced with real 
 - **Prod**: Uses production-grade timeouts and retry settings
 
 Replace placeholders in each `application-<profile>.properties` file before deploying to that environment.
+
+### Using application.properties in Tests
+
+Tests can use Spring profiles to load different property configurations:
+
+**Option 1: @ActiveProfiles annotation**
+```java
+@ActiveProfiles("test")
+@SpringBootTest(classes = CiEngineApplication.class)
+class MyTest {
+    @Autowired
+    private HttpClientProperties props;
+    // uses application-test.properties
+}
+```
+
+**Option 2: @TestPropertySource for inline values**
+```java
+@TestPropertySource(properties = {
+    "app.http.timeout.connect=5000",
+    "app.http.proxy.host=test-proxy"
+})
+class MyTest {
+    // overrides property files with inline values
+}
+```
+
+**Option 3: Maven test profile**
+```bash
+# Run tests with specific profile
+mvn test -Dspring.profiles.active=test
+```
+
+**Option 4: Default base application.properties**
+Create `src/main/resources/application.properties` for shared defaults:
+```properties
+spring.profiles.active=dev
+app.http.timeout.connect=1000
+app.http.timeout.read=5000
+```
+
+**Test Resources**
+
+For test-specific overrides, create `src/test/resources/application.properties`:
+```properties
+# Test-specific overrides (only loaded during test)
+spring.main.banner-mode=off
+```
