@@ -88,52 +88,54 @@ public class EnvironmentLoader {
     @SuppressWarnings("unchecked")
     private Environment parseEnvironment(Map<String, Object> data) {
         Environment env = new Environment();
+        
+        setBasicFields(env, data);
+        env.setDeploy(parseDeploy(data.get("deploy")));
+        env.setApproval(parseApproval(data.get("approval")));
+        env.setResources(parseResources(data.get("resources")));
+        env.setGates((List<String>) data.get("gates"));
+        env.setMonitoring((Map<String, Boolean>) data.get("monitoring"));
+        
+        return env;
+    }
+
+    private void setBasicFields(Environment env, Map<String, Object> data) {
         env.setName((String) data.get("name"));
         env.setDescription((String) data.get("description"));
         env.setOrder((Integer) data.get("order"));
         env.setAutoPromote((Boolean) data.get("auto-promote"));
         env.setReplicas((Integer) data.get("replicas"));
         env.setBackup((Boolean) data.get("backup"));
+    }
 
-        Map<String, Object> deployData = (Map<String, Object>) data.get("deploy");
-        if (deployData != null) {
-            Environment.DeployConfig deploy = new Environment.DeployConfig();
-            deploy.setType((String) deployData.get("type"));
-            deploy.setNamespace((String) deployData.get("namespace"));
-            deploy.setCluster((String) deployData.get("cluster"));
-            deploy.setStrategy((String) deployData.get("strategy"));
-            env.setDeploy(deploy);
-        }
+    private Environment.DeployConfig parseDeploy(Object data) {
+        if (data == null) return null;
+        var deploy = new Environment.DeployConfig();
+        var d = (Map<String, Object>) data;
+        deploy.setType((String) d.get("type"));
+        deploy.setNamespace((String) d.get("namespace"));
+        deploy.setCluster((String) d.get("cluster"));
+        deploy.setStrategy((String) d.get("strategy"));
+        return deploy;
+    }
 
-        Map<String, Object> approvalData = (Map<String, Object>) data.get("approval");
-        if (approvalData != null) {
-            Environment.Approval approval = new Environment.Approval();
-            approval.setType((String) approvalData.get("type"));
-            approval.setTimeout((String) approvalData.get("timeout"));
-            List<String> roles = (List<String>) approvalData.get("roles");
-            approval.setRoles(roles);
-            env.setApproval(approval);
-        }
+    private Environment.Approval parseApproval(Object data) {
+        if (data == null) return null;
+        var approval = new Environment.Approval();
+        var a = (Map<String, Object>) data;
+        approval.setType((String) a.get("type"));
+        approval.setTimeout((String) a.get("timeout"));
+        approval.setRoles((List<String>) a.get("roles"));
+        return approval;
+    }
 
-        Map<String, Object> resourcesData = (Map<String, Object>) data.get("resources");
-        if (resourcesData != null) {
-            Environment.Resources resources = new Environment.Resources();
-            resources.setCpu((String) resourcesData.get("cpu"));
-            resources.setMemory((String) resourcesData.get("memory"));
-            env.setResources(resources);
-        }
-
-        List<String> gates = (List<String>) data.get("gates");
-        if (gates != null) {
-            env.setGates(gates);
-        }
-
-        Map<String, Boolean> monitoring = (Map<String, Boolean>) data.get("monitoring");
-        if (monitoring != null) {
-            env.setMonitoring(monitoring);
-        }
-
-        return env;
+    private Environment.Resources parseResources(Object data) {
+        if (data == null) return null;
+        var resources = new Environment.Resources();
+        var r = (Map<String, Object>) data;
+        resources.setCpu((String) r.get("cpu"));
+        resources.setMemory((String) r.get("memory"));
+        return resources;
     }
 
     public Environment getEnvironment(String name) {

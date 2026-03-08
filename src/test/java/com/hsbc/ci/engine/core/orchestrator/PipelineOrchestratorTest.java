@@ -125,7 +125,7 @@ class PipelineOrchestratorTest {
         boolean hasFailFast = false;
         
         for (var method : PipelineOrchestrator.class.getDeclaredMethods()) {
-            if (method.getName().contains("executeStages")) {
+            if (method.getName().contains("runStages")) {
                 hasFailFast = true;
                 break;
             }
@@ -139,7 +139,7 @@ class PipelineOrchestratorTest {
         boolean hasRetry = false;
         
         for (var method : PipelineOrchestrator.class.getDeclaredMethods()) {
-            if (method.getName().contains("executeStage")) {
+            if (method.getName().contains("runSingleStage")) {
                 hasRetry = true;
                 break;
             }

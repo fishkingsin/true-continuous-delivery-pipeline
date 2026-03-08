@@ -43,37 +43,52 @@ public class PipelineValidator {
 
     private void validateStages(List<StageDefinition> stages, List<String> errors) {
         Set<String> stageNames = new HashSet<>();
-        Set<String> validTypes = getValidTypes();
 
         for (StageDefinition stage : stages) {
-            if (stage.getName() == null || stage.getName().isBlank()) {
-                errors.add("Stage name is required");
-                continue;
-            }
-
-            if (!stageNames.add(stage.getName())) {
-                errors.add("Duplicate stage name: " + stage.getName());
-            }
-
-            if (stage.getType() == null || stage.getType().isBlank()) {
-                errors.add("Stage type is required for stage: " + stage.getName());
-            } else if (!validTypes.contains(stage.getType())) {
-                errors.add("Invalid stage type: " + stage.getType() + " for stage: " + stage.getName());
-            }
-
-            if (stage.getTimeout() != null && stage.getTimeout() <= 0) {
-                errors.add("Stage timeout must be positive for stage: " + stage.getName());
-            }
-
-            if (stage.getRetry() != null && stage.getRetry() < 0) {
-                errors.add("Stage retry count cannot be negative for stage: " + stage.getName());
-            }
-
-            if (stage.getTarget() != null && !VALID_DEPLOY_TARGETS.contains(stage.getTarget())) {
-                errors.add("Invalid deployment target: " + stage.getTarget() + " for stage: " + stage.getName());
-            }
-
+            validateStageName(stage, stageNames, errors);
+            validateStageType(stage, errors);
+            validateStageTimeout(stage, errors);
+            validateStageRetry(stage, errors);
+            validateStageTarget(stage, errors);
             validateDependencies(stage, stages, errors);
+        }
+    }
+
+    private void validateStageName(StageDefinition stage, Set<String> names, List<String> errors) {
+        if (stage.getName() == null || stage.getName().isBlank()) {
+            errors.add("Stage name is required");
+            return;
+        }
+        if (!names.add(stage.getName())) {
+            errors.add("Duplicate stage name: " + stage.getName());
+        }
+    }
+
+    private void validateStageType(StageDefinition stage, List<String> errors) {
+        if (stage.getType() == null || stage.getType().isBlank()) {
+            errors.add("Stage type is required for stage: " + stage.getName());
+            return;
+        }
+        if (!getValidTypes().contains(stage.getType())) {
+            errors.add("Invalid stage type: " + stage.getType() + " for stage: " + stage.getName());
+        }
+    }
+
+    private void validateStageTimeout(StageDefinition stage, List<String> errors) {
+        if (stage.getTimeout() != null && stage.getTimeout() <= 0) {
+            errors.add("Stage timeout must be positive for stage: " + stage.getName());
+        }
+    }
+
+    private void validateStageRetry(StageDefinition stage, List<String> errors) {
+        if (stage.getRetry() != null && stage.getRetry() < 0) {
+            errors.add("Stage retry count cannot be negative for stage: " + stage.getName());
+        }
+    }
+
+    private void validateStageTarget(StageDefinition stage, List<String> errors) {
+        if (stage.getTarget() != null && !VALID_DEPLOY_TARGETS.contains(stage.getTarget())) {
+            errors.add("Invalid deployment target: " + stage.getTarget() + " for stage: " + stage.getName());
         }
     }
 

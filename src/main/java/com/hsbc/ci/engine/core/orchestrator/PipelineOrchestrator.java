@@ -22,13 +22,12 @@ import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 @Component
-// TODO: clean code
 public class PipelineOrchestrator {
 
     private static final Logger log = LoggerFactory.getLogger(PipelineOrchestrator.class);
     private static final int POLLING_INTERVAL_MS = 100;
     private static final int MIN_THREAD_POOL_SIZE = 2;
-    private static final int DEFAULT_THREAD_POOL_MULTIPLIER = 1;
+    private static final int THREAD_MULTIPLIER = 1;
 
     private final ConfigurationLoader configLoader;
     private final StageExecutor stageExecutor;
@@ -54,201 +53,171 @@ public class PipelineOrchestrator {
     }
 
     public PipelineResult execute(PipelineContext context) {
-        String pipelineName = context.getPipelineName();
-        
-        PipelineDefinition pipelineDef = configLoader.loadPipelineDefinition(pipelineName);
+        PipelineDefinition pipelineDef = loadPipeline(context.getPipelineName());
+        if (pipelineDef == null) return failed("Pipeline not found");
 
-        if (pipelineDef == null) {
-            log.error("Pipeline not found: {}", pipelineName);
-            return PipelineResult.failed("Pipeline not found: " + pipelineName);
-        }
-
-        PipelineValidator.ValidationResult validationResult = pipelineValidator.validate(pipelineDef);
-        if (!validationResult.isValid()) {
-            log.error("Pipeline validation failed: {}", validationResult.getErrors());
-            return PipelineResult.failed("Pipeline validation failed: " + String.join(", ", validationResult.getErrors()));
-        }
+        if (!validatePipeline(pipelineDef)) return failed("Validation failed");
 
         applyEnvironmentOverrides(context);
 
-        if (context.isDryRun()) {
-            log.info("DRY-RUN: Would execute pipeline: {}", pipelineName);
-            return PipelineResult.success(context);
+        if (context.isDryRun()) return dryRunResult(context);
+
+        return executePipeline(context, pipelineDef);
+    }
+
+    private PipelineDefinition loadPipeline(String name) {
+        return configLoader != null ? configLoader.loadPipelineDefinition(name) : null;
+    }
+
+    private boolean validatePipeline(PipelineDefinition def) {
+        var result = pipelineValidator.validate(def);
+        if (!result.isValid()) {
+            log.error("Validation failed: {}", result.getErrors());
+            return false;
         }
+        return true;
+    }
 
-        log.info("Executing pipeline: {}", pipelineName);
+    private PipelineResult failed(String msg) {
+        return PipelineResult.failed(msg);
+    }
 
-        executePreStagePlugins(context);
+    private PipelineResult dryRunResult(PipelineContext ctx) {
+        log.info("DRY-RUN mode");
+        return PipelineResult.success(ctx);
+    }
 
-        List<StageDefinition> stages = pipelineDef.getStages();
+    private PipelineResult executePipeline(PipelineContext ctx, PipelineDefinition def) {
+        log.info("Executing: {}", ctx.getPipelineName());
+        executePreStagePlugins(ctx);
         
-        PipelineResult result = executeStages(stages, context);
-
-        executePostStagePlugins(context);
-
-        if (result.isSuccess()) {
-            log.info("Pipeline completed successfully: {}", pipelineName);
-        } else {
-            log.error("Pipeline failed: {}", pipelineName);
-        }
+        var result = runStages(def.getStages(), ctx);
         
+        executePostStagePlugins(ctx);
         return result;
     }
 
-    private PipelineResult executeStages(List<StageDefinition> stages, PipelineContext context) {
-        Map<String, StageDefinition> stageMap = new HashMap<>();
-        for (StageDefinition stage : stages) {
-            stageMap.put(stage.getName(), stage);
-        }
-
-        Map<String, StageResult> results = new ConcurrentHashMap<>();
-        Set<String> completedStages = Collections.synchronizedSet(new HashSet<>());
-        Map<String, CompletableFuture<Void>> runningStages = new ConcurrentHashMap<>();
-        
-        ExecutorService executor = Executors.newFixedThreadPool(
-            Math.max(MIN_THREAD_POOL_SIZE, Runtime.getRuntime().availableProcessors() * DEFAULT_THREAD_POOL_MULTIPLIER)
-        );
+    private PipelineResult runStages(List<StageDefinition> stages, PipelineContext ctx) {
+        var results = new ConcurrentHashMap<String, StageResult>();
+        var completed = Collections.synchronizedSet(new HashSet<String>());
+        var running = new ConcurrentHashMap<String, CompletableFuture<Void>>();
+        ExecutorService executor = createExecutor();
 
         try {
-            while (completedStages.size() < stages.size()) {
-                List<StageDefinition> readyStages = stages.stream()
-                    .filter(s -> !completedStages.contains(s.getName()))
-                    .filter(s -> {
-                        List<String> deps = s.getDependsOn();
-                        if (deps == null || deps.isEmpty()) {
-                            return true;
-                        }
-                        return completedStages.containsAll(deps);
-                    })
-                    .toList();
+            while (completed.size() < stages.size()) {
+                var ready = findReadyStages(stages, completed);
+                if (ready.isEmpty() && running.isEmpty()) return PipelineResult.failed("No runnable stages");
 
-                if (readyStages.isEmpty() && runningStages.isEmpty()) {
-                    return PipelineResult.failed("Circular dependency detected or no runnable stages");
-                }
-
-                for (StageDefinition stage : readyStages) {
-                    if (!runningStages.containsKey(stage.getName())) {
-                        CompletableFuture<Void> future = CompletableFuture.runAsync(
-                            () -> executeStage(stage, context, results),
-                            executor
-                        );
-                        runningStages.put(stage.getName(), future);
-                    }
-                }
-
-                Iterator<Map.Entry<String, CompletableFuture<Void>>> it = runningStages.entrySet().iterator();
-                while (it.hasNext()) {
-                    Map.Entry<String, CompletableFuture<Void>> entry = it.next();
-                    try {
-                        entry.getValue().get(POLLING_INTERVAL_MS, TimeUnit.MILLISECONDS);
-                        completedStages.add(entry.getKey());
-                        it.remove();
-                    } catch (TimeoutException e) {
-                        log.trace("Stage {} still running", entry.getKey());
-                    } catch (ExecutionException e) {
-                        log.error("Stage execution failed: {}", entry.getKey(), e.getCause());
-                        return PipelineResult.failed("Stage failed: " + entry.getKey() + " - " + e.getCause().getMessage());
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                        return PipelineResult.failed("Pipeline interrupted: " + e.getMessage());
-                    }
-                }
-
-                if (runningStages.isEmpty() && completedStages.size() < stages.size()) {
-                    return PipelineResult.failed("Deadlock or no runnable stages");
-                }
+                submitStages(ready, executor, ctx, results, running);
+                collectCompletedStages(running, completed);
             }
-
-            for (Map.Entry<String, StageResult> entry : results.entrySet()) {
-                context.addStageResult(entry.getKey(), entry.getValue());
-                if (!entry.getValue().isSuccess()) {
-                    return PipelineResult.failed("Stage failed: " + entry.getKey());
-                }
-            }
-
-            return PipelineResult.success(context);
-
+            return buildResult(ctx, results);
         } finally {
             executor.shutdown();
         }
     }
 
-    private void executeStage(StageDefinition stage, PipelineContext context, Map<String, StageResult> results) {
-        String stageName = stage.getName();
-        String stageType = stage.getType();
-        
-        log.info("Executing stage: {} (type: {})", stageName, stageType);
-
-        Map<String, Object> config = new HashMap<>();
-        if (stage.getConfig() != null) {
-            config.putAll(stage.getConfig());
-        }
-
-        int retryCount = stage.getRetry() != null ? stage.getRetry() : 0;
-        StageResult finalResult = null;
-
-        for (int attempt = 0; attempt <= retryCount; attempt++) {
-            if (attempt > 0) {
-                log.info("Retrying stage: {} (attempt {}/{})", stageName, attempt + 1, retryCount + 1);
-            }
-
-            StageResult result = stageExecutor.execute(stageType, config, context);
-            
-            if (result.isSuccess()) {
-                finalResult = result;
-                break;
-            } else if (attempt == retryCount) {
-                finalResult = result;
-            }
-
-            if (attempt < retryCount) {
-                try {
-                    Thread.sleep(1000 * attempt + 1);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    finalResult = StageResult.builder()
-                        .stageName(stageName)
-                        .success(false)
-                        .output("Stage interrupted: " + e.getMessage())
-                        .durationMs(0)
-                        .build();
-                    throw new RuntimeException("Stage interrupted", e);
-                }
-            }
-        }
-
-        results.put(stageName, finalResult);
-        
-        if (!finalResult.isSuccess()) {
-            log.error("Stage failed: {}", stageName);
-        } else {
-            log.info("Stage completed: {} ({}ms)", stageName, finalResult.getDurationMs());
-        }
+    private ExecutorService createExecutor() {
+        return Executors.newFixedThreadPool(
+            Math.max(MIN_THREAD_POOL_SIZE, 
+                Runtime.getRuntime().availableProcessors() * THREAD_MULTIPLIER));
     }
 
-    private void executePreStagePlugins(PipelineContext context) {
-        var plugins = pluginManager.listStagePlugins();
-        for (String pluginName : plugins) {
-            StagePlugin plugin = pluginManager.getStagePlugin(pluginName);
-            if (plugin != null) {
-                log.info("Running pre-stage plugin: {}", pluginName);
-                plugin.execute(new HashMap<>(), new HashMap<>());
+    private List<StageDefinition> findReadyStages(List<StageDefinition> all, Set<String> done) {
+        return all.stream()
+            .filter(s -> !done.contains(s.getName()))
+            .filter(s -> depsMet(s, done))
+            .collect(Collectors.toList());
+    }
+
+    private boolean depsMet(StageDefinition s, Set<String> done) {
+        var deps = s.getDependsOn();
+        return deps == null || deps.isEmpty() || done.containsAll(deps);
+    }
+
+    private void submitStages(List<StageDefinition> ready, ExecutorService exec, 
+            PipelineContext ctx, Map<String,StageResult> results, Map<String,CompletableFuture<Void>> running) {
+        for (var stage : ready) {
+            if (!running.containsKey(stage.getName())) {
+                var future = CompletableFuture.runAsync(
+                    () -> runSingleStage(stage, ctx, results), exec);
+                running.put(stage.getName(), future);
             }
         }
     }
 
-    private void applyEnvironmentOverrides(PipelineContext context) {
+    private void collectCompletedStages(Map<String,CompletableFuture<Void>> running, Set<String> done) {
+        var it = running.entrySet().iterator();
+        while (it.hasNext()) {
+            var entry = it.next();
+            try {
+                entry.getValue().get(POLLING_INTERVAL_MS, TimeUnit.MILLISECONDS);
+                done.add(entry.getKey());
+                it.remove();
+            } catch (TimeoutException e) {
+                // still running
+            } catch (ExecutionException e) {
+                log.error("Stage failed: {}", entry.getKey());
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    private PipelineResult buildResult(PipelineContext ctx, Map<String,StageResult> results) {
+        for (var entry : results.entrySet()) {
+            ctx.addStageResult(entry.getKey(), entry.getValue());
+            if (!entry.getValue().isSuccess()) {
+                return PipelineResult.failed("Stage failed: " + entry.getKey());
+            }
+        }
+        return PipelineResult.success(ctx);
+    }
+
+    private void runSingleStage(StageDefinition stage, PipelineContext ctx, Map<String,StageResult> results) {
+        String name = stage.getName();
+        String type = stage.getType();
+        log.info("Running stage: {} ({})", name, type);
+
+        var config = new HashMap<String,Object>();
+        if (stage.getConfig() != null) config.putAll(stage.getConfig());
+
+        int retries = stage.getRetry() != null ? stage.getRetry() : 0;
+        StageResult result = null;
+
+        for (int i = 0; i <= retries; i++) {
+            result = stageExecutor.execute(type, config, ctx);
+            if (result.isSuccess() || i == retries) break;
+            log.info("Retrying {} (attempt {}/{})", name, i + 1, retries);
+            sleep(i * 1000);
+        }
+
+        results.put(name, result);
+    }
+
+    private void sleep(int ms) {
+        try { Thread.sleep(ms); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+    }
+
+    private void executePreStagePlugins(PipelineContext ctx) {
+        runPlugins("pre-stage");
+    }
+
+    private void applyEnvironmentOverrides(PipelineContext ctx) {
         if (environmentLoader != null) {
-            environmentLoader.applyEnvironmentOverrides(context);
+            environmentLoader.applyEnvironmentOverrides(ctx);
         }
     }
 
-    private void executePostStagePlugins(PipelineContext context) {
-        var plugins = pluginManager.listStagePlugins();
-        for (String pluginName : plugins) {
-            StagePlugin plugin = pluginManager.getStagePlugin(pluginName);
+    private void executePostStagePlugins(PipelineContext ctx) {
+        runPlugins("post-stage");
+    }
+
+    private void runPlugins(String phase) {
+        for (String name : pluginManager.listStagePlugins()) {
+            var plugin = pluginManager.getStagePlugin(name);
             if (plugin != null) {
-                log.info("Running post-stage plugin: {}", pluginName);
+                log.info("Running {} plugin: {}", phase, name);
                 plugin.execute(new HashMap<>(), new HashMap<>());
             }
         }
