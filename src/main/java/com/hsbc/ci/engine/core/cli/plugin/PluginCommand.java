@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import picocli.CommandLine;
 
+import com.hsbc.ci.engine.core.utils.ConsoleOutput;
+
 @CommandLine.Command(name = "plugin", 
                      description = "Plugin management")
 @Component
@@ -17,6 +19,9 @@ public class PluginCommand implements CommandLineRunner {
     
     @Autowired
     private PluginManager pluginManager;
+
+    @Autowired
+    private ConsoleOutput console;
 
     public PluginCommand() {
     }
@@ -32,40 +37,40 @@ public class PluginCommand implements CommandLineRunner {
     public void listPlugins() {
         var plugins = pluginManager.listAllPlugins();
         
-        System.out.println("Available Plugins:");
-        System.out.println("");
+        console.print("Available Plugins:");
+        console.print("");
         
         var stages = plugins.get("stages");
         var gates = plugins.get("gates");
         var notifiers = plugins.get("notifiers");
         
         if (stages != null && !stages.isEmpty()) {
-            System.out.println("Stage Plugins:");
+            console.print("Stage Plugins:");
             for (String plugin : stages) {
-                System.out.println("  " + plugin);
+                console.print("  " + plugin);
             }
-            System.out.println("");
+            console.print("");
         }
         
         if (gates != null && !gates.isEmpty()) {
-            System.out.println("Gate Plugins:");
+            console.print("Gate Plugins:");
             for (String plugin : gates) {
-                System.out.println("  " + plugin);
+                console.print("  " + plugin);
             }
-            System.out.println("");
+            console.print("");
         }
         
         if (notifiers != null && !notifiers.isEmpty()) {
-            System.out.println("Notifier Plugins:");
+            console.print("Notifier Plugins:");
             for (String plugin : notifiers) {
-                System.out.println("  " + plugin);
+                console.print("  " + plugin);
             }
         }
         
         if ((stages == null || stages.isEmpty()) 
             && (gates == null || gates.isEmpty()) 
             && (notifiers == null || notifiers.isEmpty())) {
-            System.out.println("(No plugins loaded. Edit config/plugins.yml to enable plugins)");
+            console.print("(No plugins loaded. Edit config/plugins.yml to enable plugins)");
         }
         
         log.debug("Listed plugins: stages={}, gates={}, notifiers={}", 

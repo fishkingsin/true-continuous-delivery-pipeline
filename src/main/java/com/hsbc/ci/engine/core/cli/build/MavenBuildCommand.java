@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 import picocli.CommandLine;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -19,6 +20,9 @@ import java.util.Map;
 public class MavenBuildCommand implements Runnable {
 
     private static final Logger log = LoggerFactory.getLogger(MavenBuildCommand.class);
+
+    @Autowired
+    private ConsoleOutput console;
 
     @CommandLine.Option(names = {"-p", "--pom"}, description = "Path to pom.xml")
     private String pomPath = "pom.xml";
@@ -64,13 +68,12 @@ public class MavenBuildCommand implements Runnable {
             }
         } catch (Exception e) {
             log.error("Build failed: {}", e.getMessage());
-            System.err.println("[ERROR] Build failed: " + e.getMessage());
-            System.exit(1);
+            console.printError("[ERROR] Build failed: " + e.getMessage());
         }
     }
 
     private void buildFromConfig(String configFile) throws Exception {
-        System.out.println("[INFO] Loading build config from: " + configFile);
+        console.print("[INFO] Loading build config from: " + configFile);
         
         Yaml yaml = new Yaml();
         Path path = Paths.get(configFile);
@@ -90,7 +93,7 @@ public class MavenBuildCommand implements Runnable {
         List<Map<String, Object>> projects = (List<Map<String, Object>>) build.get("projects");
         
         if (projects == null || projects.isEmpty()) {
-            System.out.println("[INFO] No projects defined, running default build");
+            console.print("[INFO] No projects defined, running default build");
             buildMaven();
             return;
         }
@@ -103,11 +106,11 @@ public class MavenBuildCommand implements Runnable {
             String tool = (String) project.getOrDefault("tool", "maven");
             
             if (!"maven".equals(tool)) {
-                System.out.println("[SKIP] Skipping " + projectName + " (not maven)");
+                console.print("[SKIP] Skipping " + projectName + " (not maven)");
                 continue;
             }
 
-            System.out.println("[INFO] Building project: " + projectName);
+            console.print("[INFO] Building project: " + projectName);
             
             String projPom = (String) project.getOrDefault("pom", "pom.xml");
             String projGoals = (String) project.getOrDefault("goals", goals);

@@ -2,9 +2,12 @@ package com.hsbc.ci.engine.core.cli.checkout;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.Yaml;
 import picocli.CommandLine;
+
+import com.hsbc.ci.engine.core.utils.ConsoleOutput;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -17,6 +20,9 @@ import java.util.Map;
 public class CloneCommand implements Runnable {
 
     private static final Logger log = LoggerFactory.getLogger(CloneCommand.class);
+
+    @Autowired
+    private ConsoleOutput console;
 
     @CommandLine.Option(names = {"-u", "--url"}, description = "Repository URL")
     private String url;
@@ -44,18 +50,16 @@ public class CloneCommand implements Runnable {
             } else if (url != null) {
                 cloneRepository(url, target, branch, depth, token);
             } else {
-                System.err.println("[ERROR] Either --url or --config must be provided");
-                System.exit(1);
+                console.printError("[ERROR] Either --url or --config must be provided");
             }
         } catch (Exception e) {
             log.error("Clone failed: {}", e.getMessage());
-            System.err.println("[ERROR] Clone failed: " + e.getMessage());
-            System.exit(1);
+            console.printError("[ERROR] Clone failed: " + e.getMessage());
         }
     }
 
     private void cloneFromConfig(String configFile) throws Exception {
-        System.out.println("[INFO] Loading checkout config from: " + configFile);
+        console.print("[INFO] Loading checkout config from: " + configFile);
         
         Yaml yaml = new Yaml();
         Path path = Paths.get(configFile);
@@ -87,7 +91,7 @@ public class CloneCommand implements Runnable {
             Integer repoDepth = (Integer) repo.getOrDefault("depth", defaults != null ? (Integer) defaults.get("depth") : null);
             String repoToken = (String) repo.get("token");
 
-            System.out.println("[INFO] Cloning " + repoUrl + " to " + repoTarget);
+            console.print("[INFO] Cloning " + repoUrl + " to " + repoTarget);
             cloneRepository(repoUrl, repoTarget, repoBranch, repoDepth, repoToken);
         }
     }
@@ -120,7 +124,7 @@ public class CloneCommand implements Runnable {
         cmd.add(effectiveUrl);
         cmd.add(targetDir);
 
-        System.out.println("[INFO] Running: " + String.join(" ", cmd));
+        console.print("[INFO] Running: " + String.join(" ", cmd));
 
         ProcessBuilder pb = new ProcessBuilder(cmd);
         pb.inheritIO();
@@ -131,7 +135,7 @@ public class CloneCommand implements Runnable {
             throw new RuntimeException("Git clone failed with exit code: " + exitCode);
         }
 
-        System.out.println("[SUCCESS] Cloned to: " + new File(targetDir).getAbsolutePath());
+        console.print("[SUCCESS] Cloned to: " + new File(targetDir).getAbsolutePath());
     }
 
     private String getRepoName(String url) {
