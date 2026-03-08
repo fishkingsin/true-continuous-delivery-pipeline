@@ -10,6 +10,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Map;
 
+// TODO: not yet integrate
 public class SlackNotifier implements NotifierPlugin {
 
     private static final Logger log = LoggerFactory.getLogger(SlackNotifier.class);

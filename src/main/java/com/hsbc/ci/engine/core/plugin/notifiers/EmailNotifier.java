@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
+// TODO: not yet integrate
 public class EmailNotifier implements NotifierPlugin {
 
     private static final Logger log = LoggerFactory.getLogger(EmailNotifier.class);

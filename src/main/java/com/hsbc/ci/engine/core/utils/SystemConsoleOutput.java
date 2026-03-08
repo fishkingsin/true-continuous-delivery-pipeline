@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.PrintStream;
 
+// Default console output implementation for CLI commands
 @Component
 public class SystemConsoleOutput implements ConsoleOutput {
 
