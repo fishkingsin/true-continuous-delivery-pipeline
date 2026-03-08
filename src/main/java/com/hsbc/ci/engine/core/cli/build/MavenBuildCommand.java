@@ -7,6 +7,8 @@ import picocli.CommandLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.hsbc.ci.engine.core.utils.ConsoleOutput;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -126,6 +128,30 @@ public class MavenBuildCommand implements Runnable {
     }
 
     private void buildMavenProject(String pom, String goals, boolean skipTests, boolean parallel) throws Exception {
+
+        List<String> cmd = buildCommandParts(pom, goals, skipTests, parallel);
+
+        console.print("[INFO] Running: " + String.join(" ", cmd));
+
+        ProcessBuilder pb = new ProcessBuilder(cmd);
+        pb.inheritIO();
+        
+        String workDir = new File(pom).getParent();
+        if (workDir != null) {
+            pb.directory(new File(workDir));
+        }
+
+        Process process = pb.start();
+        int exitCode = process.waitFor();
+
+        if (exitCode != 0) {
+            throw new RuntimeException("Maven build failed with exit code: " + exitCode);
+        }
+
+        console.print("[SUCCESS] Build completed successfully");
+    }
+
+    private List<String> buildCommandParts(String pom, String goals, boolean skipTests, boolean parallel) {
         List<String> cmd = new ArrayList<>();
         cmd.add("mvn");
 
@@ -159,32 +185,8 @@ public class MavenBuildCommand implements Runnable {
             }
         }
 
-        for (String goal : goals.split("\\s+")) {
-            if (!goal.isEmpty()) {
-                cmd.add(goal);
-            }
-        }
+        cmd.addAll(List.of(goals.split(" ")));
 
-        cmd.add("-f");
-        cmd.add(pom);
-
-        System.out.println("[INFO] Running: " + String.join(" ", cmd));
-
-        ProcessBuilder pb = new ProcessBuilder(cmd);
-        pb.inheritIO();
-        
-        String workDir = new File(pom).getParent();
-        if (workDir != null) {
-            pb.directory(new File(workDir));
-        }
-
-        Process process = pb.start();
-        int exitCode = process.waitFor();
-
-        if (exitCode != 0) {
-            throw new RuntimeException("Maven build failed with exit code: " + exitCode);
-        }
-
-        System.out.println("[SUCCESS] Build completed successfully");
+        return cmd;
     }
 }
