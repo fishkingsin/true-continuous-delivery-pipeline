@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// TODO: not yet integrate
 public class SecurityScanStage implements StagePlugin {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityScanStage.class);
@@ -66,7 +67,8 @@ public class SecurityScanStage implements StagePlugin {
 
     @Override
     public void execute(Map<String, Object> config, Map<String, Object> context) {
-        log.info("Executing security scan (legacy method)");
+        log.warn("[PLACEHOLDER] Executing security scan - not fully implemented");
+        log.warn("[PLACEHOLDER] To enable: configure security scan tools (OWASP ZAP, Trivy, etc.)");
         
         List<String> scanners = getScanners(config);
         List<String> results = new ArrayList<>();

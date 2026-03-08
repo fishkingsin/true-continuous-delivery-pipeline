@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
+// TODO: not yet integrate
 public class SonarQubeStage implements StagePlugin {
 
     private static final Logger log = LoggerFactory.getLogger(SonarQubeStage.class);
@@ -44,7 +45,8 @@ public class SonarQubeStage implements StagePlugin {
 
     @Override
     public void execute(Map<String, Object> config, Map<String, Object> context) {
-        log.info("Executing SonarQube analysis (legacy method)");
+        log.warn("[PLACEHOLDER] Executing SonarQube analysis - using mock data");
+        log.warn("[PLACEHOLDER] To enable: install sonar-scanner and configure SonarQube server");
         
         String output = runSonarAnalysis(context);
         log.info("SonarQube analysis completed: {}", output);

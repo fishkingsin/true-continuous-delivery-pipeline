@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import com.hsbc.ci.engine.core.model.PipelineContext;
 import java.util.Map;
 
+// TODO: not yet integrate
 @Component
 public class ContainerizeStage implements Stage {
 
@@ -92,7 +93,8 @@ public class ContainerizeStage implements Stage {
     private String runPlaceholder(String registry, String image, String tag, String dockerfile) {
         // PLACEHOLDER: Returns mock output when Docker is not available
         // Replace with actual container build logic in production
-        log.info("Using placeholder containerization (Docker not available)");
+        log.warn("[PLACEHOLDER] Using placeholder containerization (Docker not available)");
+        log.warn("[PLACEHOLDER] To enable: install Docker and ensure daemon is running");
         log.info("Placeholder container build for image: {}/{}:{}", registry, image, tag);
         
         String placeholderOutput = """

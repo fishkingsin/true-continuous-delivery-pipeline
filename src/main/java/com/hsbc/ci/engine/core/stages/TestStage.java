@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+// TODO: not yet integrate
 @Component
 public class TestStage implements Stage {
 
@@ -175,7 +176,8 @@ public class TestStage implements Stage {
      * - e2e: End-to-end tests
      */
     private String runPlaceholder(String testTool, String testType) {
-        log.warn("Test tool '{}' not available, using placeholder", testTool);
+        log.warn("[PLACEHOLDER] Test tool '{}' not available, using placeholder", testTool);
+        log.warn("[PLACEHOLDER] To enable: install {} or configure correct tool path", testTool);
 
         return """
             [PLACEHOLDER] Test Execution
@@ -184,7 +186,6 @@ public class TestStage implements Stage {
             Test Type: %s
             
             [INFO] Test tool not available - using placeholder
-            [INFO] In production, this would:
               1. Execute %s test command
               2. Run %s tests
               3. Generate test reports (JUnit XML)

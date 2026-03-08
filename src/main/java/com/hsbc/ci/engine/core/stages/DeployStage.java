@@ -8,6 +8,7 @@ import com.hsbc.ci.engine.core.model.PipelineContext;
 import java.io.IOException;
 import java.util.Map;
 
+// TODO: not yet integrate
 @Component
 public class DeployStage implements Stage {
 
@@ -38,6 +39,9 @@ public class DeployStage implements Stage {
             throws Exception {
         log.debug("Checking kubectl availability...");
         
+        log.warn("[PLACEHOLDER] Kubernetes deployment - kubectl not available");
+        log.warn("[PLACEHOLDER] To enable: install kubectl and configure K8s cluster access");
+        
         try {
             ProcessBuilder pb = new ProcessBuilder("kubectl", "version", "--client");
             pb.redirectErrorStream(true);
@@ -45,15 +49,14 @@ public class DeployStage implements Stage {
             int exitCode = p.waitFor();
             
             if (exitCode != 0) {
-                log.warn("kubectl not found - skipping deployment");
-                return "Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.";
+                return "[PLACEHOLDER] Kubernetes deployment skipped";
             }
         } catch (IOException e) {
-            log.warn("kubectl not found: {}", e.getMessage());
-            return "Kubernetes deployment skipped (kubectl not available). Install kubectl to enable deployment.";
+            return "[PLACEHOLDER] Kubernetes deployment skipped: kubectl not available";
         }
         
-        log.info("Would deploy to namespace: {} image: {}", namespace, image);
+        log.warn("[PLACEHOLDER] Would deploy to namespace: {} image: {}", namespace, image);
+        log.warn("[PLACEHOLDER] To enable: install kubectl and configure K8s cluster access");
         
         return "Kubernetes deployment completed: namespace=" + namespace + ", image=" + image;
     }
@@ -61,7 +64,8 @@ public class DeployStage implements Stage {
     private String deployToECS(Map<String, Object> config) throws Exception {
         String cluster = (String) config.getOrDefault("cluster", "default");
         
-        log.debug("Checking AWS CLI availability...");
+        log.warn("[PLACEHOLDER] ECS deployment - AWS CLI not available");
+        log.warn("[PLACEHOLDER] To enable: install AWS CLI and configure credentials");
         
         try {
             ProcessBuilder pb = new ProcessBuilder("aws", "--version");
@@ -70,15 +74,14 @@ public class DeployStage implements Stage {
             int exitCode = p.waitFor();
             
             if (exitCode != 0) {
-                log.warn("AWS CLI not found - skipping deployment");
-                return "ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.";
+                return "[PLACEHOLDER] ECS deployment skipped";
             }
         } catch (IOException e) {
-            log.warn("AWS CLI not found: {}", e.getMessage());
-            return "ECS deployment skipped (AWS CLI not available). Install AWS CLI to enable deployment.";
+            return "[PLACEHOLDER] ECS deployment skipped: AWS CLI not available";
         }
         
-        log.info("Would deploy to cluster: {}", cluster);
+        log.warn("[PLACEHOLDER] Would deploy to cluster: {}", cluster);
+        log.warn("[PLACEHOLDER] To enable: install AWS CLI and configure credentials");
         
         return "ECS deployment completed: cluster=" + cluster;
     }

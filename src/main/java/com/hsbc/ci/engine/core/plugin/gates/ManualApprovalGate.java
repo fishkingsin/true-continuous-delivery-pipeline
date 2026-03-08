@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.Scanner;
-
+// TODO: not yet integrate
 public class ManualApprovalGate implements GatePlugin {
 
     private static final Logger log = LoggerFactory.getLogger(ManualApprovalGate.class);
