@@ -181,6 +181,8 @@ public class PipelineOrchestrator {
 
         var config = new HashMap<String,Object>();
         if (stage.getConfig() != null) config.putAll(stage.getConfig());
+        if (stage.getTarget() != null) config.put("target", stage.getTarget());
+        if (stage.getEnvironment() != null) config.put("environment", stage.getEnvironment());
 
         int retries = stage.getRetry() != null ? stage.getRetry() : 0;
         StageResult result = null;

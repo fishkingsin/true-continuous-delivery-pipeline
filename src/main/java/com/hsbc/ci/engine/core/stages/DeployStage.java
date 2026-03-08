@@ -15,7 +15,7 @@ public class DeployStage implements Stage {
 
     @Override
     public String execute(Map<String, Object> config, PipelineContext context) {
-        String targetType = (String) config.get("type");
+        String targetType = (String) config.get("target");
         String namespace = (String) config.getOrDefault("namespace", "default");
         String image = (String) config.getOrDefault("image", "myapp:latest");
 
